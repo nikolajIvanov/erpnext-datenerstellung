@@ -1,0 +1,4 @@
+Currency,Price List Name,Buying,Enabled,Price Not UOM Dependent,Selling
+EUR,Standard Selling,0,1,0,1
+EUR,Wholesale Price,0,1,0,1
+EUR,Standard Buying,1,1,0,0

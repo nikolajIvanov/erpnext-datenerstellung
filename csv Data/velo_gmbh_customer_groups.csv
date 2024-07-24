@@ -1,0 +1,5 @@
+Customer Group Name,Default Payment Terms Template,Default Price List,Is Group,old_parent,Parent Customer Group
+Wholesale,,Standard Selling,0,,All Customer Groups
+Retail,,Standard Selling,0,,All Customer Groups
+B2B,,Wholesale Price,0,,All Customer Groups
+B2C,,Standard Selling,0,,All Customer Groups
