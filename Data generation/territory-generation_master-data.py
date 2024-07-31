@@ -1,29 +1,37 @@
 import csv
-from faker import Faker
+import random
 
-# Initialize Faker for German locale
-fake = Faker('de_DE')
+"""
+OBSOLET
+"""
+def load_sales_persons(filename):
+    sales_persons = []
+    with open(filename, 'r', newline='', encoding='utf-8') as input_file:
+        reader = csv.DictReader(input_file)
+        for row in reader:
+            sales_persons.append(row['Sales Person Name'])
+    return sales_persons
 
 
-def generate_territories():
+def generate_territories(sales_persons):
     territories = [
         {
             "Territory Name": "Germany",
             "Is Group": 0,
             "Parent Territory": "All Territories",
-            "Territory Manager": fake.name()
+            "Territory Manager": random.choice(sales_persons)
         },
         {
             "Territory Name": "Austria",
             "Is Group": 0,
             "Parent Territory": "All Territories",
-            "Territory Manager": fake.name()
+            "Territory Manager": random.choice(sales_persons)
         },
         {
             "Territory Name": "Switzerland",
             "Is Group": 0,
             "Parent Territory": "All Territories",
-            "Territory Manager": fake.name()
+            "Territory Manager": random.choice(sales_persons)
         }
     ]
     return territories
@@ -45,7 +53,8 @@ def save_to_csv(territories, filename):
 
 
 def main():
-    territories = generate_territories()
+    sales_persons = load_sales_persons('../csv Data/sales_persons.csv')
+    territories = generate_territories(sales_persons)
     save_to_csv(territories, 'territories.csv')
     print(f"Generated {len(territories)} territories and saved to velo_gmbh_territories.csv")
 

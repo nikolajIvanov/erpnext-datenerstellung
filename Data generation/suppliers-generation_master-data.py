@@ -78,7 +78,7 @@ def save_to_csv(suppliers, filename):
 def main():
     num_suppliers = 50  # Anzahl der zu generierenden Lieferanten
     suppliers = generate_suppliers(num_suppliers)
-    save_to_csv(suppliers, 'velo_gmbh_suppliers.csv')
+    save_to_csv(suppliers, 'suppliers.csv')
     print(f"Generated {len(suppliers)} suppliers and saved to velo_gmbh_suppliers.csv")
 
 

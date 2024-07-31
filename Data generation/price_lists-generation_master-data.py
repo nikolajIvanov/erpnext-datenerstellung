@@ -46,7 +46,7 @@ def save_to_csv(price_lists, filename):
 
 def main():
     price_lists = generate_price_lists()
-    save_to_csv(price_lists, 'velo_gmbh_price_lists.csv')
+    save_to_csv(price_lists, 'price_lists.csv')
     print(f"Generated {len(price_lists)} price lists and saved to velo_gmbh_price_lists.csv")
 
 

@@ -1,41 +1,41 @@
-item_code,item_name,item_group,is_stock_item,stock_uom,valuation_rate,standard_rate
-BIKE-0001,Fahrrad Modell 1,Fahrrad,1,Stück,448.54,1440.27
-BIKE-0002,Fahrrad Modell 2,Fahrrad,1,Stück,664.86,636.76
-BIKE-0003,Fahrrad Modell 3,Fahrrad,1,Stück,431.0,959.73
-BIKE-0004,Fahrrad Modell 4,Fahrrad,1,Stück,368.57,725.83
-BIKE-0005,Fahrrad Modell 5,Fahrrad,1,Stück,305.33,1389.53
-EBIKE-0001,E-Bike Modell 1,E-Bike,1,Stück,748.88,1687.78
-EBIKE-0002,E-Bike Modell 2,E-Bike,1,Stück,766.87,1804.64
-EBIKE-0003,E-Bike Modell 3,E-Bike,1,Stück,335.32,1144.3899999999999
-EBIKE-0004,E-Bike Modell 4,E-Bike,1,Stück,593.35,1853.63
-EBIKE-0005,E-Bike Modell 5,E-Bike,1,Stück,440.96,1875.86
-COMP-0001,Pedale Typ 1,Komponente,1,Stück,23.7,145.57
-COMP-0002,Lenker Typ 2,Komponente,1,Stück,106.03,306.48
-COMP-0003,Reifen Typ 3,Komponente,1,Stück,61.29,306.36
-COMP-0004,Lenker Typ 4,Komponente,1,Stück,47.49,235.06
-COMP-0005,Lenker Typ 5,Komponente,1,Stück,57.02,153.32
-COMP-0006,Sattel Typ 6,Komponente,1,Stück,110.59,338.3
-COMP-0007,Pedale Typ 7,Komponente,1,Stück,33.25,35.75
-COMP-0008,Rahmen Typ 8,Komponente,1,Stück,183.79,87.88
-COMP-0009,Kette Typ 9,Komponente,1,Stück,196.32,232.7
-COMP-0010,Reifen Typ 10,Komponente,1,Stück,36.94,177.54
-COMP-0011,Gabel Typ 11,Komponente,1,Stück,179.16,216.01
-COMP-0012,Laufrad Typ 12,Komponente,1,Stück,130.97,61.23
-COMP-0013,Reifen Typ 13,Komponente,1,Stück,144.15,361.6
-COMP-0014,Reifen Typ 14,Komponente,1,Stück,59.79,158.21
-COMP-0015,Kette Typ 15,Komponente,1,Stück,157.97,87.29
-COMP-0016,Pedale Typ 16,Komponente,1,Stück,128.41,274.95
-COMP-0017,Sattel Typ 17,Komponente,1,Stück,194.01,349.03
-COMP-0018,Kette Typ 18,Komponente,1,Stück,150.92,203.72
-COMP-0019,Sattel Typ 19,Komponente,1,Stück,164.85,284.62
-COMP-0020,Reifen Typ 20,Komponente,1,Stück,55.05,203.34
-COMP-0021,Rahmen Typ 21,Komponente,1,Stück,19.21,174.6
-COMP-0022,Pedale Typ 22,Komponente,1,Stück,16.11,140.95
-COMP-0023,Rahmen Typ 23,Komponente,1,Stück,45.29,333.41
-COMP-0024,Schaltung Typ 24,Komponente,1,Stück,141.28,77.29
-COMP-0025,Sattel Typ 25,Komponente,1,Stück,166.15,319.67
-COMP-0026,Laufrad Typ 26,Komponente,1,Stück,85.28,398.29
-COMP-0027,Gabel Typ 27,Komponente,1,Stück,131.66,293.04
-COMP-0028,Bremsen Typ 28,Komponente,1,Stück,14.23,356.7
-COMP-0029,Schaltung Typ 29,Komponente,1,Stück,50.58,338.89
-COMP-0030,Gabel Typ 30,Komponente,1,Stück,169.84,229.96
+Item Code,Item Name,Item Group,Default Unit of Measure,Is Stock Item,Valuation Rate,Standard Selling Rate,Description
+BIKE-0001,Fahrrad Modell 1,Fahrräder,Nos,1,336.81,1144.13,Fahrrad Modell 1 Beschreibung
+BIKE-0002,Fahrrad Modell 2,Fahrräder,Nos,1,589.36,989.37,Fahrrad Modell 2 Beschreibung
+BIKE-0003,Fahrrad Modell 3,Fahrräder,Nos,1,591.16,1203.1,Fahrrad Modell 3 Beschreibung
+BIKE-0004,Fahrrad Modell 4,Fahrräder,Nos,1,367.47,1208.24,Fahrrad Modell 4 Beschreibung
+BIKE-0005,Fahrrad Modell 5,Fahrräder,Nos,1,558.43,1265.92,Fahrrad Modell 5 Beschreibung
+EBIKE-0001,E-Bike Modell 1,E-Bikes,Nos,1,629.11,1774.58,E-Bike Modell 1 Beschreibung
+EBIKE-0002,E-Bike Modell 2,E-Bikes,Nos,1,579.06,1664.49,E-Bike Modell 2 Beschreibung
+EBIKE-0003,E-Bike Modell 3,E-Bikes,Nos,1,519.17,1291.47,E-Bike Modell 3 Beschreibung
+EBIKE-0004,E-Bike Modell 4,E-Bikes,Nos,1,361.67,1170.87,E-Bike Modell 4 Beschreibung
+EBIKE-0005,E-Bike Modell 5,E-Bikes,Nos,1,505.87,1224.1,E-Bike Modell 5 Beschreibung
+COMP-0001,Bremsen Typ 1,Fahrradkomponenten,Nos,1,47.76,302.57,Bremsen Typ 1 Beschreibung
+COMP-0002,Lenker Typ 2,Fahrradkomponenten,Nos,1,114.25,229.38,Lenker Typ 2 Beschreibung
+COMP-0003,Laufrad Typ 3,Fahrradkomponenten,Nos,1,100.76,150.02,Laufrad Typ 3 Beschreibung
+COMP-0004,Reifen Typ 4,Fahrradkomponenten,Nos,1,48.04,390.71,Reifen Typ 4 Beschreibung
+COMP-0005,Lenker Typ 5,Fahrradkomponenten,Nos,1,11.17,300.46,Lenker Typ 5 Beschreibung
+COMP-0006,Laufrad Typ 6,Fahrradkomponenten,Nos,1,44.11,94.01,Laufrad Typ 6 Beschreibung
+COMP-0007,Laufrad Typ 7,Fahrradkomponenten,Nos,1,199.72,289.03,Laufrad Typ 7 Beschreibung
+COMP-0008,Kette Typ 8,Fahrradkomponenten,Nos,1,147.29,303.82,Kette Typ 8 Beschreibung
+COMP-0009,Pedale Typ 9,Fahrradkomponenten,Nos,1,122.61,353.56,Pedale Typ 9 Beschreibung
+COMP-0010,Laufrad Typ 10,Fahrradkomponenten,Nos,1,132.72,88.81,Laufrad Typ 10 Beschreibung
+COMP-0011,Bremsen Typ 11,Fahrradkomponenten,Nos,1,176.48,98.78,Bremsen Typ 11 Beschreibung
+COMP-0012,Pedale Typ 12,Fahrradkomponenten,Nos,1,149.34,21.67,Pedale Typ 12 Beschreibung
+COMP-0013,Bremsen Typ 13,Fahrradkomponenten,Nos,1,107.42,299.49,Bremsen Typ 13 Beschreibung
+COMP-0014,Schaltung Typ 14,Fahrradkomponenten,Nos,1,20.64,350.19,Schaltung Typ 14 Beschreibung
+COMP-0015,Reifen Typ 15,Fahrradkomponenten,Nos,1,35.4,165.07,Reifen Typ 15 Beschreibung
+COMP-0016,Laufrad Typ 16,Fahrradkomponenten,Nos,1,141.12,246.1,Laufrad Typ 16 Beschreibung
+COMP-0017,Lenker Typ 17,Fahrradkomponenten,Nos,1,184.79,370.16,Lenker Typ 17 Beschreibung
+COMP-0018,Schaltung Typ 18,Fahrradkomponenten,Nos,1,72.88,40.02,Schaltung Typ 18 Beschreibung
+COMP-0019,Sattel Typ 19,Fahrradkomponenten,Nos,1,33.3,196.7,Sattel Typ 19 Beschreibung
+COMP-0020,Bremsen Typ 20,Fahrradkomponenten,Nos,1,54.13,174.28,Bremsen Typ 20 Beschreibung
+COMP-0021,Gabel Typ 21,Fahrradkomponenten,Nos,1,89.55,45.62,Gabel Typ 21 Beschreibung
+COMP-0022,Rahmen Typ 22,Fahrradkomponenten,Nos,1,124.59,223.84,Rahmen Typ 22 Beschreibung
+COMP-0023,Schaltung Typ 23,Fahrradkomponenten,Nos,1,141.01,130.15,Schaltung Typ 23 Beschreibung
+COMP-0024,Lenker Typ 24,Fahrradkomponenten,Nos,1,151.03,261.29,Lenker Typ 24 Beschreibung
+COMP-0025,Reifen Typ 25,Fahrradkomponenten,Nos,1,15.03,358.83,Reifen Typ 25 Beschreibung
+COMP-0026,Reifen Typ 26,Fahrradkomponenten,Nos,1,184.26,56.22,Reifen Typ 26 Beschreibung
+COMP-0027,Gabel Typ 27,Fahrradkomponenten,Nos,1,189.92,341.55,Gabel Typ 27 Beschreibung
+COMP-0028,Schaltung Typ 28,Fahrradkomponenten,Nos,1,120.2,350.49,Schaltung Typ 28 Beschreibung
+COMP-0029,Rahmen Typ 29,Fahrradkomponenten,Nos,1,182.14,121.06,Rahmen Typ 29 Beschreibung
+COMP-0030,Kette Typ 30,Fahrradkomponenten,Nos,1,22.1,319.72,Kette Typ 30 Beschreibung
