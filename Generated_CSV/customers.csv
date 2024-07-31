@@ -1,0 +1,251 @@
+ID,Customer Name,Customer Type,Customer Group,Territory,Mobile No,Email Id,Default Price List,Billing Currency,From Lead,Industry,Website,Tax ID,Customer POS id,Salutation,Gender
+CUST-B2B-1962,Förster,Company,B2B,Germany,08542 98888,keudelliesel@mielcarek.de,Standard Selling,EUR,LEAD-12232,Electronics,budig.de,DE47230779162,POS-6006,,
+CUST-B2B-4322,Schmidt AG,Company,Wholesale,Germany,0893660251,mechthildboerner@schmiedt.net,Standard Selling,EUR,LEAD-34504,Electronics,flantz.de,DE27989578219,POS-5297,,
+CUST-B2B-8156,Gertz GmbH,Company,B2B,Switzerland,(05703) 465447,lrosenow@martin.com,Wholesale Price,EUR,LEAD-54387,Manufacturing,klemm.org,DE76803173911,POS-4205,,
+CUST-B2B-6260,Zänker,Company,B2B,Austria,04184574183,curthecker@bloch.net,Wholesale Price,EUR,LEAD-40146,Sports,werner.net,DE21281578731,POS-3824,,
+CUST-B2B-3358,Thies Rudolph AG & Co. KGaA,Company,Wholesale,Switzerland,+49 (0) 4694 705879,scholldursun@hamann.de,Standard Selling,EUR,LEAD-78741,Consumer Products,schmiedt.com,DE14118072102,POS-5675,,
+CUST-B2B-2876,Kabus Atzler AG & Co. KG,Company,B2B,Switzerland,+49(0)4332 502378,dbaehr@kraushaar.org,Wholesale Price,EUR,LEAD-55935,Entertainment & Leisure,kramer.net,DE86964015729,POS-3022,,
+CUST-B2B-6552,Lorch Mude KG,Company,B2B,Austria,0115033621,rainerbloch@losekann.de,Wholesale Price,EUR,LEAD-67711,Sports,scheuermann.de,DE68607322720,POS-3528,,
+CUST-B2B-8125,Losekann Kranz Stiftung & Co. KG,Company,Wholesale,Austria,+49(0)6927882766,florencehornig@meyer.de,Standard Selling,EUR,LEAD-85956,Retail & Wholesale,hesse.de,DE66969737130,POS-2409,,
+CUST-B2B-7736,Adolph Bloch AG & Co. KG,Company,Wholesale,Austria,(04507) 680677,bstiebitz@ruppert.com,Wholesale Price,EUR,LEAD-46791,Education,fiebig.com,DE41503248989,POS-3286,,
+CUST-B2B-8911,Bloch,Company,Wholesale,Austria,0096719185,ilhan36@heinz.com,Standard Selling,EUR,LEAD-30557,Energy,wiek.org,DE30025520809,POS-9696,,
+CUST-B2B-8249,Jäntsch Kohl AG & Co. KGaA,Company,B2B,Switzerland,(01748) 83899,dklapp@vogt.de,Wholesale Price,EUR,LEAD-40606,Electronics,luebs.de,DE30657143980,POS-9014,,
+CUST-B2B-1410,Bauer Jockel GbR,Company,B2B,Switzerland,00404 18041,zimmerhenny@berger.de,Standard Selling,EUR,LEAD-26432,Retail & Wholesale,wagenknecht.com,DE33210045292,POS-6110,,
+CUST-B2B-4607,Hethur Stiftung & Co. KGaA,Company,Wholesale,Switzerland,+49(0)7478 742979,buchholzira@albers.net,Wholesale Price,EUR,LEAD-30791,Education,gutknecht.de,DE13449552319,POS-9231,,
+CUST-B2B-6130,Sontag Dehmel GmbH,Company,B2B,Switzerland,04272 908411,xhahn@linke.de,Standard Selling,EUR,LEAD-70546,Education,vollbrecht.de,DE43028275918,POS-0747,,
+CUST-B2B-4387,Hellwig GbR,Company,B2B,Germany,(01221) 95861,ekostolzin@bohnbach.com,Wholesale Price,EUR,LEAD-99503,Technology,weinhage.com,DE66624574290,POS-2225,,
+CUST-B2B-4806,Hande Löchel GmbH & Co. OHG,Company,Wholesale,Austria,08530319628,lutz03@jungfer.de,Wholesale Price,EUR,LEAD-16780,Retail & Wholesale,hermann.com,DE47516307344,POS-8287,,
+CUST-B2B-4684,Dehmel Schaaf KGaA,Company,Wholesale,Switzerland,(08439) 502703,henckmelissa@segebahn.net,Wholesale Price,EUR,LEAD-44711,Electronics,atzler.com,DE74827120359,POS-4386,,
+CUST-B2B-7067,Hermann AG,Company,B2B,Germany,+49(0) 948607261,zobelsiegbert@davids.com,Wholesale Price,EUR,LEAD-50979,Health Care,poelitz.com,DE62326581378,POS-0760,,
+CUST-B2B-2852,Hörle Kreusel KG,Company,B2B,Austria,+49(0) 308054624,ali50@doering.de,Wholesale Price,EUR,LEAD-57142,Consumer Products,maelzer.com,DE07973497197,POS-7310,,
+CUST-B2B-2068,Aumann Binner Stiftung & Co. KG,Company,B2B,Switzerland,+49(0)8143 258171,svealinke@finke.org,Wholesale Price,EUR,LEAD-32986,Service,jockel.de,DE80750932731,POS-9671,,
+CUST-B2B-2027,Kuhl Boucsein e.V.,Company,Wholesale,Switzerland,05052 86442,emmi49@schweitzer.de,Wholesale Price,EUR,LEAD-60742,Transportation,jopich.de,DE80445887669,POS-2745,,
+CUST-B2B-8188,Hein Ritter GmbH & Co. KG,Company,Wholesale,Germany,03929 02078,nicolai13@reinhardt.com,Standard Selling,EUR,LEAD-73109,Electronics,herrmann.de,DE56357253478,POS-2286,,
+CUST-B2B-5821,Bonbach,Company,Wholesale,Austria,04268631241,ysuessebier@aumann.de,Standard Selling,EUR,LEAD-89775,Manufacturing,ruppert.com,DE20880473720,POS-0558,,
+CUST-B2B-6844,Neureuther,Company,Wholesale,Switzerland,0770570000,hthanel@henk.de,Standard Selling,EUR,LEAD-69603,Consumer Products,wiek.com,DE18935805313,POS-7100,,
+CUST-B2B-3375,Austermühle GmbH & Co. KGaA,Company,B2B,Switzerland,0786594767,manfred19@langern.de,Wholesale Price,EUR,LEAD-39231,Entertainment & Leisure,bender.de,DE60128142917,POS-7343,,
+CUST-B2B-8009,Kruschwitz,Company,Wholesale,Switzerland,0051086097,zstoll@schmidt.org,Wholesale Price,EUR,LEAD-89435,Sports,wiek.org,DE54081277898,POS-0262,,
+CUST-B2B-8564,Gröttner,Company,Wholesale,Austria,+49 (0) 6764 798239,frieda75@kraushaar.com,Standard Selling,EUR,LEAD-44959,Health Care,gertz.net,DE13271724792,POS-0885,,
+CUST-B2B-9403,Kruschwitz,Company,Wholesale,Austria,+49 (0) 1464 631138,elise41@misicher.com,Standard Selling,EUR,LEAD-10964,Energy,koch.com,DE80650358240,POS-6818,,
+CUST-B2B-4709,Jüttner Warmer KG,Company,Wholesale,Austria,03224 29440,srosemann@stiffel.de,Wholesale Price,EUR,LEAD-74757,Retail & Wholesale,wilmsen.org,DE89254434272,POS-4239,,
+CUST-B2B-8036,Junitz Ebert GmbH,Company,B2B,Germany,(03010) 682208,iroht@mans.com,Wholesale Price,EUR,LEAD-93665,Education,schueler.de,DE20719733310,POS-2678,,
+CUST-B2B-9932,Häring,Company,B2B,Austria,02508 98085,gundiadolph@barkholz.de,Standard Selling,EUR,LEAD-30267,Electronics,baehr.com,DE80437127690,POS-5890,,
+CUST-B2B-3602,Caspar,Company,B2B,Austria,(08376) 79406,xklemm@beier.de,Wholesale Price,EUR,LEAD-92682,Consumer Products,hamann.com,DE22729959629,POS-9417,,
+CUST-B2B-5261,Hauffer Hänel GmbH & Co. KG,Company,B2B,Germany,+49(0)7350971143,pfinke@zahn.de,Wholesale Price,EUR,LEAD-29828,Service,eckbauer.com,DE54106405759,POS-9605,,
+CUST-B2B-3853,Täsche KG,Company,B2B,Switzerland,(00921) 141330,moniqueweinhage@thanel.org,Standard Selling,EUR,LEAD-89934,Automotive,stolze.de,DE71286555862,POS-8242,,
+CUST-B2B-1371,Becker Meister GbR,Company,Wholesale,Germany,04560767772,cgiess@hornig.org,Wholesale Price,EUR,LEAD-76627,Energy,rogge.com,DE46193923276,POS-1571,,
+CUST-B2B-7032,Kühnert,Company,B2B,Switzerland,+49(0) 985853469,rena79@fliegner.com,Wholesale Price,EUR,LEAD-76417,Manufacturing,doering.com,DE26319771368,POS-9867,,
+CUST-B2B-4937,Hellwig AG & Co. KG,Company,Wholesale,Germany,(01862) 052984,nroehrdanz@heinz.de,Standard Selling,EUR,LEAD-98361,Sports,spiess.de,DE20726155362,POS-7053,,
+CUST-B2B-3254,Gunpf KG,Company,Wholesale,Germany,0285773378,juettnerclemens@butte.de,Standard Selling,EUR,LEAD-32375,Consumer Products,werner.com,DE01185198857,POS-3915,,
+CUST-B2B-5700,Möchlichen e.V.,Company,Wholesale,Austria,(00873) 72525,dianaholt@kaul.de,Wholesale Price,EUR,LEAD-21150,Education,bolzmann.de,DE46294698126,POS-5237,,
+CUST-B2B-9604,Kabus Stiftung & Co. KG,Company,B2B,Germany,08697748075,marieluise27@rogge.de,Wholesale Price,EUR,LEAD-35910,Automotive,lange.de,DE42672757629,POS-6477,,
+CUST-B2B-3995,Mitschke Bauer AG,Company,Wholesale,Germany,(08945) 46167,lukasneureuther@schomber.com,Wholesale Price,EUR,LEAD-44371,Education,beer.org,DE41932852095,POS-7083,,
+CUST-B2B-7467,Davids,Company,B2B,Switzerland,(06455) 71389,kathi28@dehmel.org,Standard Selling,EUR,LEAD-38490,Transportation,christoph.com,DE55858777553,POS-5644,,
+CUST-B2B-1923,Hauffer,Company,B2B,Austria,0192575379,burckhard68@matthaei.com,Standard Selling,EUR,LEAD-58812,Automotive,gutknecht.de,DE87762133305,POS-1387,,
+CUST-B2B-6518,Holsten KG,Company,Wholesale,Germany,+49(0)9950236270,janos33@jockel.org,Standard Selling,EUR,LEAD-98491,Manufacturing,saeuberlich.de,DE42751870483,POS-4836,,
+CUST-B2B-2809,Holzapfel AG,Company,Wholesale,Austria,(06630) 85848,hans-guentherweller@wulff.net,Standard Selling,EUR,LEAD-48584,Transportation,bloch.de,DE44819209847,POS-3008,,
+CUST-B2B-4017,Trüb,Company,B2B,Switzerland,08978607536,marianna78@roehricht.de,Standard Selling,EUR,LEAD-29766,Consumer Products,roskoth.de,DE57238709076,POS-1596,,
+CUST-B2B-6769,Ackermann Ernst e.V.,Company,B2B,Germany,09947 17153,bertahoffmann@butte.com,Standard Selling,EUR,LEAD-78907,Sports,kroker.de,DE07912595165,POS-2875,,
+CUST-B2B-4210,Austermühle e.V.,Company,Wholesale,Germany,07165524050,jungferramazan@mohaupt.com,Wholesale Price,EUR,LEAD-35781,Service,reuter.org,DE88704453235,POS-0774,,
+CUST-B2B-1251,Wulf Heinz GmbH & Co. OHG,Company,Wholesale,Austria,08760 285626,dorlehethur@bender.com,Wholesale Price,EUR,LEAD-81236,Sports,ritter.de,DE11561598857,POS-5381,,
+CUST-B2B-8524,Plath,Company,B2B,Germany,+49(0)1567 838718,reinhardtjacqueline@klingelhoefer.com,Standard Selling,EUR,LEAD-96977,Transportation,herrmann.de,DE19254809195,POS-0712,,
+CUST-B2C-6387,Gudrun Linke,Individual,Retail,Austria,00015 89972,gudrunlinke@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-1451,Michail Wagenknecht,Individual,B2C,Austria,+49 (0) 7355 292685,michailwagenknecht@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-1390,Frau Marlies Bien,Individual,Retail,Germany,03962 457573,fraumarliesbien@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-5998,Walburga Geisel,Individual,Retail,Germany,(04037) 956022,walburgageisel@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-6473,Irma Mülichen B.Sc.,Individual,B2C,Austria,+49(0)0313 49165,irmamülichenbsc@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-9868,Thilo Gierschner,Individual,B2C,Germany,07251 47643,thilogierschner@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-1597,Pascal Herrmann B.A.,Individual,B2C,Austria,+49(0)7829515404,pascalherrmannba@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-5305,Edeltraut Wagner,Individual,Retail,Germany,09197 81672,edeltrautwagner@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-5535,Katharine Bolander MBA.,Individual,Retail,Germany,+49(0) 621544335,katharinebolandermba@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-9189,Ing. Herlinde Hentschel,Individual,Retail,Germany,+49(0)2312 02901,ingherlindehentschel@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-5843,Käte Pergande-Lachmann,Individual,Retail,Switzerland,05040 65303,kätepergandelachmann@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-6852,Emil Freudenberger-Ullrich,Individual,B2C,Switzerland,(06442) 95396,emilfreudenbergerullrich@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-8295,Prof. Carl Klemt,Individual,B2C,Germany,0290517858,profcarlklemt@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-9531,Abdullah Pieper,Individual,B2C,Germany,02284 505296,abdullahpieper@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-5071,Hasan Reising,Individual,B2C,Germany,(05079) 77478,hasanreising@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-1503,Emmerich Pohl,Individual,B2C,Austria,+49 (0) 2504 680263,emmerichpohl@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-8013,Frau Gerlinde Gumprich,Individual,B2C,Switzerland,08158 960867,fraugerlindegumprich@example.com,Standard Selling,EUR,,,,,,Mr,Male
+CUST-B2C-5130,Prof. Semra Köhler MBA.,Individual,B2C,Germany,05571 685601,profsemraköhlermba@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-7806,Miroslawa Pergande,Individual,B2C,Germany,05450 95549,miroslawapergande@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-1000,Ing. Luise Baum,Individual,B2C,Germany,+49(0)3866 78180,ingluisebaum@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-1720,Ada Siering,Individual,B2C,Germany,(06665) 20734,adasiering@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-9703,Frau Leonore Juncken,Individual,B2C,Austria,08621531866,frauleonorejuncken@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-8216,Prof. Dorothee Adler B.Eng.,Individual,Retail,Switzerland,+49(0)0837979059,profdorotheeadlerbeng@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-8618,Woldemar Schmiedt,Individual,Retail,Germany,+49 (0) 9892 052484,woldemarschmiedt@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-6449,Dunja Junitz,Individual,Retail,Germany,+49(0)6800830712,dunjajunitz@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-9643,Margot Schleich B.Eng.,Individual,B2C,Switzerland,+49(0)8417183644,margotschleichbeng@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-7732,Alexandra Davids,Individual,B2C,Austria,+49(0)9175438998,alexandradavids@example.com,Standard Selling,EUR,,,,,,Prof,Male
+CUST-B2C-6303,Dipl.-Ing. Dana Müller,Individual,Retail,Switzerland,+49 (0) 2345 110694,diplingdanamüller@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-6867,Sibilla Dippel B.Sc.,Individual,Retail,Germany,0797670683,sibilladippelbsc@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-1271,Ildiko Henck,Individual,B2C,Switzerland,+49(0) 928749935,ildikohenck@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-6204,Frau Janina Hahn MBA.,Individual,Retail,Austria,+49 (0) 8748 450589,fraujaninahahnmba@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-5756,Dr. Abraham Knappe MBA.,Individual,Retail,Germany,(01418) 34910,drabrahamknappemba@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-2972,Zoltan Biggen-Gude,Individual,Retail,Germany,02689 64663,zoltanbiggengude@example.com,Standard Selling,EUR,,,,,,Mrs,Other
+CUST-B2C-1749,Hans-Rudolf Loos,Individual,B2C,Switzerland,06544516639,hansrudolfloos@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-8237,Ole Blümel,Individual,B2C,Switzerland,+49(0)0618 24590,oleblümel@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-2876,Jutta Hornig,Individual,B2C,Austria,+49(0)3473 834956,juttahornig@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-8088,Elvira Ditschlerin B.A.,Individual,B2C,Switzerland,+49(0)5783 867884,elviraditschlerinba@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-8220,Hans-Ulrich Hölzenbecher,Individual,Retail,Switzerland,00913 339512,hansulrichhölzenbecher@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-2928,Flora Eigenwillig,Individual,B2C,Germany,(03472) 585182,floraeigenwillig@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-7889,Friedo Dobes,Individual,B2C,Germany,+49(0)6869 451899,friedodobes@example.com,Standard Selling,EUR,,,,,,Mrs,Other
+CUST-B2C-8879,Nelly Butte,Individual,Retail,Germany,+49(0)3951 75735,nellybutte@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-5050,Siegward Stiffel,Individual,B2C,Austria,+49(0)4164 45945,siegwardstiffel@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-5258,Daniela Beyer,Individual,B2C,Switzerland,07033161928,danielabeyer@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-7701,Werner Heintze B.Eng.,Individual,Retail,Austria,+49 (0) 2507 135165,wernerheintzebeng@example.com,Standard Selling,EUR,,,,,,Mrs,Other
+CUST-B2C-3256,David Ladeck,Individual,Retail,Austria,+49(0)0870874891,davidladeck@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-4657,Dr. Elisa Etzler,Individual,Retail,Switzerland,+49 (0) 4298 070627,drelisaetzler@example.com,Standard Selling,EUR,,,,,,Mrs,Other
+CUST-B2C-4467,Dr. Nikolas Dehmel,Individual,Retail,Austria,(01529) 401089,drnikolasdehmel@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-8952,Catharina Losekann-Seifert,Individual,B2C,Germany,(04883) 944011,catharinalosekannseifert@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-9312,Gudrun Becker B.Sc.,Individual,Retail,Austria,+49 (0) 7415 663166,gudrunbeckerbsc@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-8447,Tillmann Kensy,Individual,B2C,Germany,+49(0)6227321630,tillmannkensy@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-7243,Berthold Wirth,Individual,B2C,Germany,+49 (0) 3093 430443,bertholdwirth@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-5841,Raymund Weihmann,Individual,B2C,Germany,00590618772,raymundweihmann@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-9126,Natalija Buchholz,Individual,B2C,Austria,(00269) 54360,natalijabuchholz@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-7928,Silva Schweitzer,Individual,Retail,Germany,02964 31391,silvaschweitzer@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-8167,Karlheinz Beyer-Mangold,Individual,Retail,Germany,01132 988764,karlheinzbeyermangold@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-3763,Friederike Dehmel MBA.,Individual,Retail,Germany,0878652843,friederikedehmelmba@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-8726,Dipl.-Ing. Theresa Röhrdanz,Individual,Retail,Austria,+49(0)0369 765393,diplingtheresaröhrdanz@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-5409,Prof. Emilie Patberg B.Eng.,Individual,B2C,Austria,03526 03160,profemiliepatbergbeng@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-3465,Petros Köster,Individual,Retail,Austria,+49(0)9702 34425,petrosköster@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-6491,Vitali Kambs B.Eng.,Individual,Retail,Austria,+49 (0) 8370 169248,vitalikambsbeng@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-7500,Dr. Recep Scheuermann,Individual,Retail,Switzerland,07669884598,drrecepscheuermann@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-4083,Ing. Anneke Eigenwillig B.Eng.,Individual,Retail,Germany,(00237) 321410,ingannekeeigenwilligbeng@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-8723,Cosimo Loos,Individual,Retail,Switzerland,+49 (0) 7788 061831,cosimoloos@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-6648,Ing. Tadeusz Schmidtke B.Sc.,Individual,B2C,Switzerland,+49(0) 121784805,ingtadeuszschmidtkebsc@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-9087,Metin Warmer,Individual,B2C,Switzerland,+49(0) 552357127,metinwarmer@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-1741,Hans-Otto Gumprich,Individual,Retail,Austria,(01691) 95418,hansottogumprich@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-1263,Joanna Misicher,Individual,Retail,Switzerland,(09691) 361742,joannamisicher@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-2629,Franjo Stahr B.Eng.,Individual,B2C,Austria,04073 29226,franjostahrbeng@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-4406,Yvette Girschner-Kohl,Individual,B2C,Switzerland,0473654100,yvettegirschnerkohl@example.com,Standard Selling,EUR,,,,,,Prof,Male
+CUST-B2C-1398,Prof. Irmela Heinrich,Individual,B2C,Austria,07202 175789,profirmelaheinrich@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-5760,Engin Römer,Individual,Retail,Switzerland,+49 (0) 1648 611723,enginrömer@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-6312,Benno Seifert-Rust,Individual,B2C,Germany,+49 (0) 3489 405133,bennoseifertrust@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-8654,Ayse Kraus,Individual,B2C,Germany,(04890) 39968,aysekraus@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-9595,Hans Dieter Ruppert,Individual,Retail,Germany,+49(0)5671 23656,hansdieterruppert@example.com,Standard Selling,EUR,,,,,,Mr,Male
+CUST-B2C-9295,Ing. Bernd Ring B.Sc.,Individual,B2C,Switzerland,+49 (0) 1923 373410,ingberndringbsc@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-7139,Ing. Hans-Gerhard Wilms,Individual,Retail,Germany,04734298317,inghansgerhardwilms@example.com,Standard Selling,EUR,,,,,,Prof,Male
+CUST-B2C-6286,Eitel Zobel MBA.,Individual,B2C,Germany,07369 17645,eitelzobelmba@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-2371,Rainer Klemm,Individual,B2C,Germany,+49(0)9007 013786,rainerklemm@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-3031,Univ.Prof. Heinz Zobel,Individual,Retail,Germany,+49(0) 952091366,univprofheinzzobel@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-4242,Univ.Prof. Emil Preiß,Individual,B2C,Austria,00604 23987,univprofemilpreiß@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-6197,Andre Kitzmann,Individual,Retail,Switzerland,+49(0)8409048276,andrekitzmann@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-7620,Almut Schacht-Dörr,Individual,Retail,Switzerland,03786 027129,almutschachtdörr@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-9705,Dr. Jorge Martin MBA.,Individual,B2C,Germany,+49(0)2977 97205,drjorgemartinmba@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-9064,Till Rudolph,Individual,Retail,Germany,06395 15798,tillrudolph@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-1912,Ayten Eimer B.A.,Individual,B2C,Austria,(06901) 133738,ayteneimerba@example.com,Standard Selling,EUR,,,,,,Mr,Male
+CUST-B2C-4077,Kirstin Wende,Individual,Retail,Austria,08400 461597,kirstinwende@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-7256,Ing. Enrico Stroh B.Sc.,Individual,Retail,Germany,+49(0)5398 785029,ingenricostrohbsc@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-1852,Alwine Schuster B.Eng.,Individual,Retail,Austria,+49(0) 168192659,alwineschusterbeng@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-3041,Urte Schweitzer B.Sc.,Individual,B2C,Germany,07144 712073,urteschweitzerbsc@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-9863,Xaver Walter B.Eng.,Individual,B2C,Germany,+49(0) 616999006,xaverwalterbeng@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-1678,Univ.Prof. Ellen Jüttner,Individual,B2C,Austria,+49(0)4656 38116,univprofellenjüttner@example.com,Standard Selling,EUR,,,,,,Prof,Male
+CUST-B2C-8043,Henri Kensy-Henschel,Individual,Retail,Austria,(01266) 98286,henrikensyhenschel@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-4826,Helene Spieß-Hettner,Individual,B2C,Austria,+49(0)7866 15119,helenespießhettner@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-3313,Helmut Faust-Tlustek,Individual,B2C,Switzerland,0228544654,helmutfausttlustek@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-2790,Joana Rose,Individual,B2C,Austria,0940305189,joanarose@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-7341,Prof. Irene Putz MBA.,Individual,Retail,Switzerland,(07120) 26749,profireneputzmba@example.com,Standard Selling,EUR,,,,,,Mr,Male
+CUST-B2C-8596,Franziska Löffler B.Eng.,Individual,Retail,Switzerland,0350808191,franziskalöfflerbeng@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-1572,Heiko Bärer B.Sc.,Individual,Retail,Germany,(07395) 006626,heikobärerbsc@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-1711,Hanns Langern MBA.,Individual,Retail,Austria,+49(0)1935843294,hannslangernmba@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-4294,Katarzyna Steinberg,Individual,Retail,Switzerland,0370352275,katarzynasteinberg@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-1349,Nevenka Weitzel B.Sc.,Individual,Retail,Austria,0332682679,nevenkaweitzelbsc@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-9260,Valentin Lehmann-Eberhardt,Individual,B2C,Germany,+49(0)0782 27195,valentinlehmanneberhardt@example.com,Standard Selling,EUR,,,,,,Mr,Male
+CUST-B2C-9225,Paula Scholtz,Individual,B2C,Germany,00522836608,paulascholtz@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-9133,Herr Vassilios Wende B.Sc.,Individual,Retail,Switzerland,+49 (0) 3449 954463,herrvassilioswendebsc@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-1130,Hassan Zirme-Walter,Individual,Retail,Switzerland,+49(0)0634 99534,hassanzirmewalter@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-5801,Herma Etzold B.A.,Individual,Retail,Austria,+49(0) 066948716,hermaetzoldba@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-9953,Carsten Ruppert,Individual,B2C,Austria,01466 90385,carstenruppert@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-5721,Dr. Annemarie Höfig B.Eng.,Individual,B2C,Switzerland,+49(0)1424727075,drannemariehöfigbeng@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-2766,Prof. Friedemann Loos MBA.,Individual,Retail,Germany,04691 05834,proffriedemannloosmba@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-1764,Jacob Meyer-Johann,Individual,Retail,Switzerland,+49(0)3505 506168,jacobmeyerjohann@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-9735,Ing. Loni Nette,Individual,Retail,Germany,(01011) 636895,ingloninette@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-8960,Frank Langern-Langern,Individual,B2C,Switzerland,+49 (0) 4232 179807,franklangernlangern@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-5086,Waltraut Schüler,Individual,B2C,Austria,+49 (0) 4793 047114,waltrautschüler@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-4950,Janusz Junitz,Individual,B2C,Germany,(01939) 81147,januszjunitz@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-3640,Marlene Kambs,Individual,B2C,Austria,+49(0)2285 18701,marlenekambs@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-1075,Martin Tlustek B.A.,Individual,Retail,Switzerland,+49(0)5872480734,martintlustekba@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-1731,Bert Weiß,Individual,B2C,Germany,(04777) 58816,bertweiß@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-2592,Prof. Walburga Trüb,Individual,Retail,Switzerland,(07608) 42595,profwalburgatrüb@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-5594,Prof. Celal Hölzenbecher B.Eng.,Individual,B2C,Germany,+49(0) 575605696,profcelalhölzenbecherbeng@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-6341,Siglinde Wieloch,Individual,B2C,Switzerland,+49(0)7841 40611,siglindewieloch@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-4272,Andrea Ernst-Freudenberger,Individual,B2C,Switzerland,+49(0)0178351967,andreaernstfreudenberger@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-6334,Denise Tschentscher,Individual,Retail,Switzerland,+49(0)1562 41546,denisetschentscher@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-8752,Gudula Gutknecht-Fechner,Individual,Retail,Switzerland,(06092) 97415,gudulagutknechtfechner@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-9000,Maria Flantz-Geisler,Individual,B2C,Germany,(04375) 54467,mariaflantzgeisler@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-4611,Prof. Pierre Bolzmann,Individual,B2C,Germany,+49(0)6956 37864,profpierrebolzmann@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-9758,Ing. Yasemin Sorgatz,Individual,Retail,Austria,(09654) 689503,ingyaseminsorgatz@example.com,Standard Selling,EUR,,,,,,Mrs,Other
+CUST-B2C-5652,Carl-Heinz Hamann,Individual,B2C,Germany,(02430) 42403,carlheinzhamann@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-2975,Zlatko Langern,Individual,Retail,Switzerland,01821260517,zlatkolangern@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-4481,Milena Weinhold,Individual,B2C,Germany,0488582266,milenaweinhold@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-2766,Marliese Hendriks,Individual,Retail,Germany,04848 40537,marliesehendriks@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-2576,Regina Thies B.A.,Individual,Retail,Switzerland,04890336899,reginathiesba@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-6469,Lidija Sorgatz,Individual,B2C,Germany,+49(0)6254593992,lidijasorgatz@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-3040,Almuth Mangold,Individual,B2C,Austria,0623319908,almuthmangold@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-7931,Henri Bolander,Individual,Retail,Switzerland,06121601873,henribolander@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-9318,Patric Börner,Individual,Retail,Switzerland,+49(0)5837414350,patricbörner@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-1916,Herr Heinfried Lehmann B.Sc.,Individual,Retail,Germany,+49(0)9339 85417,herrheinfriedlehmannbsc@example.com,Standard Selling,EUR,,,,,,Mr,Male
+CUST-B2C-3174,Ing. Meike Kraushaar,Individual,Retail,Austria,+49 (0) 4389 605015,ingmeikekraushaar@example.com,Standard Selling,EUR,,,,,,Prof,Male
+CUST-B2C-3683,Dr. Heinz-Dieter Mies B.Sc.,Individual,B2C,Germany,+49(0)2327036405,drheinzdietermiesbsc@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-8452,Dr. Alberto Finke,Individual,Retail,Austria,+49(0)5784759068,dralbertofinke@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-7392,Univ.Prof. Damaris Zobel,Individual,B2C,Austria,01029937632,univprofdamariszobel@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-6864,Gundi Scholz,Individual,Retail,Germany,0845222854,gundischolz@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-7312,Heidelinde Striebitz,Individual,B2C,Switzerland,01028 807806,heidelindestriebitz@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-2966,Herr Danny Rörricht,Individual,Retail,Switzerland,0564481033,herrdannyrörricht@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-6605,Ing. Elisa Ladeck B.Sc.,Individual,B2C,Switzerland,+49 (0) 1617 669987,ingelisaladeckbsc@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-6954,Pascale Reichmann MBA.,Individual,Retail,Austria,(03735) 070361,pascalereichmannmba@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-1131,Dr. Ehrentraud Scholl,Individual,B2C,Switzerland,+49(0)8808 330808,drehrentraudscholl@example.com,Standard Selling,EUR,,,,,,Mr,Male
+CUST-B2C-6489,Mikhail Baum,Individual,B2C,Switzerland,+49(0)0153 514854,mikhailbaum@example.com,Standard Selling,EUR,,,,,,Mrs,Other
+CUST-B2C-6969,Frau Stephanie Wilmsen,Individual,B2C,Germany,+49(0)3108 053756,fraustephaniewilmsen@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-5491,Süleyman Ruppersberger B.A.,Individual,Retail,Germany,+49 (0) 2516 453103,süleymanruppersbergerba@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-9739,Adam Holzapfel,Individual,B2C,Austria,08960 56095,adamholzapfel@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-8969,Eckhart Nohlmans,Individual,B2C,Switzerland,+49(0) 905215909,eckhartnohlmans@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-7456,Dipl.-Ing. Claudius Gotthard,Individual,B2C,Germany,+49(0) 908937296,diplingclaudiusgotthard@example.com,Standard Selling,EUR,,,,,,Prof,Male
+CUST-B2C-9544,Winfried Kensy-Lehmann,Individual,B2C,Switzerland,(04407) 76712,winfriedkensylehmann@example.com,Standard Selling,EUR,,,,,,Mrs,Other
+CUST-B2C-6535,Carina Hartmann,Individual,Retail,Austria,+49(0) 332056866,carinahartmann@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-5055,Cornelius Geißler,Individual,B2C,Austria,+49(0)1917 170790,corneliusgeißler@example.com,Standard Selling,EUR,,,,,,Mr,Male
+CUST-B2C-8939,Svetlana Trub,Individual,Retail,Switzerland,+49(0)6655 468207,svetlanatrub@example.com,Standard Selling,EUR,,,,,,Prof,Male
+CUST-B2C-7131,Hanns Förster B.Eng.,Individual,Retail,Austria,0013143533,hannsförsterbeng@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-8541,Lieschen Klapp,Individual,Retail,Austria,+49(0)0631951747,lieschenklapp@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-3157,Viktor Kensy,Individual,Retail,Switzerland,09304484118,viktorkensy@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-2801,Klaus-D. Staude-Schmiedt,Individual,B2C,Germany,+49(0)6232 720894,klausdstaudeschmiedt@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-3186,Dipl.-Ing. Inna Hande,Individual,B2C,Austria,+49(0)4063 374844,diplinginnahande@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-8087,Konstantinos Etzold,Individual,Retail,Austria,08441542708,konstantinosetzold@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-7328,Prof. Orhan Weller,Individual,Retail,Austria,+49(0)1089772141,proforhanweller@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-3564,Nicole Scholl-Riehl,Individual,Retail,Switzerland,0960713460,nicoleschollriehl@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-4964,Univ.Prof. Nadeschda Grein Groth,Individual,Retail,Austria,+49(0)2013625196,univprofnadeschdagreingroth@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-2101,Klaus-D. Holsten-Birnbaum,Individual,B2C,Germany,+49(0)5164332121,klausdholstenbirnbaum@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-5459,Mariechen Trapp MBA.,Individual,B2C,Austria,05625 243623,mariechentrappmba@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-8451,Elmar Franke-Kreusel,Individual,B2C,Germany,+49(0) 064627266,elmarfrankekreusel@example.com,Standard Selling,EUR,,,,,,Mr,Male
+CUST-B2C-3483,Rüdiger Wilmsen,Individual,B2C,Austria,+49(0)3754899117,rüdigerwilmsen@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-8336,Jens-Peter Kensy,Individual,B2C,Switzerland,+49(0) 248624892,jenspeterkensy@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-4484,Zeki Käster,Individual,B2C,Austria,0517804315,zekikäster@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-9720,Herr Diethard Kade,Individual,B2C,Germany,+49(0)8136 397417,herrdiethardkade@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-6241,Dipl.-Ing. Irmtraut Kraus,Individual,B2C,Switzerland,09188254297,diplingirmtrautkraus@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-9599,Marc Steinberg-Killer,Individual,B2C,Austria,+49(0)2991 29908,marcsteinbergkiller@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-3081,Univ.Prof. Eva-Maria Rörricht B.Sc.,Individual,Retail,Switzerland,(04691) 941496,univprofevamariarörrichtbsc@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-6687,Anna-Luise Albers-Kruschwitz,Individual,B2C,Germany,+49(0)7017746799,annaluisealberskruschwitz@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-2993,Uli Wiek,Individual,Retail,Austria,(07065) 419467,uliwiek@example.com,Standard Selling,EUR,,,,,,Prof,Male
+CUST-B2C-9501,Dipl.-Ing. Ludwig Seip,Individual,Retail,Austria,07115 58256,diplingludwigseip@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-8338,Herr Gebhard Schomber MBA.,Individual,B2C,Germany,+49(0) 569739522,herrgebhardschombermba@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-5082,Corina Herrmann,Individual,Retail,Germany,+49(0)0016 830139,corinaherrmann@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-4525,Lene Graf MBA.,Individual,B2C,Austria,0068801509,lenegrafmba@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-8268,Karl-Peter Eigenwillig,Individual,B2C,Switzerland,+49(0)2586 970151,karlpetereigenwillig@example.com,Standard Selling,EUR,,,,,,Ms,Male
+CUST-B2C-1140,Felix Bloch-Otto,Individual,Retail,Austria,+49(0)1444 02015,felixblochotto@example.com,Standard Selling,EUR,,,,,,Mr,Other
+CUST-B2C-7643,Dr. Tassilo Heß B.Eng.,Individual,B2C,Germany,(06112) 09873,drtassiloheßbeng@example.com,Standard Selling,EUR,,,,,,Dr,Other
+CUST-B2C-9214,Gitta Fröhlich,Individual,Retail,Germany,+49(0) 020594482,gittafröhlich@example.com,Standard Selling,EUR,,,,,,Dr,Female
+CUST-B2C-7253,Univ.Prof. Annie Schlosser B.Sc.,Individual,Retail,Germany,08250 696870,univprofannieschlosserbsc@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-7450,Carl-Heinz Mans-Ruppersberger,Individual,B2C,Germany,+49(0)1013227543,carlheinzmansruppersberger@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-6970,Margrit Zimmer,Individual,B2C,Austria,+49(0)3391 98937,margritzimmer@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-4753,Edda Bolander B.Sc.,Individual,B2C,Switzerland,01716 602599,eddabolanderbsc@example.com,Standard Selling,EUR,,,,,,Prof,Female
+CUST-B2C-1047,Janko Müller,Individual,Retail,Switzerland,(01943) 347876,jankomüller@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-8349,Jose Sontag,Individual,B2C,Austria,01640725463,josesontag@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-1817,Prof. Samira Junk B.A.,Individual,Retail,Switzerland,+49(0)9402 72106,profsamirajunkba@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-1556,Oxana Kade-Jäntsch,Individual,Retail,Germany,+49(0)6624 886241,oxanakadejäntsch@example.com,Standard Selling,EUR,,,,,,Ms,Other
+CUST-B2C-3508,Dipl.-Ing. Helmtrud Jäntsch,Individual,Retail,Austria,+49(0)0496 305571,diplinghelmtrudjäntsch@example.com,Standard Selling,EUR,,,,,,Mrs,Male
+CUST-B2C-4536,Rupert Ritter-Löwer,Individual,B2C,Germany,+49(0)4921318154,rupertritterlöwer@example.com,Standard Selling,EUR,,,,,,Ms,Female
+CUST-B2C-9704,Ing. Holger Hörle B.Sc.,Individual,Retail,Austria,+49(0)0732 165281,ingholgerhörlebsc@example.com,Standard Selling,EUR,,,,,,Mr,Female
+CUST-B2C-9394,Agatha Schmiedecke,Individual,B2C,Austria,(06869) 715038,agathaschmiedecke@example.com,Standard Selling,EUR,,,,,,Dr,Male
+CUST-B2C-4326,Hans-Dietrich Naser,Individual,Retail,Austria,02137672083,hansdietrichnaser@example.com,Standard Selling,EUR,,,,,,Mrs,Female
+CUST-B2C-7412,Dipl.-Ing. Juliane Gute B.A.,Individual,Retail,Austria,06241 891299,diplingjulianeguteba@example.com,Standard Selling,EUR,,,,,,Prof,Other
+CUST-B2C-6525,Mikhail Liebelt B.Sc.,Individual,Retail,Switzerland,08493671701,mikhailliebeltbsc@example.com,Standard Selling,EUR,,,,,,Mrs,Female

@@ -1,16 +1,15 @@
 import csv
 from faker import Faker
 
-"""
-OBSOLET
-"""
 # Initialize Faker for German locale
 fake = Faker('de_DE')
 
 
 def generate_sales_structure():
     territories = ["Germany", "Austria", "Switzerland"]
-    sales_structure = []
+    sales_directors = []
+    sales_managers = []
+    sales_reps = []
     territory_data = []
 
     # Create a top-level sales director
@@ -21,10 +20,9 @@ def generate_sales_structure():
         "Department": "Sales",
         "Employee": "",
         "Enabled": 1,
-        "Parent Sales Person": "",
-        "Position": "Sales Director"
+        "Parent Sales Person": ""
     }
-    sales_structure.append(sales_director)
+    sales_directors.append(sales_director)
 
     for territory in territories:
         # Generate one Regional Sales Manager for each territory
@@ -35,10 +33,9 @@ def generate_sales_structure():
             "Department": "Sales",
             "Employee": "",
             "Enabled": 1,
-            "Parent Sales Person": sales_director["Sales Person Name"],
-            "Position": f"Regional Sales Manager - {territory}"
+            "Parent Sales Person": sales_director["Sales Person Name"]
         }
-        sales_structure.append(regional_manager)
+        sales_managers.append(regional_manager)
 
         # Generate Territory data
         territory_info = {
@@ -58,12 +55,11 @@ def generate_sales_structure():
                 "Department": "Sales",
                 "Employee": "",
                 "Enabled": 1,
-                "Parent Sales Person": regional_manager["Sales Person Name"],
-                "Position": f"Sales Representative - {territory}"
+                "Parent Sales Person": regional_manager["Sales Person Name"]
             }
-            sales_structure.append(sales_rep)
+            sales_reps.append(sales_rep)
 
-    return sales_structure, territory_data
+    return sales_directors, sales_managers, sales_reps, territory_data
 
 
 def save_to_csv(data, filename, fieldnames):
@@ -82,7 +78,6 @@ def main():
     sales_person_fields = [
         "Sales Person Name", "Is Group", "Commission Rate", "Department",
         "Employee", "Enabled", "old_parent", "Parent Sales Person",
-        "Position",  # Added this field to show the role
         "ID (Targets)", "Fiscal Year (Targets)", "Item Group (Targets)",
         "Target  Amount (Targets)", "Target Distribution (Targets)", "Target Qty (Targets)"
     ]
@@ -94,12 +89,16 @@ def main():
         "Target Distribution (Targets)", "Target Qty (Targets)"
     ]
 
-    sales_structure, territories = generate_sales_structure()
+    sales_directors, sales_managers, sales_reps, territories = generate_sales_structure()
 
-    save_to_csv(sales_structure, '../new csv/sales_structure.csv', sales_person_fields)
-    save_to_csv(territories, '../new csv/territories.csv', territory_fields)
+    save_to_csv(sales_directors, '../Generated_CSV/sales_directors.csv', sales_person_fields)
+    save_to_csv(sales_managers, '../Generated_CSV/sales_managers.csv', sales_person_fields)
+    save_to_csv(sales_reps, '../Generated_CSV/sales_reps.csv', sales_person_fields)
+    save_to_csv(territories, '../Generated_CSV/territories.csv', territory_fields)
 
-    print(f"Generated {len(sales_structure)} sales persons and saved to sales_structure.csv")
+    print(f"Generated {len(sales_directors)} sales directors and saved to sales_directors.csv")
+    print(f"Generated {len(sales_managers)} sales managers and saved to sales_managers.csv")
+    print(f"Generated {len(sales_reps)} sales representatives and saved to sales_reps.csv")
     print(f"Generated {len(territories)} territories and saved to territories.csv")
 
 

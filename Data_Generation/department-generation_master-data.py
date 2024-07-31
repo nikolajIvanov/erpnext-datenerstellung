@@ -34,7 +34,7 @@ def save_to_csv(departments, filename):
 
 def main():
     new_departments = generate_departments()
-    save_to_csv(new_departments, '../new csv/departments.csv')
+    save_to_csv(new_departments, '../Generated_CSV/departments.csv')
     print(f"Generated {len(new_departments)} new departments and saved to departments.csv")
 
 

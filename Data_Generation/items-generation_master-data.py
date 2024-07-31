@@ -69,7 +69,7 @@ def main():
 
     all_items = normal_bikes + e_bikes + components
 
-    save_to_csv(all_items, '../new csv/products.csv')
+    save_to_csv(all_items, '../Generated_CSV/products.csv')
     print(f"Generated {len(all_items)} products and saved to products.csv")
 
 

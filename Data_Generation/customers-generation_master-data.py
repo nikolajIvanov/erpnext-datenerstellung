@@ -1,52 +1,54 @@
 import csv
 import random
 from faker import Faker
-
+"""
+Diese Datei funktioniert nur in Kombination mit der Datei "leads-generation_master-data.py"
+Die künstlichen Leads, die aus diesem Skrpit erstellt werden, dienen als Vorlage zur Erstellung von Kunden
+"""
 # Initialize Faker for German locale
 fake = Faker('de_DE')
-
 
 def generate_customer_code(is_company):
     prefix = "CUST-B2B-" if is_company else "CUST-B2C-"
     return f"{prefix}{random.randint(1000, 9999)}"
 
-
 def generate_email(name):
     clean_name = ''.join(e.lower() for e in name if e.isalnum())
     return f"{clean_name}@example.com"
 
+def load_leads(filename):
+    leads = []
+    with open(filename, 'r', newline='', encoding='utf-8') as input_file:
+        reader = csv.DictReader(input_file)
+        for row in reader:
+            leads.append(row)
+    return leads
 
-def generate_customers(num_b2b, num_b2c):
+def generate_customers(num_b2b, num_b2c, leads):
     customers = []
 
-    customer_groups = ["Wholesale", "Retail", "B2B", "B2C"]
-    territories = ["Germany", "Austria", "Switzerland"]
-    price_lists = ["Standard Selling", "Wholesale Price"]
-    salutations = ["Mr", "Mrs", "Ms", "Dr", "Prof"]
-
-    # B2B Customers
-    for i in range(num_b2b):
-        company_name = fake.company()
+    # B2B Customers (converted from leads)
+    for lead in random.sample(leads, min(num_b2b, len(leads))):
         customer = {
             "ID": generate_customer_code(True),
-            "Customer Name": company_name,
+            "Customer Name": lead['Company'],
             "Customer Type": "Company",
             "Customer Group": random.choice(["Wholesale", "B2B"]),
-            "Territory": random.choice(territories),
-            "Mobile No": fake.phone_number(),
-            "Email Id": generate_email(company_name),
-            "Default Price List": random.choice(price_lists),
+            "Territory": lead['Territory'],
+            "Mobile No": lead['Mobile No'],
+            "Email Id": lead['Email'],
+            "Default Price List": random.choice(["Standard Selling", "Wholesale Price"]),
             "Billing Currency": "EUR",
-            "From Lead": fake.random_element(elements=(True, False)),
-            "Industry": fake.job(),
-            "Website": fake.domain_name(),
+            "From Lead": lead['ID'],
+            "Industry": lead['Industry'],
+            "Website": lead['Website'],
             "Tax ID": fake.numerify(text="DE###########"),
             "Customer POS id": fake.numerify(text="POS-####"),
             "Salutation": "",  # Empty for companies
         }
         customers.append(customer)
 
-    # B2C Customers
+    # B2C Customers (not from leads)
     for i in range(num_b2c):
         customer_name = fake.name()
         customer = {
@@ -54,19 +56,18 @@ def generate_customers(num_b2b, num_b2c):
             "Customer Name": customer_name,
             "Customer Type": "Individual",
             "Customer Group": random.choice(["Retail", "B2C"]),
-            "Territory": random.choice(territories),
+            "Territory": random.choice(["Germany", "Austria", "Switzerland"]),
             "Mobile No": fake.phone_number(),
             "Email Id": generate_email(customer_name),
             "Default Price List": "Standard Selling",
             "Billing Currency": "EUR",
-            "From Lead": fake.random_element(elements=(True, False)),
+            "From Lead": "",
             "Gender": random.choice(["Male", "Female", "Other"]),
-            "Salutation": random.choice(salutations),
+            "Salutation": random.choice(["Mr", "Mrs", "Ms", "Dr", "Prof"]),
         }
         customers.append(customer)
 
     return customers
-
 
 def save_to_csv(customers, filename):
     fieldnames = [
@@ -82,14 +83,13 @@ def save_to_csv(customers, filename):
         for customer in customers:
             writer.writerow({k: customer.get(k, '') for k in fieldnames})
 
-
 def main():
-    num_b2b_customers = 10  # Number of B2B customers
-    num_b2c_customers = 100  # Number of B2C customers
-    customers = generate_customers(num_b2b_customers, num_b2c_customers)
-    save_to_csv(customers, '../new csv/customers.csv')
+    num_b2b_customers = 50
+    num_b2c_customers = 200
+    leads = load_leads('../Generated_CSV/leads.csv')
+    customers = generate_customers(num_b2b_customers, num_b2c_customers, leads)
+    save_to_csv(customers, '../Generated_CSV/customers.csv')
     print(f"Generated {len(customers)} customers and saved to customers.csv")
-
 
 if __name__ == "__main__":
     main()
