@@ -69,8 +69,8 @@ def main():
 
     all_items = normal_bikes + e_bikes + components
 
-    save_to_csv(all_items, 'products.csv')
-    print(f"Generated {len(all_items)} products and saved to velo_gmbh_products.csv")
+    save_to_csv(all_items, '../new csv/products.csv')
+    print(f"Generated {len(all_items)} products and saved to products.csv")
 
 
 if __name__ == "__main__":

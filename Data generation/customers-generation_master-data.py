@@ -87,8 +87,8 @@ def main():
     num_b2b_customers = 10  # Number of B2B customers
     num_b2c_customers = 100  # Number of B2C customers
     customers = generate_customers(num_b2b_customers, num_b2c_customers)
-    save_to_csv(customers, 'customers.csv')
-    print(f"Generated {len(customers)} customers and saved to velo_gmbh_customers.csv")
+    save_to_csv(customers, '../new csv/customers.csv')
+    print(f"Generated {len(customers)} customers and saved to customers.csv")
 
 
 if __name__ == "__main__":

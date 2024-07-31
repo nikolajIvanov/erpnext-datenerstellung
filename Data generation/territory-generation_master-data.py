@@ -53,10 +53,10 @@ def save_to_csv(territories, filename):
 
 
 def main():
-    sales_persons = load_sales_persons('../csv Data/sales_persons.csv')
+    sales_persons = load_sales_persons('../new csv/sales_persons.csv')
     territories = generate_territories(sales_persons)
-    save_to_csv(territories, 'territories.csv')
-    print(f"Generated {len(territories)} territories and saved to velo_gmbh_territories.csv")
+    save_to_csv(territories, '../new csv/territories.csv')
+    print(f"Generated {len(territories)} territories and saved to territories.csv")
 
 
 if __name__ == "__main__":

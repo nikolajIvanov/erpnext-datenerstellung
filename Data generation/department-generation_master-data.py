@@ -34,8 +34,8 @@ def save_to_csv(departments, filename):
 
 def main():
     new_departments = generate_departments()
-    save_to_csv(new_departments, 'velo_gmbh_new_departments.csv')
-    print(f"Generated {len(new_departments)} new departments and saved to velo_gmbh_new_departments.csv")
+    save_to_csv(new_departments, '../new csv/departments.csv')
+    print(f"Generated {len(new_departments)} new departments and saved to departments.csv")
 
 
 if __name__ == "__main__":

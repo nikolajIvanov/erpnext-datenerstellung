@@ -96,11 +96,11 @@ def main():
 
     sales_structure, territories = generate_sales_structure()
 
-    save_to_csv(sales_structure, 'velo_gmbh_sales_structure.csv', sales_person_fields)
-    save_to_csv(territories, 'velo_gmbh_territories.csv', territory_fields)
+    save_to_csv(sales_structure, '../new csv/sales_structure.csv', sales_person_fields)
+    save_to_csv(territories, '../new csv/territories.csv', territory_fields)
 
-    print(f"Generated {len(sales_structure)} sales persons and saved to velo_gmbh_sales_structure.csv")
-    print(f"Generated {len(territories)} territories and saved to velo_gmbh_territories.csv")
+    print(f"Generated {len(sales_structure)} sales persons and saved to sales_structure.csv")
+    print(f"Generated {len(territories)} territories and saved to territories.csv")
 
 
 if __name__ == "__main__":
