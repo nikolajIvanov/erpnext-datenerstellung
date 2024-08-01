@@ -1,0 +1,14 @@
+ID,First Name,Last Name,Gender,Date of Joining,Company,Department,Designation,Status,Company Email,Mobile,Employee Number,Date of Birth,Reports to
+3,Dimitri,Gerlach,Male,2024-04-10,Velo GmbH,Sales,Sales Representative,Active,dimitri.gerlach@velo-gmbh.de,+493240708732,S0003,2000-01-22,2
+4,Jolanda,Schönland,Female,2020-09-07,Velo GmbH,Sales,Sales Representative,Active,jolanda.schoenland@velo-gmbh.de,+498783882581,S0004,1996-04-06,3
+5,Apostolos,Scholtz,Male,2023-01-20,Velo GmbH,Sales,Sales Representative,Active,apostolos.scholtz@velo-gmbh.de,+496127271956,S0005,1979-10-10,3
+6,Agatha,Säuberlich,Female,2022-02-15,Velo GmbH,Sales,Sales Representative,Active,agatha.saeuberlich@velo-gmbh.de,+496268817158,S0006,1980-09-03,3
+7,Irmingard,Textor,Female,2024-04-01,Velo GmbH,Sales,Sales Representative,Active,irmingard.textor@velo-gmbh.de,+493998929758,S0007,1981-11-17,4
+8,Herbert,Zorbach,Male,2021-03-25,Velo GmbH,Sales,Sales Representative,Active,herbert.zorbach@velo-gmbh.de,+491580323579,S0008,1996-06-07,4
+9,Sören,Seifert,Male,2020-04-14,Velo GmbH,Sales,Sales Representative,Active,soeren.seifert@velo-gmbh.de,+497451399396,S0009,1980-06-07,4
+10,Mato,Pruschke,Male,2020-12-04,Velo GmbH,Sales,Sales Representative,Active,mato.pruschke@velo-gmbh.de,+493537831574,S0010,1979-11-28,5
+11,Hilma,Jüttner,Female,2021-05-11,Velo GmbH,Sales,Sales Representative,Active,hilma.juettner@velo-gmbh.de,+499806603018,S0011,1987-08-11,5
+12,Lieschen,Etzler,Female,2020-02-09,Velo GmbH,Sales,Sales Representative,Active,lieschen.etzler@velo-gmbh.de,+493611207411,S0012,2000-04-19,5
+13,Marzena,Kramer,Female,2023-12-14,Velo GmbH,Sales,Sales Representative,Active,marzena.kramer@velo-gmbh.de,+498171204997,S0013,1992-07-28,6
+14,Sophie,Trubin,Female,2023-10-23,Velo GmbH,Sales,Sales Representative,Active,sophie.trubin@velo-gmbh.de,+499398812360,S0014,1997-12-21,6
+15,Johanne,Winkler,Female,2020-01-25,Velo GmbH,Sales,Sales Representative,Active,johanne.winkler@velo-gmbh.de,+496907585902,S0015,1998-03-18,6

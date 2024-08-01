@@ -20,14 +20,14 @@ def generate_campaigns(num_campaigns):
             "Description": f"Campaign targeting {target_audience} customers for {product_line} using {campaign_type} marketing.",
             # Removed "Naming Series" field
         }
-
+        """
         # Generate 1-3 schedules for each campaign
         num_schedules = random.randint(1, 3)
         for j in range(num_schedules):
             campaign[f"ID (Campaign Schedules)"] = f"CAMP-SCH-{i + 1:04d}-{j + 1}"
             # Removed "Email Template (Campaign Schedules)" field
             campaign[f"Send After (days) (Campaign Schedules)"] = random.randint(1, 30)
-
+        """
         campaigns.append(campaign)
 
     return campaigns
@@ -36,7 +36,7 @@ def generate_campaigns(num_campaigns):
 def save_to_csv(campaigns, filename):
     fieldnames = [
         "ID", "Campaign Name", "Description",
-        "ID (Campaign Schedules)", "Send After (days) (Campaign Schedules)"
+        # "ID (Campaign Schedules)", "Send After (days) (Campaign Schedules)"
     ]
 
     with open(filename, 'w', newline='', encoding='utf-8') as output_file:

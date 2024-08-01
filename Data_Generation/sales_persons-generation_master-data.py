@@ -4,6 +4,8 @@ from faker import Faker
 # Initialize Faker for German locale
 fake = Faker('de_DE')
 
+def generate_name():
+    return f"{fake.first_name()} {fake.last_name()}"
 
 def generate_sales_structure():
     territories = ["Germany", "Austria", "Switzerland"]
@@ -14,7 +16,7 @@ def generate_sales_structure():
 
     # Create a top-level sales director
     sales_director = {
-        "Sales Person Name": fake.name(),
+        "Sales Person Name": generate_name(),
         "Is Group": 1,
         "Commission Rate": round(fake.random.uniform(7, 9), 2),
         "Department": "Sales",
@@ -27,7 +29,7 @@ def generate_sales_structure():
     for territory in territories:
         # Generate one Regional Sales Manager for each territory
         regional_manager = {
-            "Sales Person Name": fake.name(),
+            "Sales Person Name": generate_name(),
             "Is Group": 1,
             "Commission Rate": round(fake.random.uniform(5, 7), 2),
             "Department": "Sales",
@@ -49,7 +51,7 @@ def generate_sales_structure():
         # Generate 3 Sales Representatives for each territory
         for _ in range(3):
             sales_rep = {
-                "Sales Person Name": fake.name(),
+                "Sales Person Name": generate_name(),
                 "Is Group": 0,
                 "Commission Rate": round(fake.random.uniform(1, 3), 2),
                 "Department": "Sales",
@@ -61,7 +63,6 @@ def generate_sales_structure():
 
     return sales_directors, sales_managers, sales_reps, territory_data
 
-
 def save_to_csv(data, filename, fieldnames):
     with open(filename, 'w', newline='', encoding='utf-8') as output_file:
         writer = csv.DictWriter(output_file, fieldnames=fieldnames)
@@ -72,7 +73,6 @@ def save_to_csv(data, filename, fieldnames):
                 if field not in item:
                     item[field] = ""
             writer.writerow(item)
-
 
 def main():
     sales_person_fields = [
@@ -100,7 +100,6 @@ def main():
     print(f"Generated {len(sales_managers)} sales managers and saved to sales_managers.csv")
     print(f"Generated {len(sales_reps)} sales representatives and saved to sales_reps.csv")
     print(f"Generated {len(territories)} territories and saved to territories.csv")
-
 
 if __name__ == "__main__":
     main()

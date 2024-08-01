@@ -1,0 +1,4 @@
+ID,First Name,Last Name,Gender,Date of Joining,Company,Department,Designation,Status,Company Email,Mobile,Employee Number,Date of Birth,Reports to
+4,Jolanda,Schönland,Female,2020-09-07,Velo GmbH,Sales,Sales Representative,Active,jolanda.schoenland@velo-gmbh.de,+498783882581,S0004,1996-04-06,3
+5,Apostolos,Scholtz,Male,2023-01-20,Velo GmbH,Sales,Sales Representative,Active,apostolos.scholtz@velo-gmbh.de,+496127271956,S0005,1979-10-10,3
+6,Agatha,Säuberlich,Female,2022-02-15,Velo GmbH,Sales,Sales Representative,Active,agatha.saeuberlich@velo-gmbh.de,+496268817158,S0006,1980-09-03,3
