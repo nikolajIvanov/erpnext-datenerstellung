@@ -1,6 +1,7 @@
 import csv
 import random
 from faker import Faker
+from datetime import datetime, timedelta
 
 # Initialize Faker for German locale
 fake = Faker('de_DE')
@@ -26,7 +27,6 @@ def generate_companies(num_companies, territories):
             "Abbr": f"COMP{i:04d}",
             "Company": generate_company_name(),
             "Country": get_country_for_territory(territory),
-            "Territory": territory,
             "Default Currency": get_currency_for_territory(territory),
             "Company Description": generate_company_description(),
             "Domain": fake.domain_name(),
@@ -35,6 +35,9 @@ def generate_companies(num_companies, territories):
             "Fax": fake.phone_number(),
             "Tax ID": generate_tax_id(territory),
             "Website": fake.url(),
+            "Date of Incorporation": (datetime.now() - timedelta(days=random.randint(365, 3650))).strftime("%Y-%m-%d"),
+            "Enable Perpetual Inventory": 1,
+            "Credit Limit": random.randint(10000, 1000000),
         }
         companies.append(company)
     return companies
@@ -82,8 +85,9 @@ def generate_company_description():
 
 def save_to_csv(companies, filename):
     fieldnames = [
-        "Abbr", "Company", "Country", "Territory", "Default Currency", "Company Description",
-        "Domain", "Email", "Phone No", "Fax", "Tax ID", "Website"
+        "Abbr", "Company", "Country", "Default Currency", "Company Description",
+        "Domain", "Email", "Phone No", "Fax", "Tax ID", "Website",
+        "Date of Incorporation", "Enable Perpetual Inventory", "Credit Limit"
     ]
 
     with open(filename, 'w', newline='', encoding='utf-8') as output_file:
@@ -95,12 +99,12 @@ def save_to_csv(companies, filename):
 def main():
     """
     Für die Erstellung der Unternehmen werden die Gebiete aus der territories.csv Datei verwendet.
-    :return:
+    :return: csv Datei mit {num_companies} 50 Unternehmen
     """
     territories = load_territories('../Processed_CSV/territories.csv')
     num_companies = 50  # Adjust this number as needed
     companies = generate_companies(num_companies, territories)
-    save_to_csv(companies, 'companies.csv')
+    save_to_csv(companies, '../Generated_CSV/companies.csv')
     print(f"Generated {len(companies)} companies and saved to companies.csv")
 
 if __name__ == "__main__":
