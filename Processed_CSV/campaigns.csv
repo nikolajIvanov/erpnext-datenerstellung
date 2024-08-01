@@ -1,0 +1,21 @@
+ID,Campaign Name,Description,ID (Campaign Schedules),Send After (days) (Campaign Schedules)
+CAMP-0001,Social Media - Regular Bikes - Both,Campaign targeting Both customers for Regular Bikes using Social Media marketing.,CAMP-SCH-0001-1,1
+CAMP-0002,Trade Show - Regular Bikes - Both,Campaign targeting Both customers for Regular Bikes using Trade Show marketing.,CAMP-SCH-0002-2,30
+CAMP-0003,Trade Show - E-Bikes - B2B,Campaign targeting B2B customers for E-Bikes using Trade Show marketing.,CAMP-SCH-0003-3,4
+CAMP-0004,Email - Services - B2B,Campaign targeting B2B customers for Services using Email marketing.,CAMP-SCH-0004-1,26
+CAMP-0005,Referral - Regular Bikes - B2C,Campaign targeting B2C customers for Regular Bikes using Referral marketing.,CAMP-SCH-0005-3,3
+CAMP-0006,Email - E-Bikes - Both,Campaign targeting Both customers for E-Bikes using Email marketing.,CAMP-SCH-0006-3,27
+CAMP-0007,Referral - Regular Bikes - B2B,Campaign targeting B2B customers for Regular Bikes using Referral marketing.,CAMP-SCH-0007-3,17
+CAMP-0008,Social Media - E-Bikes - Both,Campaign targeting Both customers for E-Bikes using Social Media marketing.,CAMP-SCH-0008-1,16
+CAMP-0009,Social Media - Accessories - Both,Campaign targeting Both customers for Accessories using Social Media marketing.,CAMP-SCH-0009-2,20
+CAMP-0010,Trade Show - Accessories - B2B,Campaign targeting B2B customers for Accessories using Trade Show marketing.,CAMP-SCH-0010-3,24
+CAMP-0011,Email - Accessories - B2C,Campaign targeting B2C customers for Accessories using Email marketing.,CAMP-SCH-0011-3,28
+CAMP-0012,Referral - Regular Bikes - B2B,Campaign targeting B2B customers for Regular Bikes using Referral marketing.,CAMP-SCH-0012-3,3
+CAMP-0013,Print - Services - B2B,Campaign targeting B2B customers for Services using Print marketing.,CAMP-SCH-0013-2,6
+CAMP-0014,Social Media - Services - B2C,Campaign targeting B2C customers for Services using Social Media marketing.,CAMP-SCH-0014-3,23
+CAMP-0015,Trade Show - E-Bikes - B2B,Campaign targeting B2B customers for E-Bikes using Trade Show marketing.,CAMP-SCH-0015-2,23
+CAMP-0016,Email - E-Bikes - B2C,Campaign targeting B2C customers for E-Bikes using Email marketing.,CAMP-SCH-0016-2,2
+CAMP-0017,Referral - Services - B2C,Campaign targeting B2C customers for Services using Referral marketing.,CAMP-SCH-0017-3,24
+CAMP-0018,Print - Accessories - B2B,Campaign targeting B2B customers for Accessories using Print marketing.,CAMP-SCH-0018-3,29
+CAMP-0019,Referral - Regular Bikes - Both,Campaign targeting Both customers for Regular Bikes using Referral marketing.,CAMP-SCH-0019-2,21
+CAMP-0020,Email - Regular Bikes - B2C,Campaign targeting B2C customers for Regular Bikes using Email marketing.,CAMP-SCH-0020-1,19
