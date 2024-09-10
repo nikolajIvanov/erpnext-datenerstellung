@@ -4,9 +4,13 @@ from datetime import datetime, timedelta
 from faker import Faker
 
 # Initialize Faker for different locales
-fake_de = Faker('de_DE')
-fake_at = Faker('de_AT')
-fake_ch = Faker('de_CH')
+fake_de = Faker('en_GB')  # Using UK English for German cities
+fake_at = Faker('en_GB')  # Using UK English for Austrian cities
+fake_ch = Faker('en_GB')  # Using UK English for Swiss cities
+
+# Set a fixed seed for reproducibility
+Faker.seed(12345)
+random.seed(12345)
 
 
 # Load existing data
@@ -15,16 +19,13 @@ def load_csv(filename):
         return list(csv.DictReader(f))
 
 
-campaigns = load_csv('../Processed_CSV/campaigns.csv')
-companies = load_csv('../Processed_CSV/companies.csv')
-territories = load_csv('../Processed_CSV/territories.csv')
-sources = load_csv('../Processed_CSV/source_data.csv')
-industries = load_csv('../Processed_CSV/Industry Type.csv')
+campaigns = load_csv('campaigns.csv')
+companies = load_csv('companies.csv')
+territories = load_csv('territories.csv')
+sources = load_csv('source_data.csv')
 
 # Load employees data
-employees = (load_csv('../Processed_CSV/employees_level_0.csv') +
-             load_csv('../Processed_CSV/employees_level_1.csv') +
-             load_csv('../Processed_CSV/employees_level_2.csv'))
+employees = load_csv('employees_level_0.csv') + load_csv('employees_level_1.csv') + load_csv('employees_level_2.csv')
 sales_persons = [emp for emp in employees if emp['Department'] == 'Sales']
 
 # Define constants
@@ -34,9 +35,9 @@ MARKET_SEGMENTS = ['Upper Income', 'Middle Income', 'Lower Income']
 EMPLOYEE_RANGES = ['1-10', '11-50', '51-200', '201-500', '501-1000', '1000+']
 
 JOB_TITLES = [
-    "Einkaufsleiter", "Geschäftsführer", "Vertriebsleiter", "Filialleiter",
-    "Produktmanager", "Logistikleiter", "Marketingleiter", "E-Commerce Manager",
-    "Betriebsleiter", "Fuhrparkmanager", "Nachhaltigkeitsmanager"
+    "Purchasing Manager", "CEO", "Sales Director", "Store Manager",
+    "Product Manager", "Logistics Manager", "Marketing Director", "E-Commerce Manager",
+    "Operations Manager", "Fleet Manager", "Sustainability Manager"
 ]
 
 RELEVANT_INDUSTRIES = [
@@ -44,16 +45,24 @@ RELEVANT_INDUSTRIES = [
     "Health Care", "Manufacturing", "Consumer Products", "E-commerce"
 ]
 
+# Define major cities for each country
+GERMAN_CITIES = ["Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt", "Stuttgart", "Düsseldorf", "Leipzig",
+                 "Dortmund", "Essen"]
+AUSTRIAN_CITIES = ["Vienna", "Graz", "Linz", "Salzburg", "Innsbruck", "Klagenfurt", "Villach", "Wels", "St. Pölten",
+                   "Dornbirn"]
+SWISS_CITIES = ["Zurich", "Geneva", "Basel", "Lausanne", "Bern", "Winterthur", "Lucerne", "St. Gallen", "Lugano",
+                "Biel"]
+
 
 def get_city_for_country(country):
     if country == "Germany":
-        return fake_de.city()
+        return random.choice(GERMAN_CITIES)
     elif country == "Austria":
-        return fake_at.city()
+        return random.choice(AUSTRIAN_CITIES)
     elif country == "Switzerland":
-        return fake_ch.city()
+        return random.choice(SWISS_CITIES)
     else:
-        return fake_de.city()  # Default to German cities if country is unknown
+        return fake_de.city()  # Default to a random city if country is unknown
 
 
 def generate_lead_id(date):
@@ -97,12 +106,12 @@ def generate_lead(date):
         "No of Employees": random.choice(EMPLOYEE_RANGES),
         "Organization Name": company['Company'],
         "Phone": fake_de.phone_number(),
-        "Print Language": "de",
+        "Print Language": "en",
         "Qualification Status": "Qualified" if status in ['Opportunity', 'Quotation', 'Converted'] else "Unqualified",
         "Qualified By": "",  # Will be filled if qualified
         "Qualified on": "",  # Will be filled if qualified
         "Request Type": "Product Enquiry",
-        "Salutation": random.choice(['Herr', 'Frau', 'Dr.']),
+        "Salutation": random.choice(['Mr', 'Mrs', 'Ms', 'Dr']),
         "Source": random.choice(sources)['Source Name'],
         "Territory": territory['Territory Name'],
         "Unsubscribed": 0,

@@ -1,0 +1,56 @@
+Item Code,Item Name,Item Group,Default Unit of Measure,Allow Alternative Item,Is Stock Item,Include Item In Manufacturing,Opening Stock,Valuation Rate,Standard Rate,Description,Brand,Warranty Period (in days),Weight Per Unit,Weight UOM
+COMP-0001,Bicycle Frame Type 1,Bicycle Components,Nos,1,1,1,192,413.2,763.23,High-quality bicycle frame type 1 for bicycles and e-bikes,ElectroBike,365,4.5,Kg
+COMP-0002,Bicycle Fork Type 2,Bicycle Components,Nos,1,1,1,99,135.16,490.87,High-quality bicycle fork type 2 for bicycles and e-bikes,CyclePro,365,0.25,Kg
+COMP-0003,Front Wheel Type 3,Bicycle Components,Nos,1,1,1,91,265.46,41.24,High-quality front wheel type 3 for bicycles and e-bikes,VeloTech,90,1.06,Kg
+COMP-0004,Rear Wheel Type 4,Bicycle Components,Nos,1,1,1,67,313.45,668.39,High-quality rear wheel type 4 for bicycles and e-bikes,VeloTech,90,4.36,Kg
+COMP-0005,Front Tire Type 5,Bicycle Components,Nos,1,1,1,104,363.37,691.76,High-quality front tire type 5 for bicycles and e-bikes,ElectroBike,730,0.31,Kg
+COMP-0006,Rear Tire Type 6,Bicycle Components,Nos,1,1,1,132,10.2,237.86,High-quality rear tire type 6 for bicycles and e-bikes,ElectroBike,90,4.41,Kg
+COMP-0007,Front Tube Type 7,Bicycle Components,Nos,1,1,1,177,15.48,496.29,High-quality front tube type 7 for bicycles and e-bikes,ElectroBike,730,4.83,Kg
+COMP-0008,Rear Tube Type 8,Bicycle Components,Nos,1,1,1,107,329.95,687.67,High-quality rear tube type 8 for bicycles and e-bikes,CyclePro,730,1.58,Kg
+COMP-0009,Handlebar Type 9,Bicycle Components,Nos,1,1,1,180,23.77,524.56,High-quality handlebar type 9 for bicycles and e-bikes,VeloTech,180,3.06,Kg
+COMP-0010,Stem Type 10,Bicycle Components,Nos,1,1,1,167,195.45,981.16,High-quality stem type 10 for bicycles and e-bikes,VeloTech,365,1.82,Kg
+COMP-0011,Headset Type 11,Bicycle Components,Nos,1,1,1,109,99.67,798.08,High-quality headset type 11 for bicycles and e-bikes,GearMaster,180,3.28,Kg
+COMP-0012,Crankset Type 12,Bicycle Components,Nos,1,1,1,143,113.24,99.56,High-quality crankset type 12 for bicycles and e-bikes,GearMaster,365,0.24,Kg
+COMP-0013,Pedals Type 13,Bicycle Components,Nos,1,1,1,127,132.87,588.68,High-quality pedals type 13 for bicycles and e-bikes,VeloTech,730,3.57,Kg
+COMP-0014,Chain Type 14,Bicycle Components,Nos,1,1,1,163,497.01,619.33,High-quality chain type 14 for bicycles and e-bikes,CyclePro,180,3.3,Kg
+COMP-0015,Gear Set Type 15,Bicycle Components,Nos,1,1,1,183,308.31,855.39,High-quality gear set type 15 for bicycles and e-bikes,CyclePro,365,2.13,Kg
+COMP-0016,Cassette Type 16,Bicycle Components,Nos,1,1,1,50,412.59,894.08,High-quality cassette type 16 for bicycles and e-bikes,CyclePro,180,0.23,Kg
+COMP-0017,Front Brake Type 17,Bicycle Components,Nos,1,1,1,198,412.52,893.23,High-quality front brake type 17 for bicycles and e-bikes,CyclePro,365,4.82,Kg
+COMP-0018,Rear Brake Type 18,Bicycle Components,Nos,1,1,1,157,334.26,655.67,High-quality rear brake type 18 for bicycles and e-bikes,ElectroBike,730,1.54,Kg
+COMP-0019,Saddle Type 19,Bicycle Components,Nos,1,1,1,64,179.35,297.55,High-quality saddle type 19 for bicycles and e-bikes,CyclePro,180,2.48,Kg
+COMP-0020,Seatpost Type 20,Bicycle Components,Nos,1,1,1,174,42.44,972.26,High-quality seatpost type 20 for bicycles and e-bikes,GearMaster,180,3.08,Kg
+COMP-0021,Gear Cable Set Type 21,Bicycle Components,Nos,1,1,1,174,248.58,946.94,High-quality gear cable set type 21 for bicycles and e-bikes,VeloTech,180,4.34,Kg
+COMP-0022,Brake Cable Set Type 22,Bicycle Components,Nos,1,1,1,196,246.81,480.38,High-quality brake cable set type 22 for bicycles and e-bikes,ElectroBike,90,4.49,Kg
+COMP-0023,Small Parts Kit Type 23,Bicycle Components,Nos,1,1,1,80,99.64,765.87,High-quality small parts kit type 23 for bicycles and e-bikes,VeloTech,730,1.82,Kg
+COMP-0024,Accessory Kit Type 24,Bicycle Components,Nos,1,1,1,72,105.19,504.4,High-quality accessory kit type 24 for bicycles and e-bikes,GearMaster,365,2.96,Kg
+COMP-0025,E-Bike Motor Type 25,Bicycle Components,Nos,1,1,1,92,221.24,867.79,High-quality e-bike motor type 25 for bicycles and e-bikes,CyclePro,365,4.73,Kg
+COMP-0026,E-Bike Battery Type 26,Bicycle Components,Nos,1,1,1,127,202.4,366.96,High-quality e-bike battery type 26 for bicycles and e-bikes,GearMaster,730,4.66,Kg
+COMP-0027,E-Bike Controller Type 27,Bicycle Components,Nos,1,1,1,143,292.83,43.1,High-quality e-bike controller type 27 for bicycles and e-bikes,VeloTech,730,2.29,Kg
+COMP-0028,E-Bike Display Type 28,Bicycle Components,Nos,1,1,1,195,299.78,699.75,High-quality e-bike display type 28 for bicycles and e-bikes,GearMaster,180,2.15,Kg
+COMP-0029,E-Bike Wiring Kit Type 29,Bicycle Components,Nos,1,1,1,63,101.76,490.18,High-quality e-bike wiring kit type 29 for bicycles and e-bikes,CyclePro,90,0.45,Kg
+COMP-0030,E-Bike Sensors Kit Type 30,Bicycle Components,Nos,1,1,1,84,283.38,820.47,High-quality e-bike sensors kit type 30 for bicycles and e-bikes,GearMaster,730,1.35,Kg
+BIKE-0001,Bicycle Model 1,Bicycles,Nos,0,1,1,16,359.8,2349.85,High-performance bicycle suitable for various terrains,Velo,730,17.72,Kg
+BIKE-0002,Bicycle Model 2,Bicycles,Nos,0,1,1,31,1289.29,942.65,High-performance bicycle suitable for various terrains,Velo,730,22.3,Kg
+BIKE-0003,Bicycle Model 3,Bicycles,Nos,0,1,1,12,1445.47,2927.77,High-performance bicycle suitable for various terrains,Velo,730,12.74,Kg
+BIKE-0004,Bicycle Model 4,Bicycles,Nos,0,1,1,30,889.06,1446.64,High-performance bicycle suitable for various terrains,Velo,730,22.56,Kg
+BIKE-0005,Bicycle Model 5,Bicycles,Nos,0,1,1,24,1325.09,2353.99,High-performance bicycle suitable for various terrains,Velo,730,20.27,Kg
+BIKE-0006,Bicycle Model 6,Bicycles,Nos,0,1,1,48,539.63,678.69,High-performance bicycle suitable for various terrains,Velo,730,24.44,Kg
+BIKE-0007,Bicycle Model 7,Bicycles,Nos,0,1,1,35,1342.15,968.19,High-performance bicycle suitable for various terrains,Velo,730,17.77,Kg
+BIKE-0008,Bicycle Model 8,Bicycles,Nos,0,1,1,41,1346.55,2301.91,High-performance bicycle suitable for various terrains,Velo,730,21.0,Kg
+BIKE-0009,Bicycle Model 9,Bicycles,Nos,0,1,1,36,784.2,1508.4,High-performance bicycle suitable for various terrains,Velo,730,22.41,Kg
+BIKE-0010,Bicycle Model 10,Bicycles,Nos,0,1,1,37,1200.09,2928.72,High-performance bicycle suitable for various terrains,Velo,730,21.67,Kg
+EBIKE-0001,E-Bike Model 1,E-Bikes,Nos,0,1,1,22,1315.08,1649.15,High-performance e-bike suitable for various terrains,Velo,730,12.38,Kg
+EBIKE-0002,E-Bike Model 2,E-Bikes,Nos,0,1,1,49,1331.3600000000001,1874.4,High-performance e-bike suitable for various terrains,Velo,730,13.62,Kg
+EBIKE-0003,E-Bike Model 3,E-Bikes,Nos,0,1,1,36,980.55,2938.91,High-performance e-bike suitable for various terrains,Velo,730,20.54,Kg
+EBIKE-0004,E-Bike Model 4,E-Bikes,Nos,0,1,1,40,1671.56,3463.07,High-performance e-bike suitable for various terrains,Velo,730,23.64,Kg
+EBIKE-0005,E-Bike Model 5,E-Bikes,Nos,0,1,1,14,1377.79,3403.74,High-performance e-bike suitable for various terrains,Velo,730,15.17,Kg
+SERV-0001,Tire Change,Repair Services,Hrs,0,0,0,,0,143.12,Professional bicycle repair service: tire change,,,,
+SERV-0002,Brake Maintenance,Repair Services,Hrs,0,0,0,,0,70.58,Professional bicycle repair service: brake maintenance,,,,
+SERV-0003,Gear Adjustment,Repair Services,Hrs,0,0,0,,0,56.29,Professional bicycle repair service: gear adjustment,,,,
+SERV-0004,Chain Replacement,Repair Services,Hrs,0,0,0,,0,45.72,Professional bicycle repair service: chain replacement,,,,
+SERV-0005,Wheel Truing,Repair Services,Hrs,0,0,0,,0,74.23,Professional bicycle repair service: wheel truing,,,,
+SERV-0006,Complete Inspection,Repair Services,Hrs,0,0,0,,0,141.22,Professional bicycle repair service: complete inspection,,,,
+SERV-0007,E-Bike Diagnosis,Repair Services,Hrs,0,0,0,,0,39.3,Professional bicycle repair service: e-bike diagnosis,,,,
+SERV-0008,Battery Service,Repair Services,Hrs,0,0,0,,0,111.68,Professional bicycle repair service: battery service,,,,
+SERV-0009,Suspension Fork Service,Repair Services,Hrs,0,0,0,,0,54.08,Professional bicycle repair service: suspension fork service,,,,
+SERV-0010,Frame Painting,Repair Services,Hrs,0,0,0,,0,36.22,Professional bicycle repair service: frame painting,,,,
