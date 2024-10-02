@@ -153,12 +153,12 @@ def save_to_csv(leads, filename):
 
 def main():
     # Load necessary data
-    companies = load_companies('../Processed_CSV/companies.csv')
-    campaigns = load_campaigns('../Processed_CSV/campaigns.csv')
-    sales_persons = load_sales_persons('../Processed_CSV/sales_directors.csv') + \
-                    load_sales_persons('../Processed_CSV/sales_managers.csv') + \
-                    load_sales_persons('../Processed_CSV/sales_reps.csv')
-    sources = load_sources('../Processed_CSV/source_data.csv')
+    companies = load_companies('../Master-Data_Processed_CSV/companies.csv')
+    campaigns = load_campaigns('../Master-Data_Processed_CSV/campaigns.csv')
+    sales_persons = load_sales_persons('../Master-Data_Processed_CSV/sales_directors.csv') + \
+                    load_sales_persons('../Master-Data_Processed_CSV/sales_managers.csv') + \
+                    load_sales_persons('../Master-Data_Processed_CSV/sales_reps.csv')
+    sources = load_sources('../Master-Data_Processed_CSV/source_data.csv')
 
     # Generate leads for all companies plus additional individual leads
     total_leads = 70  # Adjust this number as needed

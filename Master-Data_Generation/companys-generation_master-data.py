@@ -101,7 +101,7 @@ def main():
     Für die Erstellung der Unternehmen werden die Gebiete aus der territories.csv Datei verwendet.
     :return: csv Datei mit {num_companies} 50 Unternehmen
     """
-    territories = load_territories('../Processed_CSV/territories.csv')
+    territories = load_territories('../Master-Data_Processed_CSV/territories.csv')
     num_companies = 50  # Adjust this number as needed
     companies = generate_companies(num_companies, territories)
     save_to_csv(companies, '../Generated_CSV/companies.csv')
