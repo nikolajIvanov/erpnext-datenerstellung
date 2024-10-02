@@ -1,41 +1,145 @@
-Item Code,Item Name,Item Group,Default Unit of Measure,Is Stock Item,Valuation Rate,Standard Selling Rate,Description
-BIKE-0001,Fahrrad Modell 1,Fahrräder,Nos,1,336.81,1144.13,Fahrrad Modell 1 Beschreibung
-BIKE-0002,Fahrrad Modell 2,Fahrräder,Nos,1,589.36,989.37,Fahrrad Modell 2 Beschreibung
-BIKE-0003,Fahrrad Modell 3,Fahrräder,Nos,1,591.16,1203.1,Fahrrad Modell 3 Beschreibung
-BIKE-0004,Fahrrad Modell 4,Fahrräder,Nos,1,367.47,1208.24,Fahrrad Modell 4 Beschreibung
-BIKE-0005,Fahrrad Modell 5,Fahrräder,Nos,1,558.43,1265.92,Fahrrad Modell 5 Beschreibung
-EBIKE-0001,E-Bike Modell 1,E-Bikes,Nos,1,629.11,1774.58,E-Bike Modell 1 Beschreibung
-EBIKE-0002,E-Bike Modell 2,E-Bikes,Nos,1,579.06,1664.49,E-Bike Modell 2 Beschreibung
-EBIKE-0003,E-Bike Modell 3,E-Bikes,Nos,1,519.17,1291.47,E-Bike Modell 3 Beschreibung
-EBIKE-0004,E-Bike Modell 4,E-Bikes,Nos,1,361.67,1170.87,E-Bike Modell 4 Beschreibung
-EBIKE-0005,E-Bike Modell 5,E-Bikes,Nos,1,505.87,1224.1,E-Bike Modell 5 Beschreibung
-COMP-0001,Bremsen Typ 1,Fahrradkomponenten,Nos,1,47.76,302.57,Bremsen Typ 1 Beschreibung
-COMP-0002,Lenker Typ 2,Fahrradkomponenten,Nos,1,114.25,229.38,Lenker Typ 2 Beschreibung
-COMP-0003,Laufrad Typ 3,Fahrradkomponenten,Nos,1,100.76,150.02,Laufrad Typ 3 Beschreibung
-COMP-0004,Reifen Typ 4,Fahrradkomponenten,Nos,1,48.04,390.71,Reifen Typ 4 Beschreibung
-COMP-0005,Lenker Typ 5,Fahrradkomponenten,Nos,1,11.17,300.46,Lenker Typ 5 Beschreibung
-COMP-0006,Laufrad Typ 6,Fahrradkomponenten,Nos,1,44.11,94.01,Laufrad Typ 6 Beschreibung
-COMP-0007,Laufrad Typ 7,Fahrradkomponenten,Nos,1,199.72,289.03,Laufrad Typ 7 Beschreibung
-COMP-0008,Kette Typ 8,Fahrradkomponenten,Nos,1,147.29,303.82,Kette Typ 8 Beschreibung
-COMP-0009,Pedale Typ 9,Fahrradkomponenten,Nos,1,122.61,353.56,Pedale Typ 9 Beschreibung
-COMP-0010,Laufrad Typ 10,Fahrradkomponenten,Nos,1,132.72,88.81,Laufrad Typ 10 Beschreibung
-COMP-0011,Bremsen Typ 11,Fahrradkomponenten,Nos,1,176.48,98.78,Bremsen Typ 11 Beschreibung
-COMP-0012,Pedale Typ 12,Fahrradkomponenten,Nos,1,149.34,21.67,Pedale Typ 12 Beschreibung
-COMP-0013,Bremsen Typ 13,Fahrradkomponenten,Nos,1,107.42,299.49,Bremsen Typ 13 Beschreibung
-COMP-0014,Schaltung Typ 14,Fahrradkomponenten,Nos,1,20.64,350.19,Schaltung Typ 14 Beschreibung
-COMP-0015,Reifen Typ 15,Fahrradkomponenten,Nos,1,35.4,165.07,Reifen Typ 15 Beschreibung
-COMP-0016,Laufrad Typ 16,Fahrradkomponenten,Nos,1,141.12,246.1,Laufrad Typ 16 Beschreibung
-COMP-0017,Lenker Typ 17,Fahrradkomponenten,Nos,1,184.79,370.16,Lenker Typ 17 Beschreibung
-COMP-0018,Schaltung Typ 18,Fahrradkomponenten,Nos,1,72.88,40.02,Schaltung Typ 18 Beschreibung
-COMP-0019,Sattel Typ 19,Fahrradkomponenten,Nos,1,33.3,196.7,Sattel Typ 19 Beschreibung
-COMP-0020,Bremsen Typ 20,Fahrradkomponenten,Nos,1,54.13,174.28,Bremsen Typ 20 Beschreibung
-COMP-0021,Gabel Typ 21,Fahrradkomponenten,Nos,1,89.55,45.62,Gabel Typ 21 Beschreibung
-COMP-0022,Rahmen Typ 22,Fahrradkomponenten,Nos,1,124.59,223.84,Rahmen Typ 22 Beschreibung
-COMP-0023,Schaltung Typ 23,Fahrradkomponenten,Nos,1,141.01,130.15,Schaltung Typ 23 Beschreibung
-COMP-0024,Lenker Typ 24,Fahrradkomponenten,Nos,1,151.03,261.29,Lenker Typ 24 Beschreibung
-COMP-0025,Reifen Typ 25,Fahrradkomponenten,Nos,1,15.03,358.83,Reifen Typ 25 Beschreibung
-COMP-0026,Reifen Typ 26,Fahrradkomponenten,Nos,1,184.26,56.22,Reifen Typ 26 Beschreibung
-COMP-0027,Gabel Typ 27,Fahrradkomponenten,Nos,1,189.92,341.55,Gabel Typ 27 Beschreibung
-COMP-0028,Schaltung Typ 28,Fahrradkomponenten,Nos,1,120.2,350.49,Schaltung Typ 28 Beschreibung
-COMP-0029,Rahmen Typ 29,Fahrradkomponenten,Nos,1,182.14,121.06,Rahmen Typ 29 Beschreibung
-COMP-0030,Kette Typ 30,Fahrradkomponenten,Nos,1,22.1,319.72,Kette Typ 30 Beschreibung
+Default Unit of Measure,Item Code,Item Group,Allow Alternative Item,Allow Negative Stock,Allow Purchase,Allow Sales,Description,Has Batch No,Has Serial No,Include Item In Manufacturing,Is Fixed Asset,Item Name,Maintain Stock,Standard Selling Rate,Valuation Rate,Warranty Period (in days),Weight Per Unit,Weight UOM
+Nos,BIKE-0500,Fahrräder,1,0,0,1,Ferien Brief Weg sprechen geben lernen. Suchen Rad Schule Hand sprechen Licht.,,1,1,0,Velo Trekking 107,1,1321.9,702.46,646,17.93,Kg
+Nos,EBIKE-0968,E-Bikes,1,0,0,1,Gegen Leute leise überall ihm ihm Brief früher. Ging da scheinen mögen reich los.,,1,1,0,Velo E-City 919,1,1538.57,706.75,707,12.25,Kg
+Nos,COMP-0001,Fahrradkomponenten,1,0,1,1,Schuh er Monate fest sollen nimmt. Nur Oma Ende Brot wünschen klettern.,1,,1,0,Rahmen Aluminium,1,209.91,139.47,290,3.72,Kg
+Nos,COMP-0002,Fahrradkomponenten,1,0,1,1,Ruhig endlich wissen gefährlich hoch Fisch weiß.,1,,1,0,Rahmen Carbon,1,46.27,113.17,136,1.87,Kg
+Nos,COMP-0003,Fahrradkomponenten,1,0,1,1,Einige vom sicher Mutter.,1,,1,0,Rahmen Stahl,1,239.3,150.1,204,0.83,Kg
+Nos,COMP-0004,Fahrradkomponenten,1,0,1,1,Auch nämlich fressen finden liegen Kind damit.,1,,1,0,Gabel Starr,1,87.78,155.29,102,4.58,Kg
+Nos,COMP-0005,Fahrradkomponenten,1,0,1,1,Endlich Stelle Schiff unter lieb Stein ab.,1,,1,0,Gabel Federgabel,1,58.61,121.21,250,2.94,Kg
+Nos,COMP-0006,Fahrradkomponenten,1,0,1,1,Erklären dort drehen zusammen laut.,1,,1,0,Lenker Flatbar,1,220.73,99.49,216,0.22,Kg
+Nos,COMP-0007,Fahrradkomponenten,1,0,1,1,Ohne vielleicht fünf Lehrerin Haare Auto. Neben Zug ich packen früher im bekommen.,1,,1,0,Lenker Riserbar,1,52.1,91.81,175,0.6,Kg
+Nos,COMP-0008,Fahrradkomponenten,1,0,1,1,Hängen mit Woche ein zum Geld.,1,,1,0,Lenker Dropbar,1,35.13,182.92,159,0.79,Kg
+Nos,COMP-0009,Fahrradkomponenten,1,0,1,1,Frau müde wohnen Fußball Ende.,1,,1,0,Sattel Komfort,1,348.9,145.37,322,0.3,Kg
+Nos,COMP-0010,Fahrradkomponenten,1,0,1,1,Mein mit Auge.,1,,1,0,Sattel Sport,1,89.32,96.39,326,1.24,Kg
+Nos,COMP-0011,Fahrradkomponenten,1,0,1,1,Wir unter vergessen draußen rot öffnen.,1,,1,0,Sattel Gel,1,238.79,145.68,284,3.11,Kg
+Nos,COMP-0012,Fahrradkomponenten,1,0,1,1,Um beim ziehen schwarz.,1,,1,0,"Reifen Straße 28""",1,396.7,44.31,173,1.8,Kg
+Nos,COMP-0013,Fahrradkomponenten,1,0,1,1,Zehn antworten Leute können. Seite von jeder.,1,,1,0,"Reifen Gelände 26""",1,391.55,17.38,302,3.61,Kg
+Nos,COMP-0014,Fahrradkomponenten,1,0,1,1,Natürlich Hase Schüler heißen wird dürfen dafür.,1,,1,0,"Reifen Allround 27.5""",1,337.25,82.89,265,2.63,Kg
+Nos,COMP-0015,Fahrradkomponenten,1,0,1,1,Waschen Wasser schlimm tun Meer draußen. Leicht etwas fest essen Meer wenig.,1,,1,0,"Reifen Gravel 29""",1,324.82,113.3,243,4.4,Kg
+Nos,COMP-0016,Fahrradkomponenten,1,0,1,1,Ließ Schnee sehr allein Haare rennen.,1,,1,0,Schaltung 7-Gang,1,309.99,12.48,155,2.58,Kg
+Nos,COMP-0017,Fahrradkomponenten,1,0,1,1,Tisch mich schlafen dazu klein versuchen rund holen.,1,,1,0,Schaltung 9-Gang,1,151.45,95.52,226,2.55,Kg
+Nos,COMP-0018,Fahrradkomponenten,1,0,1,1,Polizei Fahrrad Dorf wo Tisch. Geburtstag antworten dein es gab fehlen.,1,,1,0,Schaltung 11-Gang,1,201.49,124.85,173,0.7,Kg
+Nos,COMP-0019,Fahrradkomponenten,1,0,1,1,Immer Boden sie rufen rund.,1,,1,0,Schaltung 1x12 MTB,1,210.15,110.36,199,3.54,Kg
+Nos,COMP-0020,Fahrradkomponenten,1,0,1,1,Die Monat Stelle gar singen.,1,,1,0,Schaltung 2x11 Rennrad,1,249.26,198.95,358,1.9,Kg
+Nos,COMP-0021,Fahrradkomponenten,1,0,1,1,Nach hat Minute fallen hören kann. Spielen öffnen bald.,1,,1,0,Bremsen Scheibenbremsen hydraulisch,1,140.92,118.12,307,0.9,Kg
+Nos,COMP-0022,Fahrradkomponenten,1,0,1,1,Nach Minute Flasche Schule rot Mama. Fragen Sommer wahr können man wünschen kommen.,1,,1,0,Bremsen Scheibenbremsen mechanisch,1,303.42,45.62,284,4.56,Kg
+Nos,COMP-0023,Fahrradkomponenten,1,0,1,1,Fahrrad erzählen glücklich zwischen fest schreiben schon. Sonne Sonntag Junge müssen.,1,,1,0,Bremsen Felgenbremsen,1,255.92,35.32,111,3.43,Kg
+Nos,COMP-0024,Fahrradkomponenten,1,0,1,1,Bald Geburtstag ein fallen dafür. Spiel dazu Auto langsam Papa.,1,,1,0,Pedale Plattform,1,304.8,58.77,90,0.7,Kg
+Nos,COMP-0025,Fahrradkomponenten,1,0,1,1,Den immer dir trinken setzen. Seite beim immer.,1,,1,0,Pedale Klickpedale,1,247.6,80.6,323,1.93,Kg
+Nos,COMP-0026,Fahrradkomponenten,1,0,1,1,Fußball langsam hängen krank waschen Gesicht freuen.,1,,1,0,Pedale Kombipedale,1,299.57,123.0,318,0.55,Kg
+Nos,COMP-0027,Fahrradkomponenten,1,0,1,1,Teller rennen Frau sollen was für.,1,,1,0,Kette 8-fach,1,399.88,143.95,305,1.56,Kg
+Nos,COMP-0028,Fahrradkomponenten,1,0,1,1,Milch blau wird. Schön auf zwischen erklären nennen gefährlich.,1,,1,0,Kette 9-fach,1,372.99,70.95,284,1.38,Kg
+Nos,COMP-0029,Fahrradkomponenten,1,0,1,1,Unten Eis heißen von. Leben schwimmen Land fest trinken Nacht.,1,,1,0,Kette 11-fach,1,387.19,78.8,265,2.55,Kg
+Nos,COMP-0030,Fahrradkomponenten,1,0,1,1,Blume sicher frei gut ein Straße.,1,,1,0,Kette 12-fach,1,395.64,53.18,349,3.38,Kg
+Nos,COMP-0031,Fahrradkomponenten,1,0,1,1,See draußen Tante tragen. Glauben frei so mehr Fuß spielen.,1,,1,0,Laufräder 26 Zoll,1,322.32,57.84,292,1.78,Kg
+Nos,COMP-0032,Fahrradkomponenten,1,0,1,1,Schlecht wird früh was treffen. Heraus gab ab Sache voll reiten immer.,1,,1,0,"Laufräder 27,5 Zoll",1,278.89,156.45,347,3.35,Kg
+Nos,COMP-0033,Fahrradkomponenten,1,0,1,1,Kalt Lehrer unten bekommen grün warm fliegen. Jahr ließ ist Ding sechs versuchen.,1,,1,0,Laufräder 28 Zoll,1,169.55,12.58,274,1.62,Kg
+Nos,COMP-0034,Fahrradkomponenten,1,0,1,1,Jetzt fest bauen Küche. Weit nämlich fallen ein Bild fressen Papa.,1,,1,0,Laufräder 29 Zoll,1,376.72,67.75,142,0.67,Kg
+Nos,COMP-0035,Fahrradkomponenten,1,0,1,1,War klettern weiß ganz am richtig. Denn Vogel weil Dorf Geschichte nur.,1,,1,0,Sattelstütze Gefedert,1,30.47,65.2,342,0.66,Kg
+Nos,COMP-0036,Fahrradkomponenten,1,0,1,1,Merken heißen Hand hinein Frage los Brot.,1,,1,0,Sattelstütze Starr,1,333.61,44.1,285,3.59,Kg
+Nos,COMP-0037,Fahrradkomponenten,1,0,1,1,Ja oben Milch Welt Land nein gesund. Dafür Boden verstecken weil Mensch neu.,1,,1,0,Sattelstütze Teleskop,1,399.58,56.26,276,2.13,Kg
+Nos,COMP-0038,Fahrradkomponenten,1,0,1,1,Land am ließ Haare ihn.,1,,1,0,Griffe Ergonomisch,1,36.17,69.81,323,4.78,Kg
+Nos,COMP-0039,Fahrradkomponenten,1,0,1,1,Kommen zur Schüler Zug schicken Schluss zwei.,1,,1,0,Griffe Standard,1,286.26,10.99,300,0.56,Kg
+Nos,COMP-0040,Fahrradkomponenten,1,0,1,1,Stadt Oma böse Ferien.,1,,1,0,Griffe Leder,1,25.21,49.12,361,3.25,Kg
+Nos,COMP-0041,Fahrradkomponenten,1,0,1,1,Rennen Weg Junge oder oder. Glück Blume plötzlich darauf Jahr sollen.,1,,1,0,Griffe Schaumstoff,1,194.34,180.3,234,3.48,Kg
+Nos,COMP-0042,Fahrradkomponenten,1,0,1,1,Denn Abend nass jung scheinen Geschenk hart. Dir wichtig wieder im fressen.,1,,1,0,Steuersatz Integriert,1,230.0,63.18,113,4.14,Kg
+Nos,COMP-0043,Fahrradkomponenten,1,0,1,1,Allein Berg nass plötzlich ja schaffen. Schwer Glück kam mit mehr warten Beispiel.,1,,1,0,Steuersatz Semi-integriert,1,70.37,76.78,222,1.51,Kg
+Nos,COMP-0044,Fahrradkomponenten,1,0,1,1,Zahl groß die tragen oder Schule Seite fallen.,1,,1,0,Steuersatz Gewinde,1,252.69,145.89,102,3.35,Kg
+Nos,COMP-0045,Fahrradkomponenten,1,0,1,1,Uns vorbei für kennen schauen.,1,,1,0,Vorbau Standardvorbau,1,206.41,92.49,126,1.34,Kg
+Nos,COMP-0046,Fahrradkomponenten,1,0,1,1,Stunde ob Fuß. Zeitung Gott Blume hoch fünf heraus dauern nächste.,1,,1,0,Vorbau Verstellbarer Vorbau,1,348.64,108.45,210,1.6,Kg
+Nos,COMP-0047,Fahrradkomponenten,1,0,1,1,Gleich lange später Ding. Plötzlich Sache dunkel Zeit mein dürfen hin.,1,,1,0,Kurbel 1-fach,1,81.71,92.98,114,2.7,Kg
+Nos,COMP-0048,Fahrradkomponenten,1,0,1,1,Arzt beißen Milch viel schreiben. Ein weiter fangen Lehrer Bruder voll.,1,,1,0,Kurbel 2-fach,1,182.42,69.59,232,1.99,Kg
+Nos,COMP-0049,Fahrradkomponenten,1,0,1,1,Himmel Himmel genau neben.,1,,1,0,Kurbel 3-fach,1,251.41,10.68,301,1.67,Kg
+Nos,COMP-0050,Fahrradkomponenten,1,0,1,1,Polizei Freude Name Leute wahr gerade. Teller Fahrrad Schluss jung Brot Minute fast.,1,,1,0,Innenlager BSA,1,194.44,182.44,245,2.28,Kg
+Nos,COMP-0051,Fahrradkomponenten,1,0,1,1,Nichts beide letzte Zug kein.,1,,1,0,Innenlager Pressfit,1,296.99,38.9,300,0.77,Kg
+Nos,COMP-0052,Fahrradkomponenten,1,0,1,1,Setzen werden Fahrrad böse Zeit. Bei neu gab drehen Bruder wo.,1,,1,0,Innenlager Hollowtech,1,119.8,96.6,242,2.3,Kg
+Nos,COMP-0053,Fahrradkomponenten,1,0,1,1,Angst Herr auch.,1,,1,0,Felgen Aluminium,1,342.45,149.42,360,0.23,Kg
+Nos,COMP-0054,Fahrradkomponenten,1,0,1,1,Berg draußen Tür lernen zum Nacht. Das hin darauf werfen wo.,1,,1,0,Felgen Carbon,1,218.15,74.21,152,2.36,Kg
+Nos,COMP-0055,Fahrradkomponenten,1,0,1,1,Katze laut immer. Öffnen schreiben er wenn.,1,,1,0,Speichen Standard,1,154.5,97.99,179,0.11,Kg
+Nos,COMP-0056,Fahrradkomponenten,1,0,1,1,Weiter im Familie dazu Zeitung dazu.,1,,1,0,Speichen Aero,1,237.46,118.14,334,2.96,Kg
+Nos,COMP-0057,Fahrradkomponenten,1,0,1,1,Kurz langsam Weg Frage Mutter.,1,,1,0,Speichen Straightpull,1,385.82,68.8,135,1.15,Kg
+Nos,COMP-0058,Fahrradkomponenten,1,0,1,1,Warm gelb Wetter man heute reich.,1,,1,0,Naben Standard,1,186.47,162.72,198,0.7,Kg
+Nos,COMP-0059,Fahrradkomponenten,1,0,1,1,Stadt bin weinen Kopf heiß schön alle.,1,,1,0,Naben Dynamo,1,160.65,28.14,286,2.64,Kg
+Nos,COMP-0060,Fahrradkomponenten,1,0,1,1,Zeitung Opa führen. Fährt Platz spät.,1,,1,0,Beleuchtung LED-Set,1,370.49,68.12,233,0.91,Kg
+Nos,COMP-0061,Fahrradkomponenten,1,0,1,1,Ob war unser dabei los.,1,,1,0,Beleuchtung Dynamo-Set,1,364.48,61.53,248,2.25,Kg
+Nos,COMP-0062,Fahrradkomponenten,1,0,1,1,Schauen gut zum zehn oder Bild. Früher dort Platz ab finden leicht wichtig glücklich.,1,,1,0,Beleuchtung Akku-Set,1,164.86,65.14,161,0.92,Kg
+Nos,COMP-0063,Fahrradkomponenten,1,0,1,1,Durch er Sache wohnen Mensch. Zu allein essen warten vom kann.,1,,1,0,Schutzbleche Kunststoff,1,302.71,182.14,165,1.2,Kg
+Nos,COMP-0064,Fahrradkomponenten,1,0,1,1,Nämlich da weiß Mama legen. Kaufen Blume Stein zwischen halten.,1,,1,0,Schutzbleche Metall,1,156.85,145.48,142,0.68,Kg
+Nos,COMP-0065,Fahrradkomponenten,1,0,1,1,Vergessen schlagen ihm halten fehlen sicher Sommer. Bild finden wird an Abend.,1,,1,0,Schutzbleche Carbon,1,138.67,17.64,100,3.1,Kg
+Nos,COMP-0066,Fahrradkomponenten,1,0,1,1,Hier Brot fressen.,1,,1,0,Gepäckträger Standard,1,221.67,144.98,277,2.12,Kg
+Nos,COMP-0067,Fahrradkomponenten,1,0,1,1,Licht Wiese wünschen nie. Dem genau Lehrer Apfel fehlen.,1,,1,0,Gepäckträger Lowrider,1,249.6,75.64,148,4.18,Kg
+Nos,COMP-0068,Fahrradkomponenten,1,0,1,1,Bis damit gar. Dabei laut Loch Oma.,1,,1,0,Gepäckträger Systemgepäckträger,1,371.5,164.74,132,1.38,Kg
+Nos,COMP-0069,Fahrradkomponenten,1,0,1,1,Wer nennen vorbei aus verstehen vier. Kam weil wieder schlecht ins schenken Hunger.,1,,1,0,Ständer Seitenständer,1,254.21,21.87,177,2.19,Kg
+Nos,COMP-0070,Fahrradkomponenten,1,0,1,1,Klasse neben schon zu. Sagen Sohn scheinen schreiben Küche bei Arbeit.,1,,1,0,Ständer Hinterbauständer,1,307.98,100.45,92,4.81,Kg
+Nos,COMP-0071,Fahrradkomponenten,1,0,1,1,Gleich viel früh in rechnen dunkel Stein. Erde ins Vater Welt fertig verlieren.,1,,1,0,Ständer Zweibeinständer,1,149.18,77.71,275,1.11,Kg
+Nos,COMP-0072,Fahrradkomponenten,1,0,1,1,Warum Seite hinein. Essen Mann auf fliegen Geburtstag oder.,1,,1,0,Klingel Standard,1,112.78,112.93,340,1.93,Kg
+Nos,COMP-0073,Fahrradkomponenten,1,0,1,1,Woche nimmt sitzen dein gegen Schüler den hat. Las ins dich Sonntag nur Woche hören.,1,,1,0,Klingel Elektrisch,1,282.46,158.46,282,2.81,Kg
+Nos,COMP-0074,Fahrradkomponenten,1,0,1,1,Weinen Sonne voll im Vater.,1,,1,0,Reflektoren Set,1,164.59,56.93,266,0.55,Kg
+Nos,COMP-0075,Fahrradkomponenten,1,0,1,1,Vater nicht lernen denn Abend.,1,,1,0,Reflektoren Einzeln,1,99.56,66.76,158,3.28,Kg
+Nos,COMP-0076,Fahrradkomponenten,1,0,1,1,Frau finden Stück sieben gibt Familie.,1,,1,0,Reflektoren Integriert,1,381.52,115.69,347,1.12,Kg
+Nos,COMP-0077,Fahrradkomponenten,1,0,1,1,Kopf allein sie aus vier stark ich.,1,,1,0,Sattelklemme Schnellspanner,1,378.94,79.15,158,1.5,Kg
+Nos,COMP-0078,Fahrradkomponenten,1,0,1,1,Dort Stadt für.,1,,1,0,Sattelklemme Schraubklemme,1,107.11,100.95,105,3.14,Kg
+Nos,COMP-0079,Fahrradkomponenten,1,0,1,1,Ab leise erschrecken.,1,,1,0,Flaschenhalter Kunststoff,1,205.91,183.64,296,3.86,Kg
+Nos,COMP-0080,Fahrradkomponenten,1,0,1,1,Bruder uns endlich Wetter kommen etwas. Los dürfen sonst Apfel so von auch.,1,,1,0,Flaschenhalter Aluminium,1,32.77,195.57,304,2.55,Kg
+Nos,COMP-0081,Fahrradkomponenten,1,0,1,1,Genau danach voll ging. Los andere Seite weit.,1,,1,0,Flaschenhalter Carbon,1,38.33,191.43,323,3.8,Kg
+Nos,COMP-0082,Fahrradkomponenten,1,0,1,1,Schnell Uhr böse nennen will Stunde Onkel. Über einmal Ball halbe nie.,1,,1,0,Fahrradcomputer Kabelgebunden,1,41.14,94.79,317,3.47,Kg
+Nos,COMP-0083,Fahrradkomponenten,1,0,1,1,Doch fiel Wissen Musik wohnen Wissen nur Bein. Sehen rechnen verstehen sechs Zimmer Schuh bis.,1,,1,0,Fahrradcomputer Kabellos,1,183.48,150.43,159,4.25,Kg
+Nos,COMP-0084,Fahrradkomponenten,1,0,1,1,Mit Nacht hin wohl. Er Geburtstag machen viel Haus Geburtstag öffnen.,1,,1,0,Fahrradcomputer GPS,1,223.5,105.22,299,2.55,Kg
+Nos,COMP-0085,Fahrradkomponenten,1,0,1,1,Wer was bekommen Musik.,1,,1,0,Kettenführung 1-fach,1,346.31,184.97,121,1.1,Kg
+Nos,COMP-0086,Fahrradkomponenten,1,0,1,1,Wasser fressen kurz Spiel Nase. Wir aus warm alt Familie Schiff Schiff.,1,,1,0,Kettenführung 2-fach,1,36.65,126.24,126,2.49,Kg
+Nos,COMP-0087,Fahrradkomponenten,1,0,1,1,Tag von sechs Spiel.,1,,1,0,Kettenführung ISCG05,1,136.63,152.36,295,3.9,Kg
+Nos,COMP-0088,Fahrradkomponenten,1,0,1,1,Lieb gelb Familie Zug.,1,,1,0,Tretlager BSA,1,238.91,142.4,112,0.7,Kg
+Nos,COMP-0089,Fahrradkomponenten,1,0,1,1,Wissen lieb ihr warm beißen leicht.,1,,1,0,Tretlager Pressfit,1,305.74,34.52,261,4.15,Kg
+Nos,COMP-0090,Fahrradkomponenten,1,0,1,1,Monate zusammen einige liegen schaffen halten viel.,1,,1,0,Tretlager BB30,1,374.27,152.88,109,4.87,Kg
+Nos,COMP-0091,Fahrradkomponenten,1,0,1,1,Dabei Loch gelb Zeit. Nah daran will beide lange jetzt.,1,,1,0,Akku 36V 10Ah,1,82.94,91.26,129,2.2,Kg
+Nos,COMP-0092,Fahrradkomponenten,1,0,1,1,Nicht möglich bald er las Freund. Glas ihn gehen Bild.,1,,1,0,Akku 36V 15Ah,1,265.46,55.2,270,0.6,Kg
+Nos,COMP-0093,Fahrradkomponenten,1,0,1,1,Und also sieben rennen natürlich.,1,,1,0,Akku 48V 10Ah,1,370.87,144.55,348,2.89,Kg
+Nos,COMP-0094,Fahrradkomponenten,1,0,1,1,Machen war öffnen deshalb nennen oben. Für Himmel wir wenig nicht oben Hunger.,1,,1,0,Akku 48V 15Ah,1,242.43,74.15,123,1.84,Kg
+Nos,COMP-0095,Fahrradkomponenten,1,0,1,1,Heraus halten dir lachen Wiese fährt Zug.,1,,1,0,Akku Zusatzakku,1,230.3,34.5,165,1.17,Kg
+Nos,COMP-0096,Fahrradkomponenten,1,0,1,1,Mal Mensch dein gelb dumm.,1,,1,0,Motor Mittelmotor 250W,1,125.3,26.74,220,0.44,Kg
+Nos,COMP-0097,Fahrradkomponenten,1,0,1,1,Weil da nah sie Uhr reiten Vogel nah. Immer Lehrer Bauer deshalb kurz Familie zwei.,1,,1,0,Motor Mittelmotor 500W,1,325.48,73.66,129,1.43,Kg
+Nos,COMP-0098,Fahrradkomponenten,1,0,1,1,Lieb klein kochen sein gefährlich erklären dauern Mutter. Mal gerade langsam.,1,,1,0,Motor Nabenmotor 250W,1,261.19,35.39,301,0.74,Kg
+Nos,COMP-0099,Fahrradkomponenten,1,0,1,1,Wünschen Feuer packen Wald spielen Eltern halbe. Wahr jeder sie lange vor böse.,1,,1,0,Motor Nabenmotor Vorderrad,1,225.66,42.23,233,0.87,Kg
+Nos,COMP-0100,Fahrradkomponenten,1,0,1,1,Hund Arbeit dann weinen nach und Wald. Ist Bein leben wer hier Herr leise.,1,,1,0,Display LCD,1,297.43,55.78,148,1.5,Kg
+Nos,COMP-0101,Fahrradkomponenten,1,0,1,1,Zum Fenster schicken Bein und.,1,,1,0,Display LED,1,102.19,188.6,306,1.23,Kg
+Nos,COMP-0102,Fahrradkomponenten,1,0,1,1,Wasser Abend Mensch Nacht einigen heraus nennen.,1,,1,0,Display Smartphone-Integration,1,204.37,177.61,174,1.41,Kg
+Nos,COMP-0103,Fahrradkomponenten,1,0,1,1,Für lernen stellen Schnee Licht schwimmen Brief. Nimmt tief dort nun.,1,,1,0,Display Minimaldisplay,1,119.12,85.94,348,3.73,Kg
+Nos,COMP-0104,Fahrradkomponenten,1,0,1,1,Weg Schuh brauchen drehen.,1,,1,0,Ladegerät 2A,1,108.37,33.73,332,4.49,Kg
+Nos,COMP-0105,Fahrradkomponenten,1,0,1,1,Leben acht Küche kaufen Apfel schlimm. Ihn mehr sich gewinnen Vater Brief Flasche.,1,,1,0,Ladegerät 4A,1,142.54,39.56,291,3.64,Kg
+Nos,COMP-0106,Fahrradkomponenten,1,0,1,1,Schön Fahrrad Milch uns Minutenmir.,1,,1,0,Ladegerät Schnellladegerät,1,297.57,143.48,321,2.17,Kg
+Nos,COMP-0107,Fahrradkomponenten,1,0,1,1,Spaß ich Frau Hund Tür auch kalt. Bei schlafen vielleicht fressen Junge liegen.,1,,1,0,Ladegerät Reiseladegerät,1,373.84,59.72,349,3.39,Kg
+Nos,COMP-0108,Fahrradkomponenten,1,0,1,1,Ihr Stein natürlich weil sitzen. Weit fliegen legen Minute.,1,,1,0,Controller Standard,1,343.59,60.87,278,1.42,Kg
+Nos,COMP-0109,Fahrradkomponenten,1,0,1,1,Helfen rufen Familie können. Mein her Freund.,1,,1,0,Controller Leistungsstark,1,149.17,76.42,235,2.6,Kg
+Nos,COMP-0110,Fahrradkomponenten,1,0,1,1,Straße wo halbe zwei plötzlich.,1,,1,0,Controller Tuning-Kit,1,163.91,53.56,199,3.35,Kg
+Nos,COMP-0111,Fahrradkomponenten,1,0,1,1,Essen Mutter Haare.,1,,1,0,Sensor Tretkraftsensor,1,195.14,56.91,116,4.6,Kg
+Nos,COMP-0112,Fahrradkomponenten,1,0,1,1,Rechnen Abend allein Monat hinein vergessen. Hat sollen Baum.,1,,1,0,Sensor Rotationssensor,1,361.71,173.11,110,2.65,Kg
+Nos,COMP-0113,Fahrradkomponenten,1,0,1,1,Familie gern Monat rennen Stelle Mutter gibt wichtig. Hart essen rund ihn lesen blau.,1,,1,0,Sensor Kombisensor,1,363.51,135.15,352,0.13,Kg
+Nos,COMP-0114,Fahrradkomponenten,1,0,1,1,Wir hoch öffnen schwer.,1,,1,0,"Schlauch 26""",1,165.26,89.98,315,2.84,Kg
+Nos,COMP-0115,Fahrradkomponenten,1,0,1,1,Beispiel fressen bin rund müde früher.,1,,1,0,"Schlauch 27.5""",1,182.88,17.28,184,3.1,Kg
+Nos,COMP-0116,Fahrradkomponenten,1,0,1,1,Bekommen Welt Zeitung dumm Minutenmir Woche.,1,,1,0,"Schlauch 28""",1,133.49,75.12,161,2.65,Kg
+Nos,COMP-0117,Fahrradkomponenten,1,0,1,1,Kurz gibt essen geben endlich früh Wald. Weiter hin heute Junge.,1,,1,0,"Schlauch 29""",1,170.68,59.4,350,1.32,Kg
+Nos,COMP-0118,Fahrradkomponenten,1,0,1,1,Wenig Mama im Woche. Nimmt sprechen mal verstehen fangen weiter denken Name.,1,,1,0,Bremsbeläge Scheibenbremse organisch,1,265.93,155.67,293,4.85,Kg
+Nos,COMP-0119,Fahrradkomponenten,1,0,1,1,Schicken vom mit braun fünf.,1,,1,0,Bremsbeläge Scheibenbremse gesintert,1,253.44,110.34,161,2.1,Kg
+Nos,COMP-0120,Fahrradkomponenten,1,0,1,1,Schon Sommer Wald stehen. Da nass Tür fangen Ding.,1,,1,0,Bremsbeläge Felgenbremse,1,329.38,155.45,202,2.29,Kg
+Nos,COMP-0121,Fahrradkomponenten,1,0,1,1,War gleich Frage. Brief bei Brot dumm machen.,1,,1,0,Brems-/Schaltzüge Innenzug Bremse,1,341.31,94.43,108,3.32,Kg
+Nos,COMP-0122,Fahrradkomponenten,1,0,1,1,Zehn dumm Monat Leben also dick Küche ging.,1,,1,0,Brems-/Schaltzüge Innenzug Schaltung,1,148.16,88.99,255,0.62,Kg
+Nos,COMP-0123,Fahrradkomponenten,1,0,1,1,Glücklich versuchen über sind. Braun wo schaffen Auto.,1,,1,0,Brems-/Schaltzüge Außenhülle,1,306.84,124.17,313,1.8,Kg
+Nos,COMP-0124,Fahrradkomponenten,1,0,1,1,Richtig glücklich wieder stark.,1,,1,0,Kettenöl Trocken,1,245.12,91.13,268,2.38,Kg
+Nos,COMP-0125,Fahrradkomponenten,1,0,1,1,Da unten ich Jahr grün Nacht er.,1,,1,0,Kettenöl Nass,1,356.22,165.72,195,3.24,Kg
+Nos,COMP-0126,Fahrradkomponenten,1,0,1,1,Sonst bei heute setzen.,1,,1,0,Kettenöl Keramik,1,169.86,172.44,157,4.1,Kg
+Nos,COMP-0127,Fahrradkomponenten,1,0,1,1,Endlich vor will Wissen zwei Fenster.,1,,1,0,Reifenflickzeug Set,1,85.52,127.42,315,3.84,Kg
+Nos,COMP-0128,Fahrradkomponenten,1,0,1,1,Sagen viel und. Zeigen auf Mutter gab fressen denn.,1,,1,0,Reifenflickzeug Flicken,1,331.71,158.59,335,4.98,Kg
+Nos,COMP-0129,Fahrradkomponenten,1,0,1,1,Stein Tante nass brauchen wohnen.,1,,1,0,Reifenflickzeug Reifenheber,1,21.2,146.56,231,1.44,Kg
+Nos,COMP-0130,Fahrradkomponenten,1,0,1,1,Will Tier so schreiben.,1,,1,0,Fahrradtasche Lenkertasche,1,54.27,188.98,308,2.78,Kg
+Nos,COMP-0131,Fahrradkomponenten,1,0,1,1,Fuß wohnen sonst ließ sieben Geschichte.,1,,1,0,Fahrradtasche Satteltasche,1,32.16,102.32,104,3.0,Kg
+Nos,COMP-0132,Fahrradkomponenten,1,0,1,1,Herz selbst vor zur. Bein weil unser mit lachen unser.,1,,1,0,Fahrradtasche Rahmentasche,1,212.64,186.32,210,1.3,Kg
+Nos,COMP-0133,Fahrradkomponenten,1,0,1,1,Sehr wahr Schule.,1,,1,0,Kettennieter Standard,1,175.85,128.8,180,3.2,Kg
+Nos,COMP-0134,Fahrradkomponenten,1,0,1,1,Dann hier erschrecken.,1,,1,0,Kettennieter Profi,1,359.69,122.46,161,2.85,Kg
+Nos,COMP-0135,Fahrradkomponenten,1,0,1,1,Erklären Monate Mama Bild. Zwei sollen Monat Schüler Mädchen um heraus.,1,,1,0,Multitool 11-teilig,1,220.24,16.58,250,1.87,Kg
+Nos,COMP-0136,Fahrradkomponenten,1,0,1,1,Davon bin sein Auto baden gelb. Nicht nur las warum vor führen.,1,,1,0,Multitool 16-teilig,1,110.46,151.12,133,1.46,Kg
+Nos,COMP-0137,Fahrradkomponenten,1,0,1,1,Anfangen der Freude Auto Minute selbst. Kopf Zeit wie bis plötzlich.,1,,1,0,Multitool 21-teilig,1,367.85,29.0,359,4.39,Kg
+Nos,COMP-0138,Fahrradkomponenten,1,0,1,1,Mein zwischen damit damit sie dann. Mit Schluss rufen Ferien.,1,,1,0,Pumpe Standpumpe,1,333.63,134.27,311,2.11,Kg
+Nos,COMP-0139,Fahrradkomponenten,1,0,1,1,Nach andere antworten wenig schlagen. Neu Haare anfangen Straße gestern.,1,,1,0,Pumpe Minipumpe,1,199.54,114.98,257,3.25,Kg
+Nos,COMP-0140,Fahrradkomponenten,1,0,1,1,Ins verlieren fehlen steigen laufen neu. Beispiel hoch wird.,1,,1,0,Pumpe CO2-Pumpe,1,309.9,184.4,241,1.66,Kg
+Nos,COMP-0141,Fahrradkomponenten,1,0,1,1,Ziehen vielleicht reiten krank Boden versuchen Loch hören.,1,,1,0,Luftdruckprüfer Digital,1,158.54,70.63,363,3.19,Kg
+Nos,COMP-0142,Fahrradkomponenten,1,0,1,1,Anfangen Leben müssen gar danach. Als geben man davon Minute andere beißen Spiel.,1,,1,0,Luftdruckprüfer Analog,1,130.45,42.63,94,0.2,Kg
