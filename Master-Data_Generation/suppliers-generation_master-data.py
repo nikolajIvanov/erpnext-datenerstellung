@@ -7,12 +7,23 @@ import re
 fake = Faker('de_DE')
 
 
+def remove_umlauts(text):
+    """Replace umlauts and ß with their non-umlaut equivalents."""
+    umlaut_map = {
+        'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss',
+        'Ä': 'Ae', 'Ö': 'Oe', 'Ü': 'Ue'
+    }
+    for umlaut, replacement in umlaut_map.items():
+        text = text.replace(umlaut, replacement)
+    return text
+
+
 def generate_supplier_code():
     return f"SUP-{random.randint(1000, 9999)}"
 
-
 def generate_company_email(company_name):
-    clean_name = re.sub(r'[^\w\s-]', '', company_name.lower())
+    clean_name = remove_umlauts(company_name)
+    clean_name = re.sub(r'[^\w\s-]', '', clean_name.lower())
     domain_name = re.sub(r'\s+', '.', clean_name)
     aliases = ['info', 'kontakt', 'verkauf', 'einkauf', 'support']
     alias = random.choice(aliases)
@@ -20,7 +31,8 @@ def generate_company_email(company_name):
 
 
 def generate_company_website(company_name):
-    clean_name = re.sub(r'[^\w\s-]', '', company_name.lower())
+    clean_name = remove_umlauts(company_name)
+    clean_name = re.sub(r'[^\w\s-]', '', clean_name.lower())
     domain_name = clean_name.replace(' ', '-')
     return f"www.{domain_name}.de"
 
@@ -37,7 +49,7 @@ def generate_suppliers(num_suppliers):
 
     for i in range(num_suppliers):
         supplier_group = random.choices(supplier_groups, weights=group_weights)[0]
-        company_name = fake.company()
+        company_name = remove_umlauts(fake.company())
 
         supplier = {
             "ID": generate_supplier_code(),
@@ -47,7 +59,7 @@ def generate_suppliers(num_suppliers):
             "Supplier Group": supplier_group,
             "Email Id": generate_company_email(company_name),
             "Mobile No": fake.phone_number(),
-            "Supplier Details": fake.bs(),
+            "Supplier Details": remove_umlauts(fake.bs()),
             "Website": generate_company_website(company_name),
             "Is Frozen": 0,
             "Is Internal Supplier": 0,
