@@ -155,7 +155,7 @@ def generate_purchase_invoices(purchase_receipts):
             "Due Date": due_date.strftime("%Y-%m-%d"),
             "Series": "ACC-PINV-.YYYY.-",
             "Supplier": pr['Supplier'],
-            "ID (Items)": generate_id("PIITEM", pi_date),
+            "Item (Items)": pr['Item Code (Items)'],
             "Accepted Qty (Items)": pr['Received Quantity (Items)'],
             "Accepted Qty in Stock UOM (Items)": f"{accepted_qty_in_stock_uom:.2f}".replace('.', ','),
             "Amount (Items)": pr['Net Total (Company Currency)'],
@@ -175,7 +175,10 @@ def generate_purchase_invoices(purchase_receipts):
             "Consider Tax or Charge for (Purchase Taxes and Charges)": pr[
                 'Consider Tax or Charge for (Purchase Taxes and Charges)'],
             "Description (Purchase Taxes and Charges)": pr['Description (Purchase Taxes and Charges)'],
-            "Type (Purchase Taxes and Charges)": pr['Type (Purchase Taxes and Charges)']
+            "Type (Purchase Taxes and Charges)": pr['Type (Purchase Taxes and Charges)'],
+            "Expense Head (Items)": "5000 - Aufwendungen f. Roh-, Hilfs- und Betriebsstoffe und f. bezogene Waren - B",
+            "Deferred Expense Account (Items)": "5000 - Aufwendungen f. Roh-, Hilfs- und Betriebsstoffe und f. bezogene Waren - B"
+
         }
         purchase_invoices.append(pi)
     return purchase_invoices
@@ -185,16 +188,41 @@ def generate_payment_entries(purchase_invoices):
     payment_entries = []
     for pi in purchase_invoices:
         payment_date = datetime.strptime(pi['Due Date'], "%Y-%m-%d")
+
+        # Überprüfen Sie den Typ und konvertieren Sie entsprechend
+        if isinstance(pi['Amount (Company Currency) (Items)'], str):
+            amount = float(pi['Amount (Company Currency) (Items)'].replace(',', '.'))
+        else:
+            amount = float(pi['Amount (Company Currency) (Items)'])
+
         pe = {
             "ID": generate_id("ACC-PAY", payment_date),
+            "Account Currency (From)": "EUR",
+            "Account Currency (To)": "EUR",
+            "Account Paid From": "1800 - Bank - B",
+            "Account Paid To": "3500 - Sonstige Verb. - B",
+            "Company": "Velo GmbH",
+            "Paid Amount": f"{amount:.2f}".replace('.', ','),
+            "Paid Amount (Company Currency)": f"{amount:.2f}".replace('.', ','),
             "Payment Type": "Pay",
             "Posting Date": payment_date.strftime("%Y-%m-%d"),
-            "Company": "Velo GmbH",  # Wir nehmen an, dass dies die Firma ist
+            "Received Amount": f"{amount:.2f}".replace('.', ','),
+            "Received Amount (Company Currency)": f"{amount:.2f}".replace('.', ','),
+            "Series": "ACC-PAY-.YYYY.-",
+            "Source Exchange Rate": "1,00",
+            "Target Exchange Rate": "1,00",
+            "ID (Payment References)": generate_id("PAYREF", payment_date),
+            "Type (Payment References)": "Purchase Invoice",
+            "Name (Payment References)": pi['ID'],
+            "ID (Advance Taxes and Charges)": generate_id("ADTAX", payment_date),
+            "Account Head (Advance Taxes and Charges)": "1406 - Abziehbare Vorsteuer 19 % - B",
+            "Add Or Deduct (Advance Taxes and Charges)": "Add",
+            "Description (Advance Taxes and Charges)": "Abziehbare Vorsteuer 19 %",
             "Party Type": "Supplier",
-            "Party": pi['Supplier'],
-            "Paid Amount": pi['Amount (Company Currency) (Items)'],  # Verwenden Sie den Rechnungsbetrag
-            "Account Paid From": "Main Operating Account - B",
-            "Account Paid To": f"{pi['Supplier']} - B"
+            "Party": pi["Supplier"],
+            "Cheque/Reference Date": payment_date.strftime("%Y-%m-%d"),
+            "Cheque/Reference No": random.randint(1, 1000),
+            "Type (Advance Taxes and Charges)": "Actual"
         }
         payment_entries.append(pe)
     return payment_entries
@@ -204,57 +232,7 @@ def save_to_csv(data, filename, fieldnames):
     with open(os.path.join(Config.OUTPUT_DIR, filename), 'w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()
-
-"""
-def main():
-    products = load_csv_data('items.csv')
-    item_batch_info = load_item_batch_info(products)
-    item_supplier_mapping = load_item_supplier_mapping()
-    batch_numbers = load_batch_numbers('batch_numbers.csv')
-
-    purchase_orders = generate_purchase_orders(products, item_supplier_mapping)
-    purchase_receipts = generate_purchase_receipts(purchase_orders, item_batch_info, batch_numbers)
-    purchase_invoices = generate_purchase_invoices(purchase_receipts)
-    payment_entries = generate_payment_entries(purchase_invoices)
-
-    save_to_csv(purchase_orders, 'purchase_orders.csv',
-                ["ID", "Company", "Currency", "Date", "Exchange Rate", "Series", "Status", "Supplier", "Title",
-                 "ID (Items)", "Amount (Items)", "Item Code (Items)", "Item Name (Items)",
-                 "Quantity (Items)", "Rate (Items)", "Required By (Items)", "Stock UOM (Items)",
-                 "UOM (Items)", "UOM Conversion Factor (Items)", "Set Target Warehouse"])
-
-    save_to_csv(purchase_receipts, 'purchase_receipts.csv',
-                ["ID", "Company", "Currency", "Date", "Exchange Rate", "Net Total (Company Currency)",
-                 "Posting Time", "Series", "Status", "Supplier", "ID (Items)", "Conversion Factor (Items)",
-                 "Item Code (Items)", "Item Name (Items)", "Rate (Company Currency) (Items)",
-                 "Received Quantity (Items)", "Stock UOM (Items)", "UOM (Items)", "Purchase Order (Items)",
-                 "Purchase Order Item (Items)", "Accepted Warehouse (Items)",
-                 "Tax Rate (Purchase Taxes and Charges)", "Account Head (Purchase Taxes and Charges)",
-                 "Accepted Quantity (Items)", "Description (Purchase Taxes and Charges)",
-                 "Type (Purchase Taxes and Charges)", "Add or Deduct (Purchase Taxes and Charges)",
-                 "Consider Tax or Charge for (Purchase Taxes and Charges)", "Batch No (Items)"])
-
-    save_to_csv(purchase_invoices, 'purchase_invoices.csv',
-                ["ID", "Credit To", "Date", "Due Date", "Series", "Supplier", "ID (Items)",
-                 "Accepted Qty (Items)", "Accepted Qty in Stock UOM (Items)",
-                 "Amount (Items)", "Amount (Company Currency) (Items)",
-                 "Item Name (Items)", "Rate (Items)", "Rate (Company Currency) (Items)",
-                 "UOM (Items)", "UOM Conversion Factor (Items)",
-                 "Purchase Order (Items)", "Purchase Order Item (Items)",
-                 "Purchase Receipt (Items)", "Purchase Receipt Detail (Items)",
-                 "ID (Purchase Taxes and Charges)",
-                 "Account Head (Purchase Taxes and Charges)",
-                 "Add or Deduct (Purchase Taxes and Charges)",
-                 "Consider Tax or Charge for (Purchase Taxes and Charges)",
-                 "Description (Purchase Taxes and Charges)",
-                 "Type (Purchase Taxes and Charges)"])
-
-    save_to_csv(payment_entries, 'payment_entries.csv',
-                ["ID", "Payment Type", "Posting Date", "Company", "Party Type", "Party", "Paid Amount",
-                 "Account Paid From", "Account Paid To"])
-
-    print("Datengenerierung abgeschlossen. Ausgabedateien wurden im Verzeichnis 'Generated_CSV' gespeichert.")
-"""
+        writer.writerows(data)
 
 
 def main():
@@ -294,10 +272,47 @@ def main():
     payment_entries = generate_payment_entries(purchase_invoices)
     print(f"Generated {len(payment_entries)} payment entries")
 
-    save_to_csv(purchase_orders, 'purchase_orders.csv', [...])  # Feldnamen hier
-    save_to_csv(purchase_receipts, 'purchase_receipts.csv', [...])  # Feldnamen hier
-    save_to_csv(purchase_invoices, 'purchase_invoices.csv', [...])  # Feldnamen hier
-    save_to_csv(payment_entries, 'payment_entries.csv', [...])  # Feldnamen hier
+    save_to_csv(purchase_orders, 'purchase_orders.csv',
+                ["ID", "Company", "Currency", "Date", "Exchange Rate", "Series", "Status", "Supplier", "Title",
+                 "ID (Items)", "Amount (Items)", "Item Code (Items)", "Item Name (Items)",
+                 "Quantity (Items)", "Rate (Items)", "Required By (Items)", "Stock UOM (Items)",
+                 "UOM (Items)", "UOM Conversion Factor (Items)", "Set Target Warehouse"])
+
+    save_to_csv(purchase_receipts, 'purchase_receipts.csv',
+                ["ID", "Company", "Currency", "Date", "Exchange Rate", "Net Total (Company Currency)",
+                 "Posting Time", "Series", "Status", "Supplier", "ID (Items)", "Conversion Factor (Items)",
+                 "Item Code (Items)", "Item Name (Items)", "Rate (Company Currency) (Items)",
+                 "Received Quantity (Items)", "Stock UOM (Items)", "UOM (Items)", "Purchase Order (Items)",
+                 "Purchase Order Item (Items)", "Accepted Warehouse (Items)",
+                 "Tax Rate (Purchase Taxes and Charges)", "Account Head (Purchase Taxes and Charges)",
+                 "Accepted Quantity (Items)", "Description (Purchase Taxes and Charges)",
+                 "Type (Purchase Taxes and Charges)", "Add or Deduct (Purchase Taxes and Charges)",
+                 "Consider Tax or Charge for (Purchase Taxes and Charges)", "Batch No (Items)"])
+
+    save_to_csv(purchase_invoices, 'purchase_invoices.csv',
+                ["ID", "Credit To", "Date", "Due Date", "Series", "Supplier", "Item (Items)",
+                 "Accepted Qty (Items)", "Accepted Qty in Stock UOM (Items)",
+                 "Amount (Items)", "Amount (Company Currency) (Items)",
+                 "Item Name (Items)", "Rate (Items)", "Rate (Company Currency) (Items)",
+                 "UOM (Items)", "UOM Conversion Factor (Items)",
+                 "Purchase Order (Items)", "Purchase Order Item (Items)",
+                 "Purchase Receipt (Items)", "Purchase Receipt Detail (Items)",
+                 "ID (Purchase Taxes and Charges)",
+                 "Account Head (Purchase Taxes and Charges)",
+                 "Add or Deduct (Purchase Taxes and Charges)",
+                 "Consider Tax or Charge for (Purchase Taxes and Charges)",
+                 "Description (Purchase Taxes and Charges)",
+                 "Type (Purchase Taxes and Charges)", "Expense Head (Items)", "Deferred Expense Account (Items)"])
+
+    save_to_csv(payment_entries, 'payment_entries.csv',
+                ["ID", "Account Currency (From)", "Account Currency (To)", "Account Paid From", "Account Paid To",
+                 "Company", "Paid Amount", "Paid Amount (Company Currency)", "Payment Type", "Posting Date",
+                 "Received Amount", "Received Amount (Company Currency)", "Series", "Source Exchange Rate",
+                 "Target Exchange Rate", "ID (Payment References)", "Type (Payment References)",
+                 "Name (Payment References)", "ID (Advance Taxes and Charges)",
+                 "Account Head (Advance Taxes and Charges)", "Add Or Deduct (Advance Taxes and Charges)",
+                 "Description (Advance Taxes and Charges)", "Party Type", "Party", "Cheque/Reference Date",
+                 "Cheque/Reference No", "Type (Advance Taxes and Charges)"])
 
     print("Datengenerierung abgeschlossen. Ausgabedateien wurden im Verzeichnis 'Generated_CSV' gespeichert.")
 

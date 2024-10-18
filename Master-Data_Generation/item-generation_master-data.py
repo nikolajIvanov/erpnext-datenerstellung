@@ -18,6 +18,14 @@ def generate_batch_no(prefix):
     return f"{prefix}-{fake.date_this_year().strftime('%Y%m%d')}-{fake.random_number(digits=4)}"
 
 
+def get_expense_account(item_group):
+    if item_group in ["Fahrräder", "E-Bikes"]:
+        return "5000 - Aufwendungen f. Roh-, Hilfs- und Betriebsstoffe und f. bezogene Waren - B"
+    elif item_group == "Fahrradkomponenten":
+        return "5000 - Aufwendungen f. Roh-, Hilfs- und Betriebsstoffe und f. bezogene Waren - B"
+    else:
+        return "5000 - Aufwendungen f. Roh-, Hilfs- und Betriebsstoffe und f. bezogene Waren - B"
+
 def generate_bike_description(bike_type, is_ebike):
     bike_descriptions = {
         "City": "Perfekt für den urbanen Alltag. Komfortabel und wendig für Fahrten in der Stadt.",
@@ -91,7 +99,8 @@ def generate_bike_models(num_regular_bikes, num_ebikes):
             "Standard Selling Rate": round(random.uniform(600, 2000), 2),
             "Warranty Period (in days)": random.randint(365, 730),
             "Weight Per Unit": round(random.uniform(10, 20), 2),
-            "Weight UOM": "Kg"
+            "Weight UOM": "Kg",
+            "Default Expense Account (Item Defaults)": get_expense_account(item_group)  # Neue Zeile
         }
         bikes.append(model)
 
@@ -159,7 +168,8 @@ def generate_detailed_components(num_components):
             "Standard Selling Rate": round(random.uniform(20, 400), 2),
             "Warranty Period (in days)": random.randint(90, 365),
             "Weight Per Unit": round(random.uniform(0.1, 5), 2),
-            "Weight UOM": "Kg"
+            "Weight UOM": "Kg",
+            "Default Expense Account (Item Defaults)": get_expense_account("Fahrradkomponenten")  # Neue Zeile
         }
         components.append(component)
 
@@ -179,7 +189,7 @@ def save_to_csv(items, filename):
         "Has Batch No", "Has Serial No", "Include Item In Manufacturing",
         "Is Fixed Asset", "Item Name", "Maintain Stock", "Standard Selling Rate",
         "Valuation Rate", "Warranty Period (in days)", "Weight Per Unit", "Weight UOM",
-        "Serial Number Series", "Batch Number Series"
+        "Serial Number Series", "Batch Number Series", "Default Expense Account (Item Defaults)"
     ]
 
     with open(filename, 'w', newline='', encoding='utf-8') as output_file:

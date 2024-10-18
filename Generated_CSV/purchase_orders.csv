@@ -1,1 +1,3 @@
-Ellipsis
+ID,Company,Currency,Date,Exchange Rate,Series,Status,Supplier,Title,ID (Items),Amount (Items),Item Code (Items),Item Name (Items),Quantity (Items),Rate (Items),Required By (Items),Stock UOM (Items),UOM (Items),UOM Conversion Factor (Items),Set Target Warehouse
+PUR-ORD-2023-86994,Velo GmbH,EUR,2023-02-28,"1,00",PUR-ORD-.YYYY.-,To Receive and Bill,SUP-1798,Purchase Order for SUP-1798,POITEM-2023-12946,10035.3,COMP-0010,Sattelstütze Starr,55,182.46,2023-03-07,Nos,Nos,"1,00",Lager Stuttgart - B
+PUR-ORD-2023-17960,Velo GmbH,EUR,2023-12-19,"1,00",PUR-ORD-.YYYY.-,To Receive and Bill,SUP-3599,Purchase Order for SUP-3599,POITEM-2023-18496,4096.8,COMP-0018,Vorbau Standardvorbau,60,68.28,2023-12-26,Nos,Nos,"1,00",Lager Stuttgart - B
