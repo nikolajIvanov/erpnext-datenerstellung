@@ -1,0 +1,2 @@
+ID,BOM No,Company,Item To Manufacture,Planned Start Date,Qty To Manufacture,Series,Status,Has Batch No,Has Serial No,Work-in-Progress Warehouse,Source Warehouse,Target Warehouse,docstatus
+MFG-WO-2023-84110,BOM-BIKE-0002-001,Velo GmbH,BIKE-0002,2023-05-14 20:43:45,3,MFG-WO-.YYYY.-,Submitted,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B,1

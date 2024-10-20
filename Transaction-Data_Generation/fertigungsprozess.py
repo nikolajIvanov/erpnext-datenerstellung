@@ -10,8 +10,8 @@ class Config:
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
     START_DATE = datetime(2023, 1, 1)
     END_DATE = datetime(2023, 12, 31)
-    PRODUCTION_WAREHOUSE = "Production Warehouse - V"
-    FINISHED_GOODS_WAREHOUSE = "Finished Goods Warehouse - V"
+    PRODUCTION_WAREHOUSE = "Lager Stuttgart - B"
+    FINISHED_GOODS_WAREHOUSE = "Lager Stuttgart - B"
 
 
 def load_csv_data(filename):
@@ -31,42 +31,46 @@ def random_date(start_date, end_date):
     )
 
 
-def generate_production_plans(items, num_plans):
-    production_plans = []
-    for _ in range(num_plans):
-        plan_date = random_date(Config.START_DATE, Config.END_DATE)
-        item = random.choice(items)
-        quantity = random.randint(10, 100)
-
-        plan = {
-            "ID": generate_id("MFG-PP", plan_date),
-            "Item": item['Item Code'],
-            "Item Name": item['Item Name'],
-            "BOM No": f"BOM-{item['Item Code']}",  # Assuming BOM number follows this format
-            "Planned Qty": quantity,
-            "Warehouse": Config.FINISHED_GOODS_WAREHOUSE,
-            "Planned Start Date": plan_date.strftime("%Y-%m-%d"),
-            "Status": "Submitted"
-        }
-        production_plans.append(plan)
-    return production_plans
+def load_bom_data():
+    bom_data = {}
+    for filename in ['bom_bike.csv', 'bom_ebike.csv']:
+        with open(os.path.join(Config.INPUT_DIR, filename), 'r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            header = next(reader)
+            bom_info = next(reader)
+            bom_id = bom_info[0]
+            items = [dict(zip(header, row)) for row in reader if row[10]]  # Only include rows with an Item Code
+            bom_data[bom_id] = {
+                'ID': bom_id,
+                'Item': bom_info[4],
+                'Item Name': bom_info[9],
+                'Items': items
+            }
+    return bom_data
 
 
-def generate_work_orders(production_plans):
+def load_batch_numbers():
+    batch_data = load_csv_data('batch_numbers.csv')
+    return {batch['Item']: batch['Batch ID'] for batch in batch_data}
+
+
+def generate_work_orders(num_orders, bom_data):
     work_orders = []
-    for plan in production_plans:
-        wo_date = datetime.strptime(plan['Planned Start Date'], "%Y-%m-%d") + timedelta(days=random.randint(1, 5))
+    for _ in range(num_orders):
+        wo_date = random_date(Config.START_DATE, Config.END_DATE)
+        bom_id, bom = random.choice(list(bom_data.items()))
         work_order = {
-            "ID": generate_id("WO", wo_date),
-            "Production Item": plan['Item'],
-            "Item Name": plan['Item Name'],
-            "BOM No": plan['BOM No'],
-            "Qty To Manufacture": plan['Planned Qty'],
-            "Planned Start Date": plan['Planned Start Date'],
-            "Actual Start Date": wo_date.strftime("%Y-%m-%d"),
-            "Planned End Date": (wo_date + timedelta(days=random.randint(1, 7))).strftime("%Y-%m-%d"),
-            "Status": "In Process",
-            "Production Plan": plan['ID'],
+            "ID": generate_id("MFG-WO", wo_date),
+            "BOM No": bom_id,
+            "Company": "Velo GmbH",
+            "Item To Manufacture": bom['Item'],
+            "Planned Start Date": wo_date.strftime("%Y-%m-%d %H:%M:%S"),
+            "Qty To Manufacture": random.randint(1, 10),
+            "Series": "MFG-WO-.YYYY.-",
+            "Status": "Submitted",
+            "Has Batch No": 0,
+            "Has Serial No": 1,
+            "Work-in-Progress Warehouse": Config.PRODUCTION_WAREHOUSE,
             "Source Warehouse": Config.PRODUCTION_WAREHOUSE,
             "Target Warehouse": Config.FINISHED_GOODS_WAREHOUSE
         }
@@ -74,78 +78,108 @@ def generate_work_orders(production_plans):
     return work_orders
 
 
-def generate_stock_entries(work_orders, items):
-    stock_entries = []
+def generate_stock_entries(work_orders, bom_data, batch_numbers):
+    material_transfers = []
+    manufactures = []
     for wo in work_orders:
-        # Generate Material Transfer for Manufacture
-        transfer_date = datetime.strptime(wo['Actual Start Date'], "%Y-%m-%d")
+        bom = bom_data[wo['BOM No']]
+
+        entry_id = generate_id("MAT-STE", datetime.strptime(wo['Planned Start Date'], "%Y-%m-%d %H:%M:%S"))
+
+        # Material Transfer for Manufacture
         transfer_entry = {
-            "ID": generate_id("STE", transfer_date),
+            "ID": entry_id,
+            "Company": "Velo GmbH",
+            "Series": "MAT-STE-.YYYY.-",
             "Stock Entry Type": "Material Transfer for Manufacture",
-            "Posting Date": transfer_date.strftime("%Y-%m-%d"),
-            "From Warehouse": Config.PRODUCTION_WAREHOUSE,
-            "To Warehouse": wo['Source Warehouse'],
+            "BOM No": wo['BOM No'],
+            "From BOM": 1,
             "Work Order": wo['ID'],
-            "Items": []  # This would be filled with required components based on BOM
+            "Default Source Warehouse": Config.PRODUCTION_WAREHOUSE,
+            "Default Target Warehouse": Config.FINISHED_GOODS_WAREHOUSE,
+            "Add to Transit": 0,
+            "Items": []
         }
-        stock_entries.append(transfer_entry)
 
-        # Generate Manufacture entry
-        manufacture_date = datetime.strptime(wo['Planned End Date'], "%Y-%m-%d")
-        manufacture_entry = {
-            "ID": generate_id("STE", manufacture_date),
-            "Stock Entry Type": "Manufacture",
-            "Posting Date": manufacture_date.strftime("%Y-%m-%d"),
-            "From Warehouse": wo['Source Warehouse'],
-            "To Warehouse": wo['Target Warehouse'],
-            "Work Order": wo['ID'],
-            "Items": [{
-                "Item Code": wo['Production Item'],
-                "Qty": wo['Qty To Manufacture'],
-                "Transfer Qty": wo['Qty To Manufacture'],
-                "UOM": next(
-                    item['Default Unit of Measure'] for item in items if item['Item Code'] == wo['Production Item'])
-            }]
-        }
-        stock_entries.append(manufacture_entry)
+        for item in bom['Items']:
+            transfer_entry["Items"].append({
+                "Conversion Factor (Items)": 1.0,
+                "Item Code (Items)": item['Item Code (Items)'],
+                "Qty (Items)": float(item['Qty (Items)']) * wo['Qty To Manufacture'],
+                "Qty as per Stock UOM (Items)": float(item['Qty (Items)']) * wo['Qty To Manufacture'],
+                "Stock UOM (Items)": item['UOM (Items)'],
+                "UOM (Items)": item['UOM (Items)'],
+                "Batch No (Items)": batch_numbers.get(item['Item Code (Items)'], "")
+            })
 
-    return stock_entries
+        material_transfers.append(transfer_entry)
+
+        # Manufacture
+        manufacture_entry = transfer_entry.copy()
+        manufacture_entry["Stock Entry Type"] = "Manufacture"
+        manufacture_entry["Default Source Warehouse"] = Config.PRODUCTION_WAREHOUSE
+        manufacture_entry["Default Target Warehouse"] = Config.FINISHED_GOODS_WAREHOUSE
+        manufacture_entry["Items"].append({
+            "Conversion Factor (Items)": 1.0,
+            "Item Code (Items)": wo['Item To Manufacture'],
+            "Qty (Items)": wo['Qty To Manufacture'],
+            "Qty as per Stock UOM (Items)": wo['Qty To Manufacture'],
+            "Stock UOM (Items)": "Nos",
+            "UOM (Items)": "Nos",
+            "Batch No (Items)": ""
+        })
+
+        manufactures.append(manufacture_entry)
+
+    return material_transfers, manufactures
 
 
 def save_to_csv(data, filename, fieldnames):
     with open(os.path.join(Config.OUTPUT_DIR, filename), 'w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()
-        writer.writerows(data)
+        for entry in data:
+            if 'Items' in entry:
+                for item in entry['Items']:
+                    row = {**entry, **item}
+                    writer.writerow(row)
+            else:
+                writer.writerow(entry)
 
 
-def main(num_production_plans):
-    items = load_csv_data('items.csv')
-    print(f"Loaded {len(items)} items")
+def main(num_work_orders):
+    bom_data = load_bom_data()
+    print(f"Loaded {len(bom_data)} BOMs")
 
-    production_plans = generate_production_plans(items, num_production_plans)
-    print(f"Generated {len(production_plans)} production plans")
+    batch_numbers = load_batch_numbers()
+    print(f"Loaded {len(batch_numbers)} batch numbers")
 
-    work_orders = generate_work_orders(production_plans)
+    work_orders = generate_work_orders(num_work_orders, bom_data)
     print(f"Generated {len(work_orders)} work orders")
 
-    stock_entries = generate_stock_entries(work_orders, items)
-    print(f"Generated {len(stock_entries)} stock entries")
+    material_transfers, manufactures = generate_stock_entries(work_orders, bom_data, batch_numbers)
+    print(f"Generated {len(material_transfers)} material transfers and {len(manufactures)} manufactures")
 
     # Save generated data to CSV files
-    save_to_csv(production_plans, 'production_plans.csv',
-                ["ID", "Item", "Item Name", "BOM No", "Planned Qty", "Warehouse", "Planned Start Date", "Status"])
-
     save_to_csv(work_orders, 'work_orders.csv',
-                ["ID", "Production Item", "Item Name", "BOM No", "Qty To Manufacture", "Planned Start Date",
-                 "Actual Start Date", "Planned End Date", "Status", "Production Plan", "Source Warehouse",
-                 "Target Warehouse"])
+                ["ID", "BOM No", "Company", "Item To Manufacture", "Planned Start Date",
+                 "Qty To Manufacture", "Series", "Status", "Has Batch No", "Has Serial No",
+                 "Work-in-Progress Warehouse", "Source Warehouse", "Target Warehouse"])
 
-    save_to_csv(stock_entries, 'stock_entries.csv',
-                ["ID", "Stock Entry Type", "Posting Date", "From Warehouse", "To Warehouse", "Work Order"])
+    save_to_csv(material_transfers, 'stock_entries_material_transfer.csv',
+                ["ID", "Company", "Series", "Stock Entry Type", "BOM No", "From BOM", "Work Order",
+                 "Default Source Warehouse", "Default Target Warehouse", "Add to Transit",
+                 "Conversion Factor (Items)", "Item Code (Items)", "Qty (Items)",
+                 "Qty as per Stock UOM (Items)", "Stock UOM (Items)", "UOM (Items)", "Batch No (Items)"])
+
+    save_to_csv(manufactures, 'stock_entries_manufacture.csv',
+                ["ID", "Company", "Series", "Stock Entry Type", "BOM No", "From BOM", "Work Order",
+                 "Default Source Warehouse", "Default Target Warehouse", "Add to Transit",
+                 "Conversion Factor (Items)", "Item Code (Items)", "Qty (Items)",
+                 "Qty as per Stock UOM (Items)", "Stock UOM (Items)", "UOM (Items)", "Batch No (Items)"])
 
     print("Data generation completed. Output files have been saved in the 'Generated_CSV' directory.")
 
 
 if __name__ == "__main__":
-    main(num_production_plans=50)  # You can adjust the number of production plans as needed
+    main(num_work_orders=10)
