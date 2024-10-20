@@ -1,0 +1,2 @@
+ID,Company,Currency,Date,Exchange Rate,Series,Status,Supplier,Title,ID (Items),Amount (Items),Item Code (Items),Item Name (Items),Quantity (Items),Rate (Items),Required By (Items),Stock UOM (Items),UOM (Items),UOM Conversion Factor (Items),Set Target Warehouse
+PUR-ORD-2023-53570,Velo GmbH,EUR,2023-01-22,"1,00",PUR-ORD-.YYYY.-,To Receive and Bill,SUP-1186,Purchase Order for SUP-1186,POITEM-2023-69882,"13742,96",COMP-0025,Sattel Komfort,92,"149,38",2023-01-29,Nos,Nos,"1,00",Lager Stuttgart - B

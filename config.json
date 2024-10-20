@@ -1,0 +1,12 @@
+{
+    "data_types": {
+        "Warehouse": {
+            "module": "warehouse_generator",
+            "function": "generate_warehouses"
+        },
+        "Items": {
+            "module": "item_generator",
+            "function": "generate_items"
+        }
+    }
+}
