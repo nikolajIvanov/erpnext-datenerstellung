@@ -5,7 +5,7 @@ import os
 
 class Config:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    INPUT_DIR = os.path.join(BASE_DIR, 'Master-Data_Processed_CSV')
+    INPUT_DIR = os.path.join(BASE_DIR, 'master_data_csv')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
     MAPPING_FILE = 'item_supplier_mapping.csv'
 

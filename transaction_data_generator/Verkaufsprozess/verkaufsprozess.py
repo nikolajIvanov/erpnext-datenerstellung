@@ -9,11 +9,12 @@ from api.sales_order_api import SalesOrderAPI
 from api.delivery_note_api import DeliveryNoteAPI
 from api.sales_invoice_api import SalesInvoiceAPI
 from api.payment_entry_api import PaymentEntryAPI
+from master_data_generator.create_customer import create_b2c_customer
 
 
 class Config:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    INPUT_DIR = os.path.join(BASE_DIR, 'Master-Data_Processed_CSV')
+    INPUT_DIR = os.path.join(BASE_DIR, 'master_data_csv')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
     START_DATE = datetime(2024, 1, 1)
     END_DATE = datetime(2024, 12, 31)

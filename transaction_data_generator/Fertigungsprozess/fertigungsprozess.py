@@ -6,7 +6,7 @@ import os
 
 class Config:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    INPUT_DIR = os.path.join(BASE_DIR, 'Master-Data_Processed_CSV')
+    INPUT_DIR = os.path.join(BASE_DIR, 'master_data_csv')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
     START_DATE = datetime(2023, 1, 1)
     END_DATE = datetime(2023, 12, 31)

@@ -11,7 +11,7 @@ from api.purchase_order_api import PurchaseOrderAPI
 @dataclass
 class Config:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    INPUT_DIR: str = os.path.join(BASE_DIR, 'Master-Data_Processed_CSV')
+    INPUT_DIR: str = os.path.join(BASE_DIR, 'master_data_csv')
     OUTPUT_DIR: str = os.path.join(BASE_DIR, 'Generated_CSV')
     SUCCESS_DIR: str = os.path.join(BASE_DIR, 'Beschaffungsprozess Demo')
     ERROR_DIR: str = os.path.join(BASE_DIR, 'Import Error')

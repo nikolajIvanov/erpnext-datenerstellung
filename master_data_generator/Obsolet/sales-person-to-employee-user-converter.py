@@ -105,9 +105,9 @@ def write_to_csv(data, filename, fieldnames):
 
 
 def main():
-    sales_files = ['../Master-Data_Processed_CSV/sales_directors.csv',
-                   '../Master-Data_Processed_CSV/sales_managers.csv',
-                   '../Master-Data_Processed_CSV/sales_reps.csv']
+    sales_files = ['../master_data_csv/sales_directors.csv',
+                   '../master_data_csv/sales_managers.csv',
+                   '../master_data_csv/sales_reps.csv']
     sales_persons = read_sales_persons(sales_files)
 
     # Create a mapping of names to IDs and a hierarchy dictionary

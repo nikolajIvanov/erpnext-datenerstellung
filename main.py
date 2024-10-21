@@ -10,8 +10,8 @@ from tabs.purchase_order_tab import PurchaseOrderTab
 # Füge beide Ordner zum Python-Pfad hinzu
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(base_dir)
-sys.path.append(os.path.join(base_dir, 'Master_Data_Generation'))
-sys.path.append(os.path.join(base_dir, 'Transaction-Data_Generation'))
+sys.path.append(os.path.join(base_dir, 'master_data_generator'))
+sys.path.append(os.path.join(base_dir, 'transaction_data_generator'))
 
 
 class DemoDataGUI:

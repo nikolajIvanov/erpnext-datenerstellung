@@ -15,16 +15,16 @@ def load_csv(filename):
         return list(csv.DictReader(f))
 
 
-campaigns = load_csv('../Master-Data_Processed_CSV/campaigns.csv')
-companies = load_csv('../Master-Data_Processed_CSV/companies.csv')
-territories = load_csv('../Master-Data_Processed_CSV/territories.csv')
-sources = load_csv('../Master-Data_Processed_CSV/source_data.csv')
-industries = load_csv('../Master-Data_Processed_CSV/Industry Type.csv')
+campaigns = load_csv('../master_data_csv/campaigns.csv')
+companies = load_csv('../master_data_csv/companies.csv')
+territories = load_csv('../master_data_csv/territories.csv')
+sources = load_csv('../master_data_csv/source_data.csv')
+industries = load_csv('../master_data_csv/Industry Type.csv')
 
 # Load employees data
-employees = (load_csv('../Master-Data_Processed_CSV/employees_level_0.csv') +
-             load_csv('../Master-Data_Processed_CSV/employees_level_1.csv') +
-             load_csv('../Master-Data_Processed_CSV/employees_level_2.csv'))
+employees = (load_csv('../master_data_csv/employees_level_0.csv') +
+             load_csv('../master_data_csv/employees_level_1.csv') +
+             load_csv('../master_data_csv/employees_level_2.csv'))
 sales_persons = [emp for emp in employees if emp['Department'] == 'Sales']
 
 # Define constants

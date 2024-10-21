@@ -1,2 +1,0 @@
-name,company,currency,transaction_date,conversion_rate,status,supplier,title,item_code,item_name,qty,rate,amount,schedule_date,uom,stock_uom,conversion_factor,warehouse
-PUR-ORD-2024-48820,Velo GmbH,EUR,2024-10-20,1.0,To Receive and Bill,SUP-4312,Purchase Order for SUP-4312,COMP-0041,Controller Standard,86,198.86,17101.96,2024-10-27,Nos,Nos,1.0,Lager Stuttgart - B

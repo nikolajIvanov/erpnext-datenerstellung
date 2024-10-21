@@ -13,7 +13,7 @@ class Config:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     INPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
-    MASTER_DATA_DIR = os.path.join(BASE_DIR, 'Master-Data_Processed_CSV')
+    MASTER_DATA_DIR = os.path.join(BASE_DIR, 'master_data_csv')
     WORK_ORDERS_FILE = 'uploaded_work_orders.csv'
     BATCH_NUMBERS_FILE = 'batch_numbers.csv'
     BOM_FILES = ['bom_bike.csv', 'bom_ebike.csv']
