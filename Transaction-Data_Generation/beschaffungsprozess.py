@@ -8,12 +8,15 @@ class Config:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     INPUT_DIR = os.path.join(BASE_DIR, 'Master-Data_Processed_CSV')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
-    START_DATE = datetime(2023, 1, 1)
-    END_DATE = datetime(2023, 12, 31)
+    START_DATE = datetime.now() - timedelta(days=5*365)  # 5 Jahre zurück
+    END_DATE = datetime.now()
     NUM_ORDERS = 100
     PAYMENT_TERMS = [0, 30, 60]
     TARGET_WAREHOUSE = "Lager Stuttgart - B"
     MAPPING_FILE = 'item_supplier_mapping.csv'
+    RECEIPT_DELAY = (1, 14)  # Wareneingang 1-14 Tage nach Bestellung
+    INVOICE_DELAY = (0, 3)   # Rechnung 0-3 Tage nach Wareneingang
+    PAYMENT_DELAY = (0, 30)  # Zahlung 0-30 Tage nach Rechnungsstellung
 
 
 def load_csv_data(filename):
@@ -57,6 +60,16 @@ def load_batch_numbers(filename):
     return batch_numbers
 
 
+def calculate_taxes(net_amount, tax_rate=19.0):
+    tax_amount = net_amount * (tax_rate / 100)
+    gross_amount = net_amount + tax_amount
+    return round(tax_amount, 2), round(gross_amount, 2)
+
+
+def filter_components(products):
+    return [product for product in products if product['Item Group'] == 'Fahrradkomponenten']
+
+
 def generate_purchase_orders(products, item_supplier_mapping):
     purchase_orders = []
     for _ in range(Config.NUM_ORDERS):
@@ -66,9 +79,11 @@ def generate_purchase_orders(products, item_supplier_mapping):
 
         supplier_id = item_supplier_mapping.get(item_code, "DEFAULT_SUPPLIER_ID")
 
-        quantity = random.randint(1, 100)
+        # Setze die feste Menge auf 500 kann später geändert werden
+        quantity = 500
         rate = float(product['Valuation Rate'])
-        amount = round(quantity * rate, 2)
+        net_amount = round(quantity * rate, 2)
+        tax_amount, gross_amount = calculate_taxes(net_amount)
 
         po = {
             "ID": generate_id("PUR-ORD", po_date),
@@ -81,7 +96,7 @@ def generate_purchase_orders(products, item_supplier_mapping):
             "Supplier": supplier_id,
             "Title": f"Purchase Order for {supplier_id}",
             "ID (Items)": generate_id("POITEM", po_date),
-            "Amount (Items)": amount,
+            "Amount (Items)": net_amount,
             "Item Code (Items)": item_code,
             "Item Name (Items)": product['Item Name'],
             "Quantity (Items)": quantity,
@@ -90,7 +105,11 @@ def generate_purchase_orders(products, item_supplier_mapping):
             "Stock UOM (Items)": product['Default Unit of Measure'],
             "UOM (Items)": product['Default Unit of Measure'],
             "UOM Conversion Factor (Items)": "1,00",
-            "Set Target Warehouse": Config.TARGET_WAREHOUSE
+            "Set Target Warehouse": Config.TARGET_WAREHOUSE,
+            "Net Total": f"{net_amount:.2f}".replace('.', ','),
+            "Total Taxes and Charges": f"{tax_amount:.2f}".replace('.', ','),
+            "Grand Total": f"{gross_amount:.2f}".replace('.', ','),
+            "Rounded Total": f"{round(gross_amount):.2f}".replace('.', ','),
         }
         purchase_orders.append(po)
     return purchase_orders
@@ -99,7 +118,8 @@ def generate_purchase_orders(products, item_supplier_mapping):
 def generate_purchase_receipts(purchase_orders, item_batch_info, batch_numbers):
     purchase_receipts = []
     for po in purchase_orders:
-        pr_date = datetime.strptime(po['Date'], "%Y-%m-%d") + timedelta(days=random.randint(1, 7))
+        po_date = datetime.strptime(po['Date'], "%Y-%m-%d")
+        pr_date = po_date + timedelta(days=random.randint(*Config.RECEIPT_DELAY))
         item_code = po['Item Code (Items)']
         batch_no = batch_numbers.get(item_code, "") if item_batch_info.get(item_code, False) else ""
         pr = {
@@ -140,7 +160,8 @@ def generate_purchase_receipts(purchase_orders, item_batch_info, batch_numbers):
 def generate_purchase_invoices(purchase_receipts):
     purchase_invoices = []
     for pr in purchase_receipts:
-        pi_date = datetime.strptime(pr['Date'], "%Y-%m-%d") + timedelta(days=random.randint(0, 3))
+        pr_date = datetime.strptime(pr['Date'], "%Y-%m-%d")
+        pi_date = pr_date + timedelta(days=random.randint(*Config.INVOICE_DELAY))
 
         # Überprüfe den Typ und konvertiere entsprechend
         received_quantity = pr['Received Quantity (Items)'] if isinstance(pr['Received Quantity (Items)'], (int, float)) else float(pr['Received Quantity (Items)'].replace(',', '.'))
@@ -187,7 +208,8 @@ def generate_purchase_invoices(purchase_receipts):
 def generate_payment_entries(purchase_invoices):
     payment_entries = []
     for pi in purchase_invoices:
-        payment_date = datetime.strptime(pi['Due Date'], "%Y-%m-%d")
+        pi_date = datetime.strptime(pi['Date'], "%Y-%m-%d")
+        payment_date = pi_date + timedelta(days=random.randint(*Config.PAYMENT_DELAY))
 
         # Überprüfen Sie den Typ und konvertieren Sie entsprechend
         if isinstance(pi['Amount (Company Currency) (Items)'], str):
@@ -239,7 +261,11 @@ def main():
     products = load_csv_data('items.csv')
     print(f"Loaded {len(products)} products")
 
-    item_batch_info = load_item_batch_info(products)
+    # Filtern Sie die Produkte, um nur Fahrradkomponenten zu behalten
+    components = filter_components(products)
+    print(f"Filtered {len(components)} components")
+
+    item_batch_info = load_item_batch_info(components)
     print(f"Loaded batch info for {len(item_batch_info)} items")
 
     item_supplier_mapping = load_item_supplier_mapping()
@@ -248,7 +274,7 @@ def main():
     batch_numbers = load_batch_numbers('batch_numbers.csv')
     print(f"Loaded {len(batch_numbers)} batch numbers")
 
-    purchase_orders = generate_purchase_orders(products, item_supplier_mapping)
+    purchase_orders = generate_purchase_orders(components, item_supplier_mapping)
     print(f"Generated {len(purchase_orders)} purchase orders")
 
     if not purchase_orders:
@@ -276,7 +302,7 @@ def main():
                 ["ID", "Company", "Currency", "Date", "Exchange Rate", "Series", "Status", "Supplier", "Title",
                  "ID (Items)", "Amount (Items)", "Item Code (Items)", "Item Name (Items)",
                  "Quantity (Items)", "Rate (Items)", "Required By (Items)", "Stock UOM (Items)",
-                 "UOM (Items)", "UOM Conversion Factor (Items)", "Set Target Warehouse"])
+                 "UOM (Items)", "UOM Conversion Factor (Items)", "Set Target Warehouse", "Net Total", "Total Taxes and Charges", "Grand Total", "Rounded Total"])
 
     save_to_csv(purchase_receipts, 'purchase_receipts.csv',
                 ["ID", "Company", "Currency", "Date", "Exchange Rate", "Net Total (Company Currency)",
