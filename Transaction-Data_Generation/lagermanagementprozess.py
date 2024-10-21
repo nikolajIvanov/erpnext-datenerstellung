@@ -24,53 +24,48 @@ def load_csv_data(filename: str) -> List[Dict]:
     with open(os.path.join(Config.INPUT_DIR, filename), 'r', encoding='utf-8') as f:
         return list(csv.DictReader(f))
 
-
 def generate_id(prefix: str) -> str:
     return f"{prefix}-{uuid.uuid4().hex[:8].upper()}"
-
 
 def random_date(start_date: datetime, end_date: datetime) -> datetime:
     return start_date + timedelta(
         seconds=random.randint(0, int((end_date - start_date).total_seconds()))
     )
 
-
 def load_warehouses() -> List[str]:
     warehouses = load_csv_data('Warehouse.csv')
-    return [w['Warehouse Name'] for w in warehouses if w['Warehouse Name'] != Config.MAIN_WAREHOUSE]
-
+    return [w['ID'] for w in warehouses if w['ID'] != Config.MAIN_WAREHOUSE]
 
 def load_items() -> List[Dict]:
     return load_csv_data('items.csv')
 
-
-def generate_stock_entry(warehouses: List[str], items: List[Dict]) -> Dict:
+def generate_stock_entry(warehouses: List[str], items: List[Dict], items_per_transfer: int) -> Dict:
     transfer_date = random_date(Config.START_DATE, Config.END_DATE)
     target_warehouse = random.choice(warehouses)
 
     stock_entry = {
-        "name": generate_id("MAT-STE"),
-        "doctype": "Stock Entry",
+        "docstatus": 1,
         "naming_series": "MAT-STE-.YYYY.-",
         "stock_entry_type": "Material Transfer",
         "purpose": "Material Transfer",
-        "add_to_transit": 1,
         "company": "Velo GmbH",
         "posting_date": transfer_date.strftime("%Y-%m-%d"),
-        "posting_time": datetime.now().strftime("%H:%M:%S"),
-        "set_posting_time": 0,
-        "from_warehouse": Config.MAIN_WAREHOUSE,
-        "to_warehouse": target_warehouse,
+        "posting_time": datetime.now().strftime("%H:%M:%S.%f"),
         "total_outgoing_value": 0.0,
         "total_incoming_value": 0.0,
         "value_difference": 0.0,
         "total_additional_costs": 0.0,
-        "docstatus": 1,
+        "is_opening": "No",
+        "per_transferred": 0.0,
+        "total_amount": 0.0,
+        "is_return": 0,
+        "doctype": "Stock Entry",
+        "additional_costs": [],
         "items": []
     }
 
     total_amount = 0.0
-    for _ in range(random.randint(1, 5)):
+    for _ in range(items_per_transfer):
         item = random.choice(items)
         qty = random.randint(1, 10)
         rate = float(item['Valuation Rate'])
@@ -78,12 +73,10 @@ def generate_stock_entry(warehouses: List[str], items: List[Dict]) -> Dict:
         total_amount += amount
 
         stock_entry["items"].append({
-            "doctype": "Stock Entry Detail",
+            "docstatus": 1,
             "s_warehouse": Config.MAIN_WAREHOUSE,
             "t_warehouse": target_warehouse,
             "item_code": item['Item Code'],
-            "item_name": item['Item Name'],
-            "description": item.get('Description', ''),
             "item_group": item.get('Item Group', ''),
             "qty": qty,
             "transfer_qty": qty,
@@ -95,7 +88,10 @@ def generate_stock_entry(warehouses: List[str], items: List[Dict]) -> Dict:
             "basic_amount": amount,
             "amount": amount,
             "expense_account": "5000 - Aufwendungen f. Roh-, Hilfs- und Betriebsstoffe und f. bezogene Waren - B",
-            "cost_center": "Main - B"
+            "cost_center": "Main - B",
+            "parentfield": "items",
+            "parenttype": "Stock Entry",
+            "doctype": "Stock Entry Detail"
         })
 
     stock_entry["total_outgoing_value"] = total_amount
@@ -104,13 +100,17 @@ def generate_stock_entry(warehouses: List[str], items: List[Dict]) -> Dict:
 
     return stock_entry
 
-
 def upload_stock_entry_to_api(stock_entry: Dict) -> bool:
     api = StockEntryAPI()
     try:
         response = api.create(stock_entry)
-        if response.get('name'):
-            logging.info(f"Successfully uploaded Stock Entry: {response['name']}")
+        if response.get('data', {}).get('name'):
+            entry_name = response['data']['name']
+            items_count = len(response['data'].get('items', []))
+            total_amount = response['data'].get('total_amount', 0)
+            logging.info(f"Successfully uploaded Stock Entry: {entry_name}")
+            logging.info(f"Items transferred: {items_count}")
+            logging.info(f"Total amount: {total_amount}")
             return True
         else:
             logging.error(f"Failed to upload Stock Entry: {response}")
@@ -118,7 +118,6 @@ def upload_stock_entry_to_api(stock_entry: Dict) -> bool:
     except Exception as e:
         logging.error(f"Error uploading Stock Entry: {str(e)}")
         return False
-
 
 def save_to_csv(data: List[Dict], filename: str):
     if not data:
@@ -132,8 +131,11 @@ def save_to_csv(data: List[Dict], filename: str):
         writer.writerows(data)
     logging.info(f"Saved {len(data)} records to {filename}")
 
+def main():
+    # Definieren Sie hier die Anzahl der Transfers und Items pro Transfer
+    num_transfers = 3  # Beispielwert, kann angepasst werden
+    items_per_transfer = 2  # Beispielwert, kann angepasst werden
 
-def main(num_transfers: int = 10):
     warehouses = load_warehouses()
     items = load_items()
 
@@ -141,7 +143,7 @@ def main(num_transfers: int = 10):
     failed_uploads = []
 
     for _ in range(num_transfers):
-        stock_entry = generate_stock_entry(warehouses, items)
+        stock_entry = generate_stock_entry(warehouses, items, items_per_transfer)
         if upload_stock_entry_to_api(stock_entry):
             successful_uploads.append(stock_entry)
         else:
@@ -153,7 +155,6 @@ def main(num_transfers: int = 10):
     logging.info(f"Total transfers: {num_transfers}")
     logging.info(f"Successful uploads: {len(successful_uploads)}")
     logging.info(f"Failed uploads: {len(failed_uploads)}")
-
 
 if __name__ == "__main__":
     main()
