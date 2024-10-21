@@ -10,27 +10,35 @@ fake = Faker('de_DE')
 # Initialize CustomerAPI
 customer_api = CustomerAPI()
 
+
 class Config:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     INPUT_DIR = os.path.join(BASE_DIR, 'master_data_csv')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
 
-def generate_customer_code(is_company):
-    prefix = "CUST-B2B-" if is_company else "CUST-B2C-"
-    return f"{prefix}{random.randint(1000, 9999)}"
 
-def generate_email(name):
-    clean_name = ''.join(e.lower() for e in name if e.isalnum())
-    return f"{clean_name}@example.com"
+def generate_b2b_customer_name():
+    bike_related_words = [
+        "Fahrrad", "Bike", "Zweirad", "Velo", "Rad", "Cycle", "Pedal",
+        "Sattel", "Kette", "Speiche", "Lenker", "Bremse", "Schaltung"
+    ]
+    business_types = [
+        "Großhandel", "Handel", "Vertrieb", "Import", "Export", "Logistik",
+        "Versand", "Service", "Reparatur", "Werkstatt", "Shop", "Store"
+    ]
+    suffixes = ["GmbH", "AG", "KG", "OHG", "GmbH & Co. KG", "e.K."]
 
-def load_customer_groups():
-    with open(os.path.join(Config.INPUT_DIR, 'customer_groups.csv'), 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        return {row['Customer Group Name']: row for row in reader}
+    name_parts = [
+        random.choice(bike_related_words),
+        random.choice(business_types),
+        fake.last_name(),
+        random.choice(suffixes)
+    ]
+    return " ".join(name_parts)
 
 
 def generate_b2b_customer():
-    company_name = fake.company()
+    company_name = generate_b2b_customer_name()
     return {
         "doctype": "Customer",
         "naming_series": "CUST-.YYYY.-",
@@ -39,6 +47,7 @@ def generate_b2b_customer():
         "customer_group": "B2B",
         "language": "de"
     }
+
 
 def generate_b2c_customer():
     customer_name = fake.name()
@@ -75,10 +84,30 @@ def create_b2c_customer():
         return None
 
 
+def save_customers_to_csv(customers, filename):
+    if not customers:
+        print("No customers to save.")
+        return
+
+    fieldnames = customers[0].keys()
+    filepath = os.path.join(Config.OUTPUT_DIR, filename)
+
+    with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for customer in customers:
+            writer.writerow(customer)
+
+    print(f"Saved {len(customers)} customers to {filepath}")
+
+
 def main():
-    num_b2b_customers = 2
+    num_b2b_customers = 10
     created_b2b_customers = create_b2b_customers(num_b2b_customers)
     print(f"Created {len(created_b2b_customers)} B2B customers")
+
+    # Save B2B customers to CSV
+    save_customers_to_csv(created_b2b_customers, 'b2b_customers.csv')
 
 
 if __name__ == "__main__":

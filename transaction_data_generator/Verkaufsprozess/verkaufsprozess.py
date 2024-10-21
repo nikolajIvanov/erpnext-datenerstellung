@@ -19,6 +19,8 @@ class Config:
     START_DATE = datetime(2024, 1, 1)
     END_DATE = datetime(2024, 12, 31)
     MAIN_WAREHOUSE = "Lager Stuttgart - B"
+    B2B_CUSTOMERS_FILE = 'b2b_customers.csv'
+    B2C_CUSTOMERS_FILE = 'b2c_customers.csv'
 
     # Anzahl der zu generierenden Aufträge pro Verkaufskanal
     NUM_ORDERS_B2B = 1
@@ -39,6 +41,30 @@ def load_csv_data(filename: str) -> List[Dict]:
     with open(os.path.join(Config.INPUT_DIR, filename), 'r', encoding='utf-8') as f:
         return list(csv.DictReader(f))
 
+
+def load_b2b_customers() -> List[Dict]:
+    b2b_customers = []
+
+    # Laden der B2B-Kunden aus der CSV-Datei
+    b2b_file_path = os.path.join(Config.INPUT_DIR, Config.B2B_CUSTOMERS_FILE)
+    if os.path.exists(b2b_file_path):
+        with open(b2b_file_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            b2b_customers = [{"Customer Name": row['name']} for row in reader]
+
+    return b2b_customers
+
+
+def save_b2c_customers(customers: List[Dict]):
+    file_path = os.path.join(Config.OUTPUT_DIR, Config.B2C_CUSTOMERS_FILE)
+    fieldnames = customers[0].keys() if customers else []
+
+    with open(file_path, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(customers)
+
+    logging.info(f"B2C-Kunden in {file_path} gespeichert")
 
 def generate_id(prefix: str) -> str:
     return f"{prefix}-{uuid.uuid4().hex[:8].upper()}"
@@ -67,9 +93,15 @@ def load_price_lists() -> Dict[str, Dict]:
     return {pl['Price List Name']: pl for pl in price_lists}
 
 
-def generate_sales_order(customers: Dict[str, List[Dict]], products: List[Dict], price_lists: Dict[str, Dict],
-                         sales_channel: str) -> Dict:
-    customer = random.choice(customers['B2B' if sales_channel == 'B2B' else 'B2C'])
+def generate_sales_order(b2b_customers: List[Dict], products: List[Dict], price_lists: Dict[str, Dict], sales_channel: str) -> Dict:
+    if sales_channel == 'B2B':
+        customer = random.choice(b2b_customers)
+    else:
+        # Für B2C immer einen neuen Kunden erstellen
+        customer = create_b2c_customer()
+        if not customer:
+            raise ValueError("Erstellung eines neuen B2C-Kunden fehlgeschlagen.")
+
     order_date = random_date(Config.START_DATE, Config.END_DATE)
 
     price_list = price_lists['Wholesale Price'] if sales_channel == 'B2B' else price_lists['Standard Selling']
@@ -163,9 +195,11 @@ def generate_payment_entry(sales_invoice: Dict) -> Dict:
 
 
 def main():
-    customers = load_customers()
+    b2b_customers = load_b2b_customers()
     products = load_products()
     price_lists = load_price_lists()
+
+    created_b2c_customers = []
 
     sales_channels = {
         'B2B': Config.NUM_ORDERS_B2B,
@@ -174,44 +208,61 @@ def main():
     }
 
     for channel, num_orders in sales_channels.items():
-        logging.info(f"Generating {num_orders} orders for {channel} channel")
+        logging.info(f"Generiere {num_orders} Aufträge für den Kanal {channel}")
         for _ in range(num_orders):
-            # Generiere Verkaufsauftrag
-            sales_order = generate_sales_order(customers, products, price_lists, channel)
-            so_response = sales_order_api.create(sales_order)
-            if so_response.get('data'):
-                sales_order['name'] = so_response['data']['name']
-                logging.info(f"Created Sales Order: {sales_order['name']}")
+            try:
+                # Generiere Verkaufsauftrag
+                sales_order = generate_sales_order(b2b_customers, products, price_lists, channel)
+                if channel != 'B2B':
+                    created_b2c_customers.append(sales_order['customer'])
 
-                # Generiere Lieferschein
-                delivery_note = generate_delivery_note(sales_order)
-                dn_response = delivery_note_api.create(delivery_note)
-                if dn_response.get('data'):
-                    delivery_note['name'] = dn_response['data']['name']
-                    logging.info(f"Created Delivery Note: {delivery_note['name']}")
+                so_response = sales_order_api.create(sales_order)
+                if so_response.get('data'):
+                    sales_order['name'] = so_response['data']['name']
+                    logging.info(f"Verkaufsauftrag erstellt: {sales_order['name']}")
 
-                    # Generiere Rechnung
-                    sales_invoice = generate_sales_invoice(sales_order, delivery_note)
-                    si_response = sales_invoice_api.create(sales_invoice)
-                    if si_response.get('data'):
-                        sales_invoice['name'] = si_response['data']['name']
-                        logging.info(f"Created Sales Invoice: {sales_invoice['name']}")
+                    # Generiere Lieferschein
+                    delivery_note = generate_delivery_note(sales_order)
+                    dn_response = delivery_note_api.create(delivery_note)
+                    if dn_response.get('data'):
+                        delivery_note['name'] = dn_response['data']['name']
+                        logging.info(f"Lieferschein erstellt: {delivery_note['name']}")
 
-                        # Generiere Zahlungseingang
-                        payment_entry = generate_payment_entry(sales_invoice)
-                        pe_response = payment_entry_api.create(payment_entry)
-                        if pe_response.get('data'):
-                            payment_entry['name'] = pe_response['data']['name']
-                            logging.info(f"Created Payment Entry: {payment_entry['name']}")
-                            logging.info(f"Completed full sales cycle for {channel} order {sales_order['name']}")
+                        # Generiere Rechnung
+                        sales_invoice = generate_sales_invoice(sales_order, delivery_note)
+                        si_response = sales_invoice_api.create(sales_invoice)
+                        if si_response.get('data'):
+                            sales_invoice['name'] = si_response['data']['name']
+                            logging.info(f"Rechnung erstellt: {sales_invoice['name']}")
+
+                            # Generiere Zahlungseingang
+                            payment_entry = generate_payment_entry(sales_invoice)
+                            pe_response = payment_entry_api.create(payment_entry)
+                            if pe_response.get('data'):
+                                payment_entry['name'] = pe_response['data']['name']
+                                logging.info(f"Zahlungseingang erstellt: {payment_entry['name']}")
+                                logging.info(
+                                    f"Vollständiger Verkaufszyklus für {channel}-Auftrag {sales_order['name']} abgeschlossen")
+                            else:
+                                logging.error(
+                                    f"Fehler bei der Erstellung des Zahlungseingangs für Rechnung {sales_invoice['name']}")
                         else:
-                            logging.error(f"Failed to create Payment Entry for invoice {sales_invoice['name']}")
+                            logging.error(
+                                f"Fehler bei der Erstellung der Rechnung für Lieferschein {delivery_note['name']}")
                     else:
-                        logging.error(f"Failed to create Sales Invoice for delivery note {delivery_note['name']}")
+                        logging.error(
+                            f"Fehler bei der Erstellung des Lieferscheins für Verkaufsauftrag {sales_order['name']}")
                 else:
-                    logging.error(f"Failed to create Delivery Note for sales order {sales_order['name']}")
-            else:
-                logging.error(f"Failed to create Sales Order for {channel}")
+                    logging.error(f"Fehler bei der Erstellung des Verkaufsauftrags für {channel}")
+
+            except ValueError as e:
+                logging.error(f"Fehler bei der Generierung des Auftrags für {channel}: {str(e)}")
+                continue
+
+    # Speichern der B2C-Kundenliste am Ende
+    save_b2c_customers(created_b2c_customers)
+
+    logging.info("Verkaufsprozess abgeschlossen.")
 
 
 if __name__ == "__main__":
