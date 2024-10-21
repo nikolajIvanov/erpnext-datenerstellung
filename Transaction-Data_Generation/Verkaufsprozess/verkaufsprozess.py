@@ -12,7 +12,7 @@ from api.payment_entry_api import PaymentEntryAPI
 
 
 class Config:
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     INPUT_DIR = os.path.join(BASE_DIR, 'Master-Data_Processed_CSV')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
     START_DATE = datetime(2024, 1, 1)

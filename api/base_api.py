@@ -1,5 +1,5 @@
 import requests
-from config.api_config import BASE_URL, API_KEY
+from api.config.api_config import BASE_URL, API_KEY
 
 
 class BaseAPI:

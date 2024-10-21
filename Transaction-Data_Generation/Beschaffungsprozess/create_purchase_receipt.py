@@ -8,7 +8,7 @@ from api.purchase_receipt_api import PurchaseReceiptAPI
 
 
 class Config:
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     INPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
     START_DATE = datetime(2023, 1, 1)
