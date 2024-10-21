@@ -147,4 +147,4 @@ def main(num_work_orders: int):
 
 
 if __name__ == "__main__":
-    main(num_work_orders=2)
+    main(num_work_orders=100)

@@ -1,152 +1,115 @@
-import os
 import csv
+import os
+from datetime import datetime, timedelta
 import random
 import logging
-from datetime import datetime, timedelta
-from typing import List, Dict, Any
-from dataclasses import dataclass
+from typing import List, Dict, Tuple
 from api.purchase_receipt_api import PurchaseReceiptAPI
 
 
-@dataclass
 class Config:
-    BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    INPUT_DIR: str = os.path.join(BASE_DIR, 'Beschaffungsprozess Demo')
-    MASTER_DATA_DIR: str = os.path.join(BASE_DIR, 'Master-Data_Processed_CSV')
-    OUTPUT_DIR: str = os.path.join(BASE_DIR, 'Beschaffungsprozess Demo')
-    ERROR_DIR: str = os.path.join(BASE_DIR, 'Import Error')
-    TARGET_WAREHOUSE: str = "Lager Stuttgart - B"
-    PO_FILE: str = 'generated_purchase_orders.csv'
-    ITEMS_FILE: str = 'items.csv'
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    INPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
+    OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
+    START_DATE = datetime(2023, 1, 1)
+    END_DATE = datetime(2023, 12, 31)
+    TARGET_WAREHOUSE = "Lager Stuttgart - B"
 
-
-config = Config()
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def load_csv_data(filename: str, directory: str) -> List[Dict[str, Any]]:
-    filepath = os.path.join(directory, filename)
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            return list(csv.DictReader(f))
-    except FileNotFoundError:
-        logging.error(f"File not found: {filepath}")
-        return []
+def load_purchase_orders(filename: str) -> List[Dict]:
+    with open(os.path.join(Config.INPUT_DIR, filename), 'r', encoding='utf-8') as f:
+        return list(csv.DictReader(f))
 
 
-def load_purchase_orders() -> List[Dict[str, Any]]:
-    return load_csv_data(config.PO_FILE, config.INPUT_DIR)
+def random_date(start_date: datetime, end_date: datetime) -> datetime:
+    return start_date + timedelta(
+        seconds=random.randint(0, int((end_date - start_date).total_seconds()))
+    )
 
 
-def load_items() -> Dict[str, Dict[str, Any]]:
-    items = load_csv_data(config.ITEMS_FILE, config.MASTER_DATA_DIR)
-    return {item['Item Code']: item for item in items}
-
-
-def generate_id(prefix: str, date: datetime) -> str:
-    year = date.year
-    number = random.randint(1, 99999)
-    return f"{prefix}-{year}-{number:05d}"
-
-
-def generate_purchase_receipts(purchase_orders: List[Dict[str, Any]], items: Dict[str, Dict[str, Any]]) -> List[
-    Dict[str, Any]]:
+def generate_purchase_receipts(purchase_orders: List[Dict]) -> List[Dict]:
     purchase_receipts = []
     for po in purchase_orders:
         pr_date = datetime.strptime(po['transaction_date'], "%Y-%m-%d") + timedelta(days=random.randint(1, 7))
 
-        item_code = po['Item Code (Items)']
-        item = items.get(item_code)
-
-        if not item:
-            logging.warning(f"Item with code {item_code} not found in items data. Skipping this PO.")
-            continue
-
-        pr = {
-            "ID": generate_id("MAT-PRE", pr_date),
-            "Company": po['company'],
-            "Currency": po['currency'],
-            "Date": pr_date.strftime("%Y-%m-%d"),
-            "Exchange Rate": po['conversion_rate'],
-            "Net Total (Company Currency)": po['Amount (Items)'],
-            "Posting Time": pr_date.strftime("%H:%M:%S.%f"),
-            "Series": "MAT-PRE-.YYYY.-",
-            "Status": "Draft",
-            "Supplier": po['supplier'],
-            "ID (Items)": generate_id("PRITEM", pr_date),
-            "Conversion Factor (Items)": "1,00",
-            "Item Code (Items)": item_code,
-            "Item Name (Items)": item['Item Name'],
-            "Rate (Company Currency) (Items)": po['Rate (Items)'],
-            "Received Quantity (Items)": po['Quantity (Items)'],
-            "Stock UOM (Items)": item['Default Unit of Measure'],
-            "UOM (Items)": item['Default Unit of Measure'],
-            "Purchase Order (Items)": po['name'],
-            "Purchase Order Item (Items)": po['ID (Items)'],
-            "Accepted Warehouse (Items)": config.TARGET_WAREHOUSE,
-            "Tax Rate (Purchase Taxes and Charges)": "19,00",
-            "Account Head (Purchase Taxes and Charges)": "1406 - Abziehbare Vorsteuer 19 % - B",
-            "Accepted Quantity (Items)": po['Quantity (Items)'],
-            "Description (Purchase Taxes and Charges)": "Abziehbare Vorsteuer 19 %",
-            "Type (Purchase Taxes and Charges)": "On Net Total",
-            "Add or Deduct (Purchase Taxes and Charges)": "Add",
-            "Consider Tax or Charge for (Purchase Taxes and Charges)": "Total",
-            "Batch No (Items)": ""  # We don't have batch information
+        purchase_receipt = {
+            "doctype": "Purchase Receipt",
+            "naming_series": "MAT-PRE-.YYYY.-",
+            "supplier": po['supplier'],
+            "posting_date": pr_date.strftime("%Y-%m-%d"),
+            "posting_time": pr_date.strftime("%H:%M:%S"),
+            "company": po['company'],
+            "currency": po['currency'],
+            "conversion_rate": float(po['conversion_rate']),
+            "buying_price_list": po['buying_price_list'],
+            "price_list_currency": po['price_list_currency'],
+            "plc_conversion_rate": float(po['plc_conversion_rate']),
+            "set_warehouse": Config.TARGET_WAREHOUSE,
+            "is_return": 0,
+            "apply_putaway_rule": 0,
+            "status": "To Bill",
+            "set_posting_time": 1,
+            "docstatus": 1  # 1 = Submitted
         }
-        purchase_receipts.append(pr)
+        purchase_receipts.append(purchase_receipt)
     return purchase_receipts
 
 
-def save_to_csv(data: List[Dict[str, Any]], filename: str, directory: str) -> None:
-    filepath = os.path.join(directory, filename)
+def upload_purchase_receipt_to_api(purchase_receipt: Dict) -> Tuple[bool, str, Dict]:
+    api = PurchaseReceiptAPI()
+    try:
+        response = api.create(purchase_receipt)
+        content = response['data']
+
+        if 'name' in content:
+            system_id = content['name']
+            logging.info(f"Successfully uploaded Purchase Receipt. ID: {system_id}")
+            return True, system_id, content
+        else:
+            raise ValueError("API response did not contain expected data structure")
+    except Exception as e:
+        logging.error(f"Failed to upload Purchase Receipt: {str(e)}")
+        return False, "", {}
+
+
+def save_to_csv(data: List[Dict], filename: str):
     if not data:
-        logging.warning(f"No data to save to {filepath}")
+        logging.warning("No data to save to CSV.")
         return
 
-    fieldnames = data[0].keys()
-    try:
-        with open(filepath, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(data)
-        logging.info(f"Data saved to {filepath}")
-    except IOError as e:
-        logging.error(f"Error saving to CSV: {str(e)}")
+    fieldnames = list(data[0].keys())
+    if 'name' not in fieldnames:
+        fieldnames.append('name')  # Ensure 'name' field is included
+
+    with open(os.path.join(Config.OUTPUT_DIR, filename), 'w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in data:
+            writer.writerow(row)
+    logging.info(f"Saved {len(data)} records to {filename}")
 
 
-def main() -> None:
-    purchase_orders = load_purchase_orders()
+def main():
+    purchase_orders = load_purchase_orders('uploaded_purchase_orders.csv')
     logging.info(f"Loaded {len(purchase_orders)} purchase orders")
 
-    if not purchase_orders:
-        logging.warning("No purchase orders found. Check the input file.")
-        return
-
-    items = load_items()
-    logging.info(f"Loaded {len(items)} items")
-
-    purchase_receipts = generate_purchase_receipts(purchase_orders, items)
+    purchase_receipts = generate_purchase_receipts(purchase_orders)
     logging.info(f"Generated {len(purchase_receipts)} purchase receipts")
 
-    pr_api = PurchaseReceiptAPI()
-    successful_receipts = []
-    failed_receipts = []
-
+    successful_uploads = []
     for pr in purchase_receipts:
-        try:
-            logging.info(f"Sending Purchase Receipt for PO {pr['Purchase Order (Items)']} to API...")
-            result = pr_api.create(pr)
-            logging.info(f"Successfully created Purchase Receipt: {result.get('name', 'Unknown')}")
-            successful_receipts.append(pr)
-        except Exception as e:
-            logging.error(f"Failed to create Purchase Receipt. Error: {str(e)}")
-            failed_receipts.append(pr)
+        success, system_id, response_data = upload_purchase_receipt_to_api(pr)
+        if success:
+            pr['name'] = system_id
+            successful_uploads.append(pr)
+        else:
+            logging.error(f"Failed to upload purchase receipt: {pr}")
 
-    save_to_csv(successful_receipts, 'successful_purchase_receipts.csv', config.OUTPUT_DIR)
-    save_to_csv(failed_receipts, 'failed_purchase_receipts.csv', config.ERROR_DIR)
-
-    logging.info("Process completed.")
+    save_to_csv(successful_uploads, 'uploaded_purchase_receipts.csv')
+    logging.info(f"Successfully uploaded {len(successful_uploads)} out of {len(purchase_receipts)} purchase receipts")
 
 
 if __name__ == "__main__":

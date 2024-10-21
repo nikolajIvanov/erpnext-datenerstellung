@@ -10,7 +10,7 @@ class Config:
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
     START_DATE = datetime(2023, 1, 1)
     END_DATE = datetime(2023, 12, 31)
-    NUM_ORDERS = 2
+    NUM_ORDERS = 100
     PAYMENT_TERMS = [0, 30, 60]
     TARGET_WAREHOUSE = "Lager Stuttgart - B"
     MAPPING_FILE = 'item_supplier_mapping.csv'
