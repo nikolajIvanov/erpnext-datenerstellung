@@ -2,7 +2,13 @@ import csv
 import random
 from faker import Faker
 from datetime import datetime, timedelta
+"""
+Für uns irrelevant:
 
+Unterscheidung zwischen Company und Customer:
+"Company" repräsentiert in ERPNext typischerweise Ihr eigenes Unternehmen oder Tochtergesellschaften.
+"Customer" wird für Ihre Kunden verwendet, unabhängig davon, ob es sich um Einzelpersonen oder Unternehmen handelt.
+"""
 # Initialize Faker for German locale
 fake = Faker('de_DE')
 
