@@ -3,6 +3,7 @@ import os
 from datetime import datetime, timedelta
 import random
 import logging
+import json
 from typing import List, Dict
 import uuid
 from api.sales_order_api import SalesOrderAPI
@@ -16,26 +17,33 @@ class Config:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     INPUT_DIR = os.path.join(BASE_DIR, 'master_data_csv')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
+    JSON_DIR = os.path.join(BASE_DIR, 'api_payloads')  # New directory for JSON payloads
     START_DATE = datetime(2024, 1, 1)
     END_DATE = datetime(2024, 12, 31)
     MAIN_WAREHOUSE = "Lager Stuttgart - B"
     B2B_CUSTOMERS_FILE = 'b2b_customers.csv'
     B2C_CUSTOMERS_FILE = 'b2c_customers.csv'
 
-    # Anzahl der zu generierenden Aufträge pro Verkaufskanal
+    # Number of orders to generate per sales channel
     NUM_ORDERS_B2B = 1
     NUM_ORDERS_B2C_ONLINE = 0
     NUM_ORDERS_B2C_FILIALE = 0
 
+    # Markup factors for different customer groups
+    B2B_MARKUP = 1.3  # 30% markup for B2B
+    B2C_MARKUP = 1.5  # 50% markup for B2C
+
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Initialisierung der API-Klassen
+# Initialize API classes
 sales_order_api = SalesOrderAPI()
 delivery_note_api = DeliveryNoteAPI()
 sales_invoice_api = SalesInvoiceAPI()
 payment_entry_api = PaymentEntryAPI()
 
+# Ensure JSON directory exists
+os.makedirs(Config.JSON_DIR, exist_ok=True)
 
 def load_csv_data(filename: str) -> List[Dict]:
     with open(os.path.join(Config.INPUT_DIR, filename), 'r', encoding='utf-8') as f:
@@ -44,27 +52,23 @@ def load_csv_data(filename: str) -> List[Dict]:
 
 def load_b2b_customers() -> List[Dict]:
     b2b_customers = []
-
-    # Laden der B2B-Kunden aus der CSV-Datei
     b2b_file_path = os.path.join(Config.INPUT_DIR, Config.B2B_CUSTOMERS_FILE)
     if os.path.exists(b2b_file_path):
         with open(b2b_file_path, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
-            b2b_customers = [{"Customer Name": row['name']} for row in reader]
-
+            b2b_customers = [{"Customer Name": row['name'], "Customer Group": "B2B", "Territory": "Germany"} for row in reader]
     return b2b_customers
 
 
 def save_b2c_customers(customers: List[Dict]):
     file_path = os.path.join(Config.OUTPUT_DIR, Config.B2C_CUSTOMERS_FILE)
     fieldnames = customers[0].keys() if customers else []
-
     with open(file_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(customers)
+    logging.info(f"B2C customers saved to {file_path}")
 
-    logging.info(f"B2C-Kunden in {file_path} gespeichert")
 
 def generate_id(prefix: str) -> str:
     return f"{prefix}-{uuid.uuid4().hex[:8].upper()}"
@@ -76,50 +80,54 @@ def random_date(start_date: datetime, end_date: datetime) -> datetime:
     )
 
 
-def load_customers() -> Dict[str, List[Dict]]:
-    customers = load_csv_data('customers.csv')
-    return {
-        'B2B': [c for c in customers if c['Customer Group'] in ['Wholesale', 'B2B']],
-        'B2C': [c for c in customers if c['Customer Group'] in ['Retail', 'B2C']]
-    }
-
-
 def load_products() -> List[Dict]:
     return load_csv_data('items.csv')
 
 
-def load_price_lists() -> Dict[str, Dict]:
-    price_lists = load_csv_data('price_lists.csv')
-    return {pl['Price List Name']: pl for pl in price_lists}
+def calculate_selling_rate(base_rate: float, sales_channel: str) -> float:
+    """Calculate selling rate based on valuation rate and customer type"""
+    markup = Config.B2B_MARKUP if sales_channel == 'B2B' else Config.B2C_MARKUP
+    return round(float(base_rate) * markup, 2)
 
 
-def generate_sales_order(b2b_customers: List[Dict], products: List[Dict], price_lists: Dict[str, Dict], sales_channel: str) -> Dict:
+def save_api_payload(payload: Dict, prefix: str, identifier: str):
+    """Save API payload to JSON file with timestamp"""
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"{prefix}_{identifier}_{timestamp}.json"
+    filepath = os.path.join(Config.JSON_DIR, filename)
+
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
+
+    logging.info(f"Saved {prefix} payload to {filepath}")
+    return filepath
+
+def generate_sales_order(b2b_customers: List[Dict], products: List[Dict], sales_channel: str) -> Dict:
     if sales_channel == 'B2B':
         customer = random.choice(b2b_customers)
     else:
-        # Für B2C immer einen neuen Kunden erstellen
         customer = create_b2c_customer()
         if not customer:
-            raise ValueError("Erstellung eines neuen B2C-Kunden fehlgeschlagen.")
+            raise ValueError("Failed to create new B2C customer.")
+        customer.update({"Customer Group": "B2C", "Territory": "Germany"})
 
     order_date = random_date(Config.START_DATE, Config.END_DATE)
 
-    price_list = price_lists['Wholesale Price'] if sales_channel == 'B2B' else price_lists['Standard Selling']
-
     order_items = []
     total_amount = 0.0
-    for _ in range(random.randint(1, 5)):  # 1 bis 5 Produkte pro Auftrag
+    for _ in range(random.randint(1, 5)):  # 1 to 5 products per order
         product = random.choice(products)
         qty = random.randint(1, 10)
-        rate = float(product['Standard Selling Rate'])
-        amount = round(qty * rate, 2)
+        base_rate = float(product['Valuation Rate'])
+        selling_rate = calculate_selling_rate(base_rate, sales_channel)
+        amount = round(qty * selling_rate, 2)
         total_amount += amount
 
         order_items.append({
             "item_code": product['Item Code'],
-            "item_name": product['Item Name'],
+            "item_name": product.get('Item Name', product['Item Code']),
             "qty": qty,
-            "rate": rate,
+            "rate": selling_rate,
             "amount": amount,
             "warehouse": Config.MAIN_WAREHOUSE if sales_channel != 'B2C Filiale' else f"Filiale {random.randint(1, 10)}"
         })
@@ -132,10 +140,8 @@ def generate_sales_order(b2b_customers: List[Dict], products: List[Dict], price_
         "customer": customer['Customer Name'],
         "customer_group": customer['Customer Group'],
         "territory": customer['Territory'],
-        "selling_price_list": price_list['Price List Name'],
         "currency": "EUR",
         "conversion_rate": 1.0,
-        "price_list_currency": "EUR",
         "grand_total": total_amount,
         "total": total_amount,
         "items": order_items,
@@ -153,7 +159,6 @@ def generate_delivery_note(sales_order: Dict) -> Dict:
         "customer_group": sales_order['customer_group'],
         "territory": sales_order['territory'],
         "currency": sales_order['currency'],
-        "selling_price_list": sales_order['selling_price_list'],
         "items": sales_order['items'],
         "sales_order": sales_order['name']
     }
@@ -169,7 +174,6 @@ def generate_sales_invoice(sales_order: Dict, delivery_note: Dict) -> Dict:
         "customer_group": sales_order['customer_group'],
         "territory": sales_order['territory'],
         "currency": sales_order['currency'],
-        "selling_price_list": sales_order['selling_price_list'],
         "items": sales_order['items'],
         "sales_order": sales_order['name'],
         "delivery_note": delivery_note['name'],
@@ -197,8 +201,6 @@ def generate_payment_entry(sales_invoice: Dict) -> Dict:
 def main():
     b2b_customers = load_b2b_customers()
     products = load_products()
-    price_lists = load_price_lists()
-
     created_b2c_customers = []
 
     sales_channels = {
@@ -208,61 +210,61 @@ def main():
     }
 
     for channel, num_orders in sales_channels.items():
-        logging.info(f"Generiere {num_orders} Aufträge für den Kanal {channel}")
+        logging.info(f"Generating {num_orders} orders for channel {channel}")
         for _ in range(num_orders):
             try:
-                # Generiere Verkaufsauftrag
-                sales_order = generate_sales_order(b2b_customers, products, price_lists, channel)
+                # Generate Sales Order
+                sales_order = generate_sales_order(b2b_customers, products, channel)
                 if channel != 'B2B':
                     created_b2c_customers.append(sales_order['customer'])
 
                 so_response = sales_order_api.create(sales_order)
                 if so_response.get('data'):
                     sales_order['name'] = so_response['data']['name']
-                    logging.info(f"Verkaufsauftrag erstellt: {sales_order['name']}")
+                    logging.info(f"Sales Order created: {sales_order['name']}")
 
-                    # Generiere Lieferschein
+                    # Generate Delivery Note
                     delivery_note = generate_delivery_note(sales_order)
                     dn_response = delivery_note_api.create(delivery_note)
                     if dn_response.get('data'):
                         delivery_note['name'] = dn_response['data']['name']
-                        logging.info(f"Lieferschein erstellt: {delivery_note['name']}")
+                        logging.info(f"Delivery Note created: {delivery_note['name']}")
 
-                        # Generiere Rechnung
+                        # Generate Invoice
                         sales_invoice = generate_sales_invoice(sales_order, delivery_note)
                         si_response = sales_invoice_api.create(sales_invoice)
                         if si_response.get('data'):
                             sales_invoice['name'] = si_response['data']['name']
-                            logging.info(f"Rechnung erstellt: {sales_invoice['name']}")
+                            logging.info(f"Invoice created: {sales_invoice['name']}")
 
-                            # Generiere Zahlungseingang
+                            # Generate Payment Entry
                             payment_entry = generate_payment_entry(sales_invoice)
                             pe_response = payment_entry_api.create(payment_entry)
                             if pe_response.get('data'):
                                 payment_entry['name'] = pe_response['data']['name']
-                                logging.info(f"Zahlungseingang erstellt: {payment_entry['name']}")
+                                logging.info(f"Payment Entry created: {payment_entry['name']}")
                                 logging.info(
-                                    f"Vollständiger Verkaufszyklus für {channel}-Auftrag {sales_order['name']} abgeschlossen")
+                                    f"Complete sales cycle for {channel} order {sales_order['name']} finished")
                             else:
                                 logging.error(
-                                    f"Fehler bei der Erstellung des Zahlungseingangs für Rechnung {sales_invoice['name']}")
+                                    f"Error creating payment entry for invoice {sales_invoice['name']}")
                         else:
                             logging.error(
-                                f"Fehler bei der Erstellung der Rechnung für Lieferschein {delivery_note['name']}")
+                                f"Error creating invoice for delivery note {delivery_note['name']}")
                     else:
                         logging.error(
-                            f"Fehler bei der Erstellung des Lieferscheins für Verkaufsauftrag {sales_order['name']}")
+                            f"Error creating delivery note for sales order {sales_order['name']}")
                 else:
-                    logging.error(f"Fehler bei der Erstellung des Verkaufsauftrags für {channel}")
+                    logging.error(f"Error creating sales order for {channel}")
 
             except ValueError as e:
-                logging.error(f"Fehler bei der Generierung des Auftrags für {channel}: {str(e)}")
+                logging.error(f"Error generating order for {channel}: {str(e)}")
                 continue
 
-    # Speichern der B2C-Kundenliste am Ende
+    # Save B2C customer list at the end
     save_b2c_customers(created_b2c_customers)
 
-    logging.info("Verkaufsprozess abgeschlossen.")
+    logging.info("Sales process completed.")
 
 
 if __name__ == "__main__":
