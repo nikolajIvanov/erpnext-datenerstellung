@@ -18,8 +18,8 @@ class Config:
     INPUT_DIR = os.path.join(BASE_DIR, 'master_data_csv')
     OUTPUT_DIR = os.path.join(BASE_DIR, 'Generated_CSV')
     JSON_DIR = os.path.join(BASE_DIR, 'api_payloads')  # New directory for JSON payloads
-    START_DATE = datetime(2024, 1, 1)
-    END_DATE = datetime(2024, 12, 31)
+    START_DATE = datetime.now() - timedelta(days=5*365)  # 5 Jahre zurück
+    END_DATE = datetime.now()
     MAIN_WAREHOUSE = "Lager Stuttgart - B"
     B2B_CUSTOMERS_FILE = 'b2b_customers.csv'
     B2C_CUSTOMERS_FILE = 'b2c_customers.csv'
@@ -32,6 +32,10 @@ class Config:
     # Markup factors for different customer groups
     B2B_MARKUP = 1.3  # 30% markup for B2B
     B2C_MARKUP = 1.5  # 50% markup for B2C
+
+    DELIVERY_DELAY = (1, 7)   # Lieferung 1-7 Tage nach Bestellung
+    INVOICE_DELAY = (0, 3)    # Rechnung 0-3 Tage nach Lieferung
+    PAYMENT_DELAY = (0, 30)   # Zahlung 0-30 Tage nach Rechnungsstellung
 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -150,7 +154,8 @@ def generate_sales_order(b2b_customers: List[Dict], products: List[Dict], sales_
 
 
 def generate_delivery_note(sales_order: Dict) -> Dict:
-    delivery_date = datetime.strptime(sales_order['delivery_date'], "%Y-%m-%d")
+    so_date = datetime.strptime(sales_order['transaction_date'], "%Y-%m-%d")
+    delivery_date = so_date + timedelta(days=random.randint(*Config.DELIVERY_DELAY))
     return {
         "doctype": "Delivery Note",
         "naming_series": "DN-.YYYY.-",
@@ -165,7 +170,8 @@ def generate_delivery_note(sales_order: Dict) -> Dict:
 
 
 def generate_sales_invoice(sales_order: Dict, delivery_note: Dict) -> Dict:
-    invoice_date = datetime.strptime(delivery_note['posting_date'], "%Y-%m-%d") + timedelta(days=random.randint(0, 3))
+    dn_date = datetime.strptime(delivery_note['posting_date'], "%Y-%m-%d")
+    invoice_date = dn_date + timedelta(days=random.randint(*Config.INVOICE_DELAY))
     return {
         "doctype": "Sales Invoice",
         "naming_series": "INV-.YYYY.-",
@@ -183,7 +189,8 @@ def generate_sales_invoice(sales_order: Dict, delivery_note: Dict) -> Dict:
 
 
 def generate_payment_entry(sales_invoice: Dict) -> Dict:
-    payment_date = datetime.strptime(sales_invoice['posting_date'], "%Y-%m-%d") + timedelta(days=random.randint(0, 30))
+    si_date = datetime.strptime(sales_invoice['posting_date'], "%Y-%m-%d")
+    payment_date = si_date + timedelta(days=random.randint(*Config.PAYMENT_DELAY))
     return {
         "doctype": "Payment Entry",
         "naming_series": "PE-.YYYY.-",
@@ -286,3 +293,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
