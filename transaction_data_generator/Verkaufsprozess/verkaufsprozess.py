@@ -198,6 +198,63 @@ def generate_payment_entry(sales_invoice: Dict) -> Dict:
     }
 
 
+def process_sales_cycle(sales_order: Dict, channel: str) -> bool:
+    """Process complete sales cycle with payload logging"""
+    try:
+        # Save and create Sales Order
+        so_filepath = save_api_payload(sales_order, "sales_order", sales_order['customer'])
+        so_response = sales_order_api.create(sales_order)
+
+        if so_response.get('data'):
+            sales_order['name'] = so_response['data']['name']
+            logging.info(f"Sales Order created: {sales_order['name']}")
+
+            # Generate and save Delivery Note
+            delivery_note = generate_delivery_note(sales_order)
+            dn_filepath = save_api_payload(delivery_note, "delivery_note", sales_order['name'])
+            dn_response = delivery_note_api.create(delivery_note)
+
+            if dn_response.get('data'):
+                delivery_note['name'] = dn_response['data']['name']
+                logging.info(f"Delivery Note created: {delivery_note['name']}")
+
+                # Generate and save Invoice
+                sales_invoice = generate_sales_invoice(sales_order, delivery_note)
+                si_filepath = save_api_payload(sales_invoice, "sales_invoice", delivery_note['name'])
+                si_response = sales_invoice_api.create(sales_invoice)
+
+                if si_response.get('data'):
+                    sales_invoice['name'] = si_response['data']['name']
+                    logging.info(f"Invoice created: {sales_invoice['name']}")
+
+                    # Generate and save Payment Entry
+                    payment_entry = generate_payment_entry(sales_invoice)
+                    pe_filepath = save_api_payload(payment_entry, "payment_entry", sales_invoice['name'])
+                    pe_response = payment_entry_api.create(payment_entry)
+
+                    if pe_response.get('data'):
+                        logging.info(f"Payment Entry created: {pe_response['data']['name']}")
+                        logging.info(f"Complete sales cycle for {channel} order {sales_order['name']} finished")
+                        return True
+                    else:
+                        logging.error(f"Error creating payment entry for invoice {sales_invoice['name']}")
+                        logging.error(f"Payment Entry payload saved at: {pe_filepath}")
+                else:
+                    logging.error(f"Error creating invoice for delivery note {delivery_note['name']}")
+                    logging.error(f"Sales Invoice payload saved at: {si_filepath}")
+            else:
+                logging.error(f"Error creating delivery note for sales order {sales_order['name']}")
+                logging.error(f"Delivery Note payload saved at: {dn_filepath}")
+        else:
+            logging.error(f"Error creating sales order")
+            logging.error(f"Sales Order payload saved at: {so_filepath}")
+
+        return False
+    except Exception as e:
+        logging.error(f"Error in sales cycle: {str(e)}")
+        return False
+
+
 def main():
     b2b_customers = load_b2b_customers()
     products = load_products()
@@ -213,57 +270,17 @@ def main():
         logging.info(f"Generating {num_orders} orders for channel {channel}")
         for _ in range(num_orders):
             try:
-                # Generate Sales Order
                 sales_order = generate_sales_order(b2b_customers, products, channel)
                 if channel != 'B2B':
                     created_b2c_customers.append(sales_order['customer'])
 
-                so_response = sales_order_api.create(sales_order)
-                if so_response.get('data'):
-                    sales_order['name'] = so_response['data']['name']
-                    logging.info(f"Sales Order created: {sales_order['name']}")
-
-                    # Generate Delivery Note
-                    delivery_note = generate_delivery_note(sales_order)
-                    dn_response = delivery_note_api.create(delivery_note)
-                    if dn_response.get('data'):
-                        delivery_note['name'] = dn_response['data']['name']
-                        logging.info(f"Delivery Note created: {delivery_note['name']}")
-
-                        # Generate Invoice
-                        sales_invoice = generate_sales_invoice(sales_order, delivery_note)
-                        si_response = sales_invoice_api.create(sales_invoice)
-                        if si_response.get('data'):
-                            sales_invoice['name'] = si_response['data']['name']
-                            logging.info(f"Invoice created: {sales_invoice['name']}")
-
-                            # Generate Payment Entry
-                            payment_entry = generate_payment_entry(sales_invoice)
-                            pe_response = payment_entry_api.create(payment_entry)
-                            if pe_response.get('data'):
-                                payment_entry['name'] = pe_response['data']['name']
-                                logging.info(f"Payment Entry created: {payment_entry['name']}")
-                                logging.info(
-                                    f"Complete sales cycle for {channel} order {sales_order['name']} finished")
-                            else:
-                                logging.error(
-                                    f"Error creating payment entry for invoice {sales_invoice['name']}")
-                        else:
-                            logging.error(
-                                f"Error creating invoice for delivery note {delivery_note['name']}")
-                    else:
-                        logging.error(
-                            f"Error creating delivery note for sales order {sales_order['name']}")
-                else:
-                    logging.error(f"Error creating sales order for {channel}")
+                process_sales_cycle(sales_order, channel)
 
             except ValueError as e:
                 logging.error(f"Error generating order for {channel}: {str(e)}")
                 continue
 
-    # Save B2C customer list at the end
     save_b2c_customers(created_b2c_customers)
-
     logging.info("Sales process completed.")
 
 

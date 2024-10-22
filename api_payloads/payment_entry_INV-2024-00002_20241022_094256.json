@@ -1,0 +1,12 @@
+{
+  "doctype": "Payment Entry",
+  "naming_series": "PE-.YYYY.-",
+  "payment_type": "Receive",
+  "posting_date": "2024-12-13",
+  "party_type": "Customer",
+  "party": "Velo Handel Wieloch AG",
+  "paid_amount": 2550.1099999999997,
+  "received_amount": 2550.1099999999997,
+  "reference_no": "Payment for INV-2024-00002",
+  "reference_date": "2024-12-13"
+}
