@@ -88,10 +88,31 @@ def load_products() -> List[Dict]:
     return load_csv_data('items.csv')
 
 
-def calculate_selling_rate(base_rate: float, sales_channel: str) -> float:
-    """Calculate selling rate based on valuation rate and customer type"""
-    markup = Config.B2B_MARKUP if sales_channel == 'B2B' else Config.B2C_MARKUP
-    return round(float(base_rate) * markup, 2)
+def calculate_wholesale_price(product: Dict) -> float:
+    standard_rate = float(product['Standard Selling Rate'])
+    artikel_code = product['Item Code']
+    
+    if artikel_code.startswith(('BIKE', 'EBIKE')):
+        return round(standard_rate * 0.65, 2)  # 35% Rabatt für Fahrräder und E-Bikes
+    elif artikel_code.startswith('COMP'):
+        if standard_rate > 100:
+            return round(standard_rate * 0.60, 2)  # 40% Rabatt für teure Komponenten
+        elif 50 <= standard_rate <= 100:
+            return round(standard_rate * 0.55, 2)  # 45% Rabatt für mittelteure Komponenten
+        else:
+            return round(standard_rate * 0.50, 2)  # 50% Rabatt für günstige Komponenten
+    else:
+        return standard_rate  # Kein Rabatt für andere Artikel
+
+
+def calculate_selling_rate(product: Dict, sales_channel: str) -> float:
+    """Calculate selling rate based on customer type and product category"""
+    standard_rate = float(product['Standard Selling Rate'])
+    
+    if sales_channel == 'B2B':
+        return calculate_wholesale_price(product)
+    else:
+        return standard_rate
 
 
 def save_api_payload(payload: Dict, prefix: str, identifier: str):
@@ -122,8 +143,7 @@ def generate_sales_order(b2b_customers: List[Dict], products: List[Dict], sales_
     for _ in range(random.randint(1, 5)):  # 1 to 5 products per order
         product = random.choice(products)
         qty = random.randint(1, 10)
-        base_rate = float(product['Valuation Rate'])
-        selling_rate = calculate_selling_rate(base_rate, sales_channel)
+        selling_rate = calculate_selling_rate(product, sales_channel)
         amount = round(qty * selling_rate, 2)
         total_amount += amount
 
