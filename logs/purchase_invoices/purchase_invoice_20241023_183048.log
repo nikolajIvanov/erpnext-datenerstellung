@@ -1,0 +1,5 @@
+Saved purchase invoice payload to /Users/nikolajivanov/2 Areas/Programmieren/ERPNext-Datenerstellung/api_payloads/purchase_invoices/purchase_invoice_SUP-6297_20241023_183048.json
+Failed to upload Purchase Invoice: 500 Server Error: INTERNAL SERVER ERROR for url: https://bikeshop-erp-next.iuk.hdm-stuttgart.de/api/resource/Purchase%20Invoice
+Saved purchase invoice payload to /Users/nikolajivanov/2 Areas/Programmieren/ERPNext-Datenerstellung/api_payloads/purchase_invoices/purchase_invoice_SUP-9946_20241023_183049.json
+Failed to upload Purchase Invoice: 500 Server Error: INTERNAL SERVER ERROR for url: https://bikeshop-erp-next.iuk.hdm-stuttgart.de/api/resource/Purchase%20Invoice
+No data to save to CSV.
