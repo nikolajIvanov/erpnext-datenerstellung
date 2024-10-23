@@ -1,18 +1,15 @@
-ID,Company,Conversion Rate,Currency,Item,Quantity,Default Source Warehouse,Default Target Warehouse,Item Description,Item Name,Item Code (Items),Qty (Items),Rate (Items),UOM (Items)
-BOM-EBIKE-0001-001,Velo GmbH,1.0,EUR,EBIKE-0001,1.0,Lager Stuttgart - B,Lager Stuttgart - B,E-Bike: Vielseitig einsetzbar für lange Touren und Alltagsfahrten. Robust und bequem. Mit leistungsstarkem Elektromotor für mühelose Fahrten.,Velo E-Trekking 576,,,,
-,,,,,,,,,,COMP-0001,1.0,82.28,Nos
-,,,,,,,,,,COMP-0025,1.0,149.38,Nos
-,,,,,,,,,,COMP-0024,1.0,145.97,Nos
-,,,,,,,,,,COMP-0005,1.0,162.2,Nos
-,,,,,,,,,,COMP-0014,1.0,192.67,Nos
-,,,,,,,,,,COMP-0015,1.0,172.88,Nos
-,,,,,,,,,,COMP-0004,1.0,75.85,Nos
-,,,,,,,,,,COMP-0010,1.0,182.46,Nos
-,,,,,,,,,,COMP-0045,1.0,147.07,Nos
-,,,,,,,,,,COMP-0048,1.0,24.18,Nos
-,,,,,,,,,,COMP-0040,1.0,127.27,Nos
-,,,,,,,,,,COMP-0039,1.0,54.74,Nos
-,,,,,,,,,,COMP-0011,1.0,99.15,Nos
-,,,,,,,,,,COMP-0028,1.0,57.11,Nos
-,,,,,,,,,,COMP-0006,1.0,135.95,Nos
-,,,,,,,,,,COMP-0003,1.0,45.47,Nos
+ID,Company,Conversion Rate,Currency,Item,Quantity,Default Source Warehouse,Default Target Warehouse,Item Code (Items),Qty (Items),Rate (Items),UOM (Items)
+BOM-BIKE-0002-003,Velo GmbH,1.0,EUR,BIKE-0002,1.0,"","",COMP-0029,1.0,98.992929076,Nos
+"","","","","","","","",COMP-0023,1.0,112.303582652,Nos
+"","","","","","","","",COMP-0024,1.0,145.961242325,Nos
+"","","","","","","","",COMP-0037,1.0,182.423850958,Nos
+"","","","","","","","",COMP-0014,1.0,192.653486844,Nos
+"","","","","","","","",COMP-0015,1.0,168.502331185,Nos
+"","","","","","","","",COMP-0004,1.0,75.84620769,Nos
+"","","","","","","","",COMP-0010,1.0,182.441755824,Nos
+"","","","","","","","",COMP-0045,1.0,147.060195987,Nos
+"","","","","","","","",COMP-0048,1.0,24.176846498,Nos
+"","","","","","","","",COMP-0016,1.0,120.313496568,Nos
+"","","","","","","","",COMP-0043,1.0,63.756457975,Nos
+"","","","","","","","",COMP-0052,1.0,250.0,Nos
+"","","","","","","","",COMP-0055,1.0,80.0,Nos
