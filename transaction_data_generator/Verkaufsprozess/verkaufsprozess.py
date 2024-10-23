@@ -204,7 +204,8 @@ def generate_sales_invoice(sales_order: Dict, delivery_note: Dict) -> Dict:
         "sales_order": sales_order['name'],
         "delivery_note": delivery_note['name'],
         "grand_total": sales_order['grand_total'],
-        "total": sales_order['total']
+        "total": sales_order['total'],
+        "docstatus": 1
     }
 
 
@@ -221,7 +222,16 @@ def generate_payment_entry(sales_invoice: Dict) -> Dict:
         "paid_amount": sales_invoice['grand_total'],
         "received_amount": sales_invoice['grand_total'],
         "reference_no": f"Payment for {sales_invoice['name']}",
-        "reference_date": payment_date.strftime("%Y-%m-%d")
+        "reference_date": payment_date.strftime("%Y-%m-%d"),
+        "paid_from": "3250 - Erhaltene Anz. auf Bestellungen (Verb.) - B",
+        "paid_from_account_currency": "EUR",
+        "paid_to": "Bank Account - B",
+        "paid_to_account_currency": "EUR",
+        "source_exchange_rate": 1.0,
+        "base_paid_amount": sales_invoice['grand_total'],
+        "target_exchange_rate": 1.0,
+        "base_received_amount": sales_invoice['grand_total'],
+        "docstatus": 1
     }
 
 
