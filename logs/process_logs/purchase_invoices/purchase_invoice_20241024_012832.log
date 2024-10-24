@@ -1,0 +1,775 @@
+Saved purchase invoice payload to /Users/nikolajivanov/2 Areas/Programmieren/ERPNext-Datenerstellung/api_payloads/purchase_invoices/purchase_invoice_SUP-2823_20241024_012832.json
+API Error Response: <!doctype html>
+<html lang=en>
+  <head>
+    <title>BrokenPipeError: [Errno 32] Broken pipe
+ // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css">
+    <link rel="shortcut icon"
+        href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script>
+      var CONSOLE_MODE = false,
+          EVALEX = false,
+          EVALEX_TRUSTED = false,
+          SECRET = "y3pidyZf26VjWeNJUrVJ";
+    </script>
+  </head>
+  <body style="background-color: #fff">
+    <div class="debugger">
+<h1>BrokenPipeError</h1>
+<div class="detail">
+  <p class="errormsg">BrokenPipeError: [Errno 32] Broken pipe
+</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  <h3></h3>
+  <ul><li><div class="frame" id="frame-123514964170432">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/app.py"</cite>,
+      line <em class="line">115</em>,
+      in <code class="function">application</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                        </span>)</pre>
+<pre class="line before"><span class="ws">                        </span>frappe.handler.handle()</pre>
+<pre class="line before"><span class="ws">                        </span>response = frappe.utils.response.build_response(&#34;json&#34;)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                </span>elif request.path.startswith(&#34;/api/&#34;):</pre>
+<pre class="line current"><span class="ws">                        </span>response = frappe.api.handle(request)
+<span class="ws">                        </span>^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>elif request.path.startswith(&#34;/backups&#34;):</pre>
+<pre class="line after"><span class="ws">                        </span>response = frappe.utils.response.download_backup(request.path)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>elif request.path.startswith(&#34;/private/files/&#34;):</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964166400">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/api/__init__.py"</cite>,
+      line <em class="line">49</em>,
+      in <code class="function">handle</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">                </span>endpoint, arguments = API_URL_MAP.bind_to_environ(request.environ).match()</pre>
+<pre class="line before"><span class="ws">        </span>except NotFound:  # Wrap 404 - backward compatiblity</pre>
+<pre class="line before"><span class="ws">                </span>raise frappe.DoesNotExistError</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line current"><span class="ws">        </span>data = endpoint(**arguments)
+<span class="ws">        </span>^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">        </span>if isinstance(data, Response):</pre>
+<pre class="line after"><span class="ws">                </span>return data</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>if data is not None:</pre>
+<pre class="line after"><span class="ws">                </span>frappe.response[&#34;data&#34;] = data</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964174752">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/api/v1.py"</cite>,
+      line <em class="line">42</em>,
+      in <code class="function">create_doc</code></h4>
+  <div class="source "><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws"></span>def create_doc(doctype: str):</pre>
+<pre class="line before"><span class="ws">        </span>data = get_request_form_data()</pre>
+<pre class="line before"><span class="ws">        </span>data.pop(&#34;doctype&#34;, None)</pre>
+<pre class="line current"><span class="ws">        </span>return frappe.new_doc(doctype, **data).insert()
+<span class="ws">        </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span>def update_doc(doctype: str, name: str):</pre>
+<pre class="line after"><span class="ws">        </span>data = get_request_form_data()</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964166832">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py"</cite>,
+      line <em class="line">293</em>,
+      in <code class="function">insert</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                </span>self.set_new_name(set_name=set_name, set_child_names=set_child_names)</pre>
+<pre class="line before"><span class="ws">                </span>self.set_parent_in_children()</pre>
+<pre class="line before"><span class="ws">                </span>self.validate_higher_perm_levels()</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                </span>self.flags.in_insert = True</pre>
+<pre class="line current"><span class="ws">                </span>self.run_before_save_methods()
+<span class="ws">                </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">                </span>self._validate()</pre>
+<pre class="line after"><span class="ws">                </span>self.set_docstatus()</pre>
+<pre class="line after"><span class="ws">                </span>self.flags.in_insert = False</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span># run validate, on update etc.</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964172736">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py"</cite>,
+      line <em class="line">1130</em>,
+      in <code class="function">run_before_save_methods</code></h4>
+  <div class="source "><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                </span>if self._action == &#34;save&#34;:</pre>
+<pre class="line before"><span class="ws">                        </span>self.run_method(&#34;validate&#34;)</pre>
+<pre class="line before"><span class="ws">                        </span>self.run_method(&#34;before_save&#34;)</pre>
+<pre class="line before"><span class="ws">                </span>elif self._action == &#34;submit&#34;:</pre>
+<pre class="line current"><span class="ws">                        </span>self.run_method(&#34;validate&#34;)
+<span class="ws">                        </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">                        </span>self.run_method(&#34;before_submit&#34;)</pre>
+<pre class="line after"><span class="ws">                </span>elif self._action == &#34;cancel&#34;:</pre>
+<pre class="line after"><span class="ws">                        </span>self.run_method(&#34;before_cancel&#34;)</pre>
+<pre class="line after"><span class="ws">                </span>elif self._action == &#34;update_after_submit&#34;:</pre>
+<pre class="line after"><span class="ws">                        </span>self.run_method(&#34;before_update_after_submit&#34;)</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964177200">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py"</cite>,
+      line <em class="line">979</em>,
+      in <code class="function">run_method</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                        </span># If method found in __dict__, expect it to be callable</pre>
+<pre class="line before"><span class="ws">                        </span>if method in self.__dict__ or callable(method_object):</pre>
+<pre class="line before"><span class="ws">                                </span>return method_object(*args, **kwargs)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                </span>fn.__name__ = str(method)</pre>
+<pre class="line current"><span class="ws">                </span>out = Document.hook(fn)(self, *args, **kwargs)
+<span class="ws">                </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>self.run_notifications(method)</pre>
+<pre class="line after"><span class="ws">                </span>run_webhooks(self, method)</pre>
+<pre class="line after"><span class="ws">                </span>run_server_script_for_doc_event(self, method)</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964176048">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py"</cite>,
+      line <em class="line">1362</em>,
+      in <code class="function">composer</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                                </span>method, []</pre>
+<pre class="line before"><span class="ws">                        </span>):</pre>
+<pre class="line before"><span class="ws">                                </span>hooks.append(frappe.get_attr(handler))</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                        </span>composed = compose(f, *hooks)</pre>
+<pre class="line current"><span class="ws">                        </span>return composed(self, method, *args, **kwargs)
+<span class="ws">                        </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>return composer</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>def is_whitelisted(self, method_name):</pre>
+<pre class="line after"><span class="ws">                </span>method = getattr(self, method_name, None)</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964166976">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py"</cite>,
+      line <em class="line">1340</em>,
+      in <code class="function">runner</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                        </span>else:</pre>
+<pre class="line before"><span class="ws">                                </span>self._return_value = new_return_value</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                </span>def compose(fn, *hooks):</pre>
+<pre class="line before"><span class="ws">                        </span>def runner(self, method, *args, **kwargs):</pre>
+<pre class="line current"><span class="ws">                                </span>add_to_return_value(self, fn(self, *args, **kwargs))
+<span class="ws">                                </span>^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">                                </span>for f in hooks:</pre>
+<pre class="line after"><span class="ws">                                        </span>try:</pre>
+<pre class="line after"><span class="ws">                                                </span>frappe.db._disable_transaction_control += 1</pre>
+<pre class="line after"><span class="ws">                                                </span>add_to_return_value(self, f(self, method, *args, **kwargs))</pre>
+<pre class="line after"><span class="ws">                                        </span>finally:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964179360">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py"</cite>,
+      line <em class="line">976</em>,
+      in <code class="function">fn</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                        </span>method_object = getattr(self, method, None)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                        </span># Cannot have a field with same name as method</pre>
+<pre class="line before"><span class="ws">                        </span># If method found in __dict__, expect it to be callable</pre>
+<pre class="line before"><span class="ws">                        </span>if method in self.__dict__ or callable(method_object):</pre>
+<pre class="line current"><span class="ws">                                </span>return method_object(*args, **kwargs)
+<span class="ws">                                </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>fn.__name__ = str(method)</pre>
+<pre class="line after"><span class="ws">                </span>out = Document.hook(fn)(self, *args, **kwargs)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>self.run_notifications(method)</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964168992">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/erpnext/erpnext/accounts/doctype/purchase_invoice/purchase_invoice.py"</cite>,
+      line <em class="line">263</em>,
+      in <code class="function">validate</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                </span>if not self.is_opening:</pre>
+<pre class="line before"><span class="ws">                        </span>self.is_opening = &#34;No&#34;</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                </span>self.validate_posting_time()</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line current"><span class="ws">                </span>super().validate()
+<span class="ws">                </span>^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>if not self.is_return:</pre>
+<pre class="line after"><span class="ws">                        </span>self.po_required()</pre>
+<pre class="line after"><span class="ws">                        </span>self.pr_required()</pre>
+<pre class="line after"><span class="ws">                        </span>self.validate_supplier_invoice()</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964180080">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/buying_controller.py"</cite>,
+      line <em class="line">31</em>,
+      in <code class="function">validate</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                </span>self.flags.ignore_permlevel_for_fields = [&#34;buying_price_list&#34;, &#34;price_list_currency&#34;]</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>def validate(self):</pre>
+<pre class="line before"><span class="ws">                </span>self.set_rate_for_standalone_debit_note()</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line current"><span class="ws">                </span>super().validate()
+<span class="ws">                </span>^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">                </span>if getattr(self, &#34;supplier&#34;, None) and not self.supplier_name:</pre>
+<pre class="line after"><span class="ws">                        </span>self.supplier_name = frappe.db.get_value(&#34;Supplier&#34;, self.supplier, &#34;supplier_name&#34;)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>self.validate_items()</pre>
+<pre class="line after"><span class="ws">                </span>self.set_qty_as_per_stock_uom()</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964178784">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/subcontracting_controller.py"</cite>,
+      line <em class="line">56</em>,
+      in <code class="function">validate</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">        </span>def validate(self):</pre>
+<pre class="line before"><span class="ws">                </span>if self.doctype in [&#34;Subcontracting Order&#34;, &#34;Subcontracting Receipt&#34;]:</pre>
+<pre class="line before"><span class="ws">                        </span>self.validate_items()</pre>
+<pre class="line before"><span class="ws">                        </span>self.create_raw_materials_supplied()</pre>
+<pre class="line before"><span class="ws">                </span>else:</pre>
+<pre class="line current"><span class="ws">                        </span>super().validate()
+<span class="ws">                        </span>^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>def validate_rejected_warehouse(self):</pre>
+<pre class="line after"><span class="ws">                </span>for item in self.get(&#34;items&#34;):</pre>
+<pre class="line after"><span class="ws">                        </span>if flt(item.rejected_qty) and not item.rejected_warehouse:</pre>
+<pre class="line after"><span class="ws">                                </span>if self.rejected_warehouse:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964168704">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/stock_controller.py"</cite>,
+      line <em class="line">52</em>,
+      in <code class="function">validate</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">        </span>pass</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws"></span>class StockController(AccountsController):</pre>
+<pre class="line before"><span class="ws">        </span>def validate(self):</pre>
+<pre class="line current"><span class="ws">                </span>super().validate()
+<span class="ws">                </span>^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>if self.docstatus == 0:</pre>
+<pre class="line after"><span class="ws">                        </span>for table_name in [&#34;items&#34;, &#34;packed_items&#34;, &#34;supplied_items&#34;]:</pre>
+<pre class="line after"><span class="ws">                                </span>self.validate_duplicate_serial_and_batch_bundle(table_name)</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964177488">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py"</cite>,
+      line <em class="line">206</em>,
+      in <code class="function">validate</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                        </span>if not self.meta.get_field(&#34;is_return&#34;) or not self.is_return:</pre>
+<pre class="line before"><span class="ws">                                </span>self.validate_value(&#34;base_grand_total&#34;, &#34;&gt;=&#34;, 0)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                        </span>validate_return(self)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line current"><span class="ws">                </span>self.validate_all_documents_schedule()
+<span class="ws">                </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>if self.meta.get_field(&#34;taxes_and_charges&#34;):</pre>
+<pre class="line after"><span class="ws">                        </span>self.validate_enabled_taxes_and_charges()</pre>
+<pre class="line after"><span class="ws">                        </span>self.validate_tax_account_company()</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964168416">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py"</cite>,
+      line <em class="line">462</em>,
+      in <code class="function">validate_all_documents_schedule</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                </span>self.validate_payment_schedule_dates()</pre>
+<pre class="line before"><span class="ws">                </span>self.validate_payment_schedule_amount()</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>def validate_all_documents_schedule(self):</pre>
+<pre class="line before"><span class="ws">                </span>if self.doctype in (&#34;Sales Invoice&#34;, &#34;Purchase Invoice&#34;) and not self.is_return:</pre>
+<pre class="line current"><span class="ws">                        </span>self.validate_invoice_documents_schedule()
+<span class="ws">                        </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">                </span>elif self.doctype in (&#34;Quotation&#34;, &#34;Purchase Order&#34;, &#34;Sales Order&#34;):</pre>
+<pre class="line after"><span class="ws">                        </span>self.validate_non_invoice_documents_schedule()</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>def before_print(self, settings=None):</pre>
+<pre class="line after"><span class="ws">                </span>if self.doctype in [</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964170144">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py"</cite>,
+      line <em class="line">452</em>,
+      in <code class="function">validate_invoice_documents_schedule</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                </span>self.validate_payment_schedule_dates()</pre>
+<pre class="line before"><span class="ws">                </span>self.set_due_date()</pre>
+<pre class="line before"><span class="ws">                </span>self.set_payment_schedule()</pre>
+<pre class="line before"><span class="ws">                </span>if not self.get(&#34;ignore_default_payment_terms_template&#34;):</pre>
+<pre class="line before"><span class="ws">                        </span>self.validate_payment_schedule_amount()</pre>
+<pre class="line current"><span class="ws">                        </span>self.validate_due_date()
+<span class="ws">                        </span>^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">                </span>self.validate_advance_entries()</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>def validate_non_invoice_documents_schedule(self):</pre>
+<pre class="line after"><span class="ws">                </span>self.set_payment_schedule()</pre>
+<pre class="line after"><span class="ws">                </span>self.validate_payment_schedule_dates()</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964172448">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py"</cite>,
+      line <em class="line">648</em>,
+      in <code class="function">validate_due_date</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                                </span>posting_date,</pre>
+<pre class="line before"><span class="ws">                                </span>self.due_date,</pre>
+<pre class="line before"><span class="ws">                                </span>self.payment_terms_template,</pre>
+<pre class="line before"><span class="ws">                        </span>)</pre>
+<pre class="line before"><span class="ws">                </span>elif self.doctype == &#34;Purchase Invoice&#34;:</pre>
+<pre class="line current"><span class="ws">                        </span>validate_due_date(
+<span class="ws">                        </span>^</pre>
+<pre class="line after"><span class="ws">                                </span>posting_date,</pre>
+<pre class="line after"><span class="ws">                                </span>self.due_date,</pre>
+<pre class="line after"><span class="ws">                                </span>self.bill_date,</pre>
+<pre class="line after"><span class="ws">                                </span>self.payment_terms_template,</pre>
+<pre class="line after"><span class="ws">                        </span>)</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964165968">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/erpnext/erpnext/accounts/party.py"</cite>,
+      line <em class="line">618</em>,
+      in <code class="function">validate_due_date</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">        </span>return due_date</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws"></span>def validate_due_date(posting_date, due_date, bill_date=None, template_name=None):</pre>
+<pre class="line before"><span class="ws">        </span>if getdate(due_date) &lt; getdate(posting_date):</pre>
+<pre class="line current"><span class="ws">                </span>frappe.throw(_(&#34;Due Date cannot be before Posting / Supplier Invoice Date&#34;))
+<span class="ws">                </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">        </span>else:</pre>
+<pre class="line after"><span class="ws">                </span>if not template_name:</pre>
+<pre class="line after"><span class="ws">                        </span>return</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">                </span>default_due_date = get_due_date_from_template(template_name, posting_date, bill_date).strftime(</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964166256">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py"</cite>,
+      line <em class="line">681</em>,
+      in <code class="function">throw</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">        </span>:param is_minimizable: [optional] Allow users to minimize the modal</pre>
+<pre class="line before"><span class="ws">        </span>:param wide: [optional] Show wide modal</pre>
+<pre class="line before"><span class="ws">        </span>:param as_list: [optional] If `msg` is a list, render as un-ordered list.</pre>
+<pre class="line before"><span class="ws">        </span>:param primary_action: [optional] Bind a primary server/client side action.</pre>
+<pre class="line before"><span class="ws">        </span>&#34;&#34;&#34;</pre>
+<pre class="line current"><span class="ws">        </span>msgprint(
+<span class="ws">        </span>^</pre>
+<pre class="line after"><span class="ws">                </span>msg,</pre>
+<pre class="line after"><span class="ws">                </span>raise_exception=exc,</pre>
+<pre class="line after"><span class="ws">                </span>title=title,</pre>
+<pre class="line after"><span class="ws">                </span>indicator=&#34;red&#34;,</pre>
+<pre class="line after"><span class="ws">                </span>is_minimizable=is_minimizable,</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964174320">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py"</cite>,
+      line <em class="line">646</em>,
+      in <code class="function">msgprint</code></h4>
+  <div class="source "><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if realtime:</pre>
+<pre class="line before"><span class="ws">                </span>publish_realtime(event=&#34;msgprint&#34;, message=out)</pre>
+<pre class="line before"><span class="ws">        </span>else:</pre>
+<pre class="line before"><span class="ws">                </span>message_log.append(out)</pre>
+<pre class="line current"><span class="ws">        </span>_raise_exception()
+<span class="ws">        </span>^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span>def clear_messages():</pre>
+<pre class="line after"><span class="ws">        </span>local.message_log = []</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964169568">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py"</cite>,
+      line <em class="line">597</em>,
+      in <code class="function">_raise_exception</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                                </span>exc = raise_exception(msg)</pre>
+<pre class="line before"><span class="ws">                        </span>else:</pre>
+<pre class="line before"><span class="ws">                                </span>exc = ValidationError(msg)</pre>
+<pre class="line before"><span class="ws">                        </span>if out.__frappe_exc_id:</pre>
+<pre class="line before"><span class="ws">                                </span>exc.__frappe_exc_id = out.__frappe_exc_id</pre>
+<pre class="line current"><span class="ws">                        </span>raise exc
+<span class="ws">                        </span>^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>if flags.mute_messages:</pre>
+<pre class="line after"><span class="ws">                </span>_raise_exception()</pre>
+<pre class="line after"><span class="ws">                </span>return</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="exc-divider">During handling of the above exception, another exception occurred:</div>
+<li><div class="frame" id="frame-123514964175472">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/middlewares.py"</cite>,
+      line <em class="line">16</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source "><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws"></span>class StaticDataMiddleware(SharedDataMiddleware):</pre>
+<pre class="line before"><span class="ws">        </span>def __call__(self, environ, start_response):</pre>
+<pre class="line before"><span class="ws">                </span>self.environ = environ</pre>
+<pre class="line current"><span class="ws">                </span>return super().__call__(environ, start_response)
+<span class="ws">                </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>def get_directory_loader(self, directory):</pre>
+<pre class="line after"><span class="ws">                </span>def loader(path):</pre>
+<pre class="line after"><span class="ws">                        </span>site = get_site_name(frappe.app._site or self.environ.get(&#34;HTTP_HOST&#34;))</pre>
+<pre class="line after"><span class="ws">                        </span>path = os.path.join(directory, site, &#34;public&#34;, &#34;files&#34;, cstr(path))</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964176912">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/env/lib/python3.12/site-packages/werkzeug/middleware/shared_data.py"</cite>,
+      line <em class="line">249</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source library"><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                </span>if file_loader is not None:</pre>
+<pre class="line before"><span class="ws">                    </span>break</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if file_loader is None or not self.is_allowed(real_filename):  # type: ignore</pre>
+<pre class="line current"><span class="ws">            </span>return self.app(environ, start_response)
+<span class="ws">            </span>       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>guessed_type = mimetypes.guess_type(real_filename)  # type: ignore</pre>
+<pre class="line after"><span class="ws">        </span>mime_type = get_content_type(guessed_type[0] or self.fallback_mimetype, &#34;utf-8&#34;)</pre>
+<pre class="line after"><span class="ws">        </span>f, mtime, file_size = file_loader()</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964177920">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/env/lib/python3.12/site-packages/werkzeug/middleware/shared_data.py"</cite>,
+      line <em class="line">249</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source library"><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">                </span>if file_loader is not None:</pre>
+<pre class="line before"><span class="ws">                    </span>break</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if file_loader is None or not self.is_allowed(real_filename):  # type: ignore</pre>
+<pre class="line current"><span class="ws">            </span>return self.app(environ, start_response)
+<span class="ws">            </span>       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>guessed_type = mimetypes.guess_type(real_filename)  # type: ignore</pre>
+<pre class="line after"><span class="ws">        </span>mime_type = get_content_type(guessed_type[0] or self.fallback_mimetype, &#34;utf-8&#34;)</pre>
+<pre class="line after"><span class="ws">        </span>f, mtime, file_size = file_loader()</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964165104">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/app.py"</cite>,
+      line <em class="line">79</em>,
+      in <code class="function">application</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">        </span>This is done to reduce response time by deferring expensive tasks.&#34;&#34;&#34;</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>@functools.wraps(app)</pre>
+<pre class="line before"><span class="ws">        </span>def application(environ, start_response):</pre>
+<pre class="line before"><span class="ws">                </span>return ClosingIterator(</pre>
+<pre class="line current"><span class="ws">                        </span>app(environ, start_response),
+<span class="ws">                        </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">                        </span>(</pre>
+<pre class="line after"><span class="ws">                                </span>frappe.rate_limiter.update,</pre>
+<pre class="line after"><span class="ws">                                </span>frappe.monitor.stop,</pre>
+<pre class="line after"><span class="ws">                                </span>frappe.recorder.dump,</pre>
+<pre class="line after"><span class="ws">                                </span>frappe.request.after_response.run,</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964173024">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/env/lib/python3.12/site-packages/werkzeug/wrappers/request.py"</cite>,
+      line <em class="line">190</em>,
+      in <code class="function">application</code></h4>
+  <div class="source library"><pre class="line before"><span class="ws">        </span>@functools.wraps(f)</pre>
+<pre class="line before"><span class="ws">        </span>def application(*args: t.Any) -&gt; cabc.Iterable[bytes]:</pre>
+<pre class="line before"><span class="ws">            </span>request = cls(args[-2])</pre>
+<pre class="line before"><span class="ws">            </span>with request:</pre>
+<pre class="line before"><span class="ws">                </span>try:</pre>
+<pre class="line current"><span class="ws">                    </span>resp = f(*args[:-2] + (request,))
+<span class="ws">                    </span>       ^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">                </span>except HTTPException as e:</pre>
+<pre class="line after"><span class="ws">                    </span>resp = t.cast(&#34;WSGIApplication&#34;, e.get_response(args[-2]))</pre>
+<pre class="line after"><span class="ws">                </span>return resp(*args[-2:])</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>return t.cast(&#34;WSGIApplication&#34;, application)</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964169856">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/app.py"</cite>,
+      line <em class="line">133</em>,
+      in <code class="function">application</code></h4>
+  <div class="source "><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>except HTTPException as e:</pre>
+<pre class="line before"><span class="ws">                </span>return e</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>except Exception as e:</pre>
+<pre class="line current"><span class="ws">                </span>response = handle_exception(e)
+<span class="ws">                </span>^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>else:</pre>
+<pre class="line after"><span class="ws">                </span>rollback = sync_database(rollback)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>finally:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964171440">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/app.py"</cite>,
+      line <em class="line">335</em>,
+      in <code class="function">handle_exception</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">                </span>frappe.session.user = &#34;Guest&#34;</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if respond_as_json:</pre>
+<pre class="line before"><span class="ws">                </span># handle ajax responses first</pre>
+<pre class="line before"><span class="ws">                </span># if the request is ajax, send back the trace or error message</pre>
+<pre class="line current"><span class="ws">                </span>response = frappe.utils.response.report_error(http_status_code)
+<span class="ws">                </span>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>elif isinstance(e, frappe.SessionStopped):</pre>
+<pre class="line after"><span class="ws">                </span>response = frappe.utils.response.handle_session_stopped()</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>elif (</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964164672">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/utils/response.py"</cite>,
+      line <em class="line">48</em>,
+      in <code class="function">report_error</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">        </span>exc_type, exc_value, _ = sys.exc_info()</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>match get_api_version():</pre>
+<pre class="line before"><span class="ws">                </span>case ApiVersion.V1:</pre>
+<pre class="line before"><span class="ws">                        </span>if allow_traceback:</pre>
+<pre class="line current"><span class="ws">                                </span>frappe.errprint(traceback)
+<span class="ws">                                </span>^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws">                                </span>frappe.response.exception = traceback.splitlines()[-1]</pre>
+<pre class="line after"><span class="ws">                        </span>frappe.response[&#34;exc_type&#34;] = exc_type.__name__</pre>
+<pre class="line after"><span class="ws">                </span>case ApiVersion.V2:</pre>
+<pre class="line after"><span class="ws">                        </span>error_log = {&#34;type&#34;: exc_type.__name__}</pre>
+<pre class="line after"><span class="ws">                        </span>if allow_traceback:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-123514964177344">
+  <h4>File <cite class="filename">"/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py"</cite>,
+      line <em class="line">532</em>,
+      in <code class="function">errprint</code></h4>
+  <div class="source "><pre class="line before"><span class="ws">        </span>&#34;&#34;&#34;Log error. This is sent back as `exc` in response.</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>:param msg: Message.&#34;&#34;&#34;</pre>
+<pre class="line before"><span class="ws">        </span>msg = as_unicode(msg)</pre>
+<pre class="line before"><span class="ws">        </span>if not request or (&#34;cmd&#34; not in local.form_dict) or conf.developer_mode:</pre>
+<pre class="line current"><span class="ws">                </span>print(msg)
+<span class="ws">                </span>^^^^^^^^^^</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>error_log.append({&#34;exc&#34;: msg})</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span>def print_sql(enable: bool = True) -&gt; None:</pre></div>
+</div>
+</ul>
+  <blockquote>BrokenPipeError: [Errno 32] Broken pipe
+</blockquote>
+</div>
+
+<div class="plain">
+    <p>
+      This is the Copy/Paste friendly version of the traceback.
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/app.py&#34;, line 115, in application
+    response = frappe.api.handle(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/api/__init__.py&#34;, line 49, in handle
+    data = endpoint(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/api/v1.py&#34;, line 42, in create_doc
+    return frappe.new_doc(doctype, **data).insert()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py&#34;, line 293, in insert
+    self.run_before_save_methods()
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py&#34;, line 1130, in run_before_save_methods
+    self.run_method(&#34;validate&#34;)
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py&#34;, line 979, in run_method
+    out = Document.hook(fn)(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py&#34;, line 1362, in composer
+    return composed(self, method, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py&#34;, line 1340, in runner
+    add_to_return_value(self, fn(self, *args, **kwargs))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py&#34;, line 976, in fn
+    return method_object(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/erpnext/erpnext/accounts/doctype/purchase_invoice/purchase_invoice.py&#34;, line 263, in validate
+    super().validate()
+  File &#34;/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/buying_controller.py&#34;, line 31, in validate
+    super().validate()
+  File &#34;/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/subcontracting_controller.py&#34;, line 56, in validate
+    super().validate()
+  File &#34;/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/stock_controller.py&#34;, line 52, in validate
+    super().validate()
+  File &#34;/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py&#34;, line 206, in validate
+    self.validate_all_documents_schedule()
+  File &#34;/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py&#34;, line 462, in validate_all_documents_schedule
+    self.validate_invoice_documents_schedule()
+  File &#34;/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py&#34;, line 452, in validate_invoice_documents_schedule
+    self.validate_due_date()
+  File &#34;/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py&#34;, line 648, in validate_due_date
+    validate_due_date(
+  File &#34;/opt/erpnext/erpnext/apps/erpnext/erpnext/accounts/party.py&#34;, line 618, in validate_due_date
+    frappe.throw(_(&#34;Due Date cannot be before Posting / Supplier Invoice Date&#34;))
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py&#34;, line 681, in throw
+    msgprint(
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py&#34;, line 646, in msgprint
+    _raise_exception()
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py&#34;, line 597, in _raise_exception
+    raise exc
+frappe.exceptions.ValidationError: Due Date cannot be before Posting / Supplier Invoice Date
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/middlewares.py&#34;, line 16, in __call__
+    return super().__call__(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/env/lib/python3.12/site-packages/werkzeug/middleware/shared_data.py&#34;, line 249, in __call__
+    return self.app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/env/lib/python3.12/site-packages/werkzeug/middleware/shared_data.py&#34;, line 249, in __call__
+    return self.app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/app.py&#34;, line 79, in application
+    app(environ, start_response),
+  File &#34;/opt/erpnext/erpnext/env/lib/python3.12/site-packages/werkzeug/wrappers/request.py&#34;, line 190, in application
+    resp = f(*args[:-2] + (request,))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/app.py&#34;, line 133, in application
+    response = handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/app.py&#34;, line 335, in handle_exception
+    response = frappe.utils.response.report_error(http_status_code)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/utils/response.py&#34;, line 48, in report_error
+    frappe.errprint(traceback)
+  File &#34;/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py&#34;, line 532, in errprint
+    print(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+</textarea>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+
+    <div class="pin-prompt">
+      <div class="inner">
+        <h3>Console Locked</h3>
+        <p>
+          The console is locked and needs to be unlocked by entering the PIN.
+          You can find the PIN printed out on the standard output of your
+          shell that runs the server.
+        <form>
+          <p>PIN:
+            <input type=text name=pin size=14>
+            <input type=submit name=btn value="Confirm Pin">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/app.py", line 115, in application
+    response = frappe.api.handle(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/api/__init__.py", line 49, in handle
+    data = endpoint(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/api/v1.py", line 42, in create_doc
+    return frappe.new_doc(doctype, **data).insert()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py", line 293, in insert
+    self.run_before_save_methods()
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py", line 1130, in run_before_save_methods
+    self.run_method("validate")
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py", line 979, in run_method
+    out = Document.hook(fn)(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py", line 1362, in composer
+    return composed(self, method, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py", line 1340, in runner
+    add_to_return_value(self, fn(self, *args, **kwargs))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/model/document.py", line 976, in fn
+    return method_object(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/erpnext/erpnext/accounts/doctype/purchase_invoice/purchase_invoice.py", line 263, in validate
+    super().validate()
+  File "/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/buying_controller.py", line 31, in validate
+    super().validate()
+  File "/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/subcontracting_controller.py", line 56, in validate
+    super().validate()
+  File "/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/stock_controller.py", line 52, in validate
+    super().validate()
+  File "/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py", line 206, in validate
+    self.validate_all_documents_schedule()
+  File "/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py", line 462, in validate_all_documents_schedule
+    self.validate_invoice_documents_schedule()
+  File "/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py", line 452, in validate_invoice_documents_schedule
+    self.validate_due_date()
+  File "/opt/erpnext/erpnext/apps/erpnext/erpnext/controllers/accounts_controller.py", line 648, in validate_due_date
+    validate_due_date(
+  File "/opt/erpnext/erpnext/apps/erpnext/erpnext/accounts/party.py", line 618, in validate_due_date
+    frappe.throw(_("Due Date cannot be before Posting / Supplier Invoice Date"))
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py", line 681, in throw
+    msgprint(
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py", line 646, in msgprint
+    _raise_exception()
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py", line 597, in _raise_exception
+    raise exc
+frappe.exceptions.ValidationError: Due Date cannot be before Posting / Supplier Invoice Date
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/middlewares.py", line 16, in __call__
+    return super().__call__(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/env/lib/python3.12/site-packages/werkzeug/middleware/shared_data.py", line 249, in __call__
+    return self.app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/env/lib/python3.12/site-packages/werkzeug/middleware/shared_data.py", line 249, in __call__
+    return self.app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/app.py", line 79, in application
+    app(environ, start_response),
+  File "/opt/erpnext/erpnext/env/lib/python3.12/site-packages/werkzeug/wrappers/request.py", line 190, in application
+    resp = f(*args[:-2] + (request,))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/app.py", line 133, in application
+    response = handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/app.py", line 335, in handle_exception
+    response = frappe.utils.response.report_error(http_status_code)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/utils/response.py", line 48, in report_error
+    frappe.errprint(traceback)
+  File "/opt/erpnext/erpnext/apps/frappe/frappe/__init__.py", line 532, in errprint
+    print(msg)
+BrokenPipeError: [Errno 32] Broken pipe
+
+
+-->
+
+No data to save to CSV.

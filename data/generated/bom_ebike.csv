@@ -1,0 +1,20 @@
+ID;Company;Conversion Rate;Currency;Item;Quantity;Default Source Warehouse;Default Target Warehouse;Item Description;Item Name;Item Code (Items);Qty (Items);Rate (Items);UOM (Items)
+BOM-EBIKE-0001-001;Velo GmbH;1.0;EUR;EBIKE-0001;1.0;Lager Stuttgart - B;Lager Stuttgart - B;E-Bike: Vielseitig einsetzbar für lange Touren und Alltagsfahrten. Robust und bequem. Mit leistungsstarkem Elektromotor für mühelose Fahrten.;Velo E-Trekking 576;;;;
+;;;;;;;;;;COMP-0052;1.0;250.0;Nos
+;;;;;;;;;;COMP-0055;1.0;80.0;Nos
+;;;;;;;;;;COMP-0001;1.0;25.0;Nos
+;;;;;;;;;;COMP-0020;1.0;25.0;Nos
+;;;;;;;;;;COMP-0035;1.0;25.0;Nos
+;;;;;;;;;;COMP-0026;1.0;40.0;Nos
+;;;;;;;;;;COMP-0014;1.0;40.0;Nos
+;;;;;;;;;;COMP-0015;1.0;15.0;Nos
+;;;;;;;;;;COMP-0004;1.0;100.0;Nos
+;;;;;;;;;;COMP-0010;1.0;15.0;Nos
+;;;;;;;;;;COMP-0045;1.0;5.0;Nos
+;;;;;;;;;;COMP-0048;1.0;25.0;Nos
+;;;;;;;;;;COMP-0027;1.0;15.0;Nos
+;;;;;;;;;;COMP-0043;1.0;35.0;Nos
+;;;;;;;;;;COMP-0011;1.0;180.0;Nos
+;;;;;;;;;;COMP-0008;1.0;150.0;Nos
+;;;;;;;;;;COMP-0006;1.0;50.0;Nos
+;;;;;;;;;;COMP-0013;1.0;80.0;Nos

@@ -1,0 +1,16 @@
+ID;Company;Conversion Rate;Currency;Item;Quantity;Default Source Warehouse;Default Target Warehouse;Item Description;Item Name;Item Code (Items);Qty (Items);Rate (Items);UOM (Items)
+BOM-BIKE-0002-001;Velo GmbH;1.0;EUR;BIKE-0002;1.0;Lager Stuttgart - B;Lager Stuttgart - B;Perfekt für den urbanen Alltag. Komfortabel und wendig für Fahrten in der Stadt.;Velo City 442;;;;
+;;;;;;;;;;COMP-0052;1.0;250.0;Nos
+;;;;;;;;;;COMP-0051;1.0;150.0;Nos
+;;;;;;;;;;COMP-0029;1.0;25.0;Nos
+;;;;;;;;;;COMP-0010;1.0;15.0;Nos
+;;;;;;;;;;COMP-0035;1.0;25.0;Nos
+;;;;;;;;;;COMP-0044;1.0;40.0;Nos
+;;;;;;;;;;COMP-0014;1.0;40.0;Nos
+;;;;;;;;;;COMP-0015;1.0;15.0;Nos
+;;;;;;;;;;COMP-0004;1.0;100.0;Nos
+;;;;;;;;;;COMP-0010;1.0;15.0;Nos
+;;;;;;;;;;COMP-0034;1.0;5.0;Nos
+;;;;;;;;;;COMP-0012;1.0;20.0;Nos
+;;;;;;;;;;COMP-0040;1.0;15.0;Nos
+;;;;;;;;;;COMP-0036;1.0;40.0;Nos
