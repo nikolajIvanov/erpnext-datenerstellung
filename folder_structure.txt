@@ -3,17 +3,17 @@ ERPNext-Datenerstellung/
     folder_structure.txt
     .gitignore
     .env
+    Master-Data_Processed_CSV/
+        .DS_Store
     docs/
         requirements.txt
         README.md
+    Master-Data_Generation/
+        .DS_Store
     logs/
         api_payloads/
             purchase_invoices/
             purchase_orders/
-        Import Error/
-            bom.csv
-            failed_purchase_orders.csv
-            items.csv
         process_logs/
             stock_entries/
                 stock_entry_20241024_024804.log
@@ -47,12 +47,15 @@ ERPNext-Datenerstellung/
                 purchase_receipt_20241023_174308.log
                 purchase_receipt_20241023_234555.log
             purchase_orders/
-                purchase_orders_20241026_165546.log
             work_orders/
                 work_order_20241024_023400.log
             payment_entries/
                 payment_entry_20241024_014055.log
                 payment_entry_20241023_174357.log
+    Generated_CSV/
+        .DS_Store
+    Templates/
+        .DS_Store
     data/
         .DS_Store
         generated/
@@ -243,6 +246,9 @@ ERPNext-Datenerstellung/
                         create_purchase_order.py
                     batch/
                         __init__.py
+                process_logs/
+                    purchase_orders/
+                        purchase_order_20241026_200351.log
                 Lagermanagementprozess/
                     __init__.py
                     single/
