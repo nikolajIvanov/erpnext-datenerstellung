@@ -1,0 +1,86 @@
+﻿Sr;Label;Type;Name;Mandatory;Options;Default;Fetch From;Display Depends On (JS)
+1;Production Item;Tab Break;production_item_tab;;;;;
+2;Item;Link;item;x;Item;;;
+3;Company;Link;company;x;Company;;;
+4;Item UOM;Link;uom;;UOM;;item.stock_uom;
+5;Quantity;Float;quantity;x;;1;;
+6;;Column Break;cb0;;;;;
+7;Is Active;Check;is_active;;;1;;
+8;Is Default;Check;is_default;;;1;;
+9;Allow Alternative Item;Check;allow_alternative_item;;;0;;
+10;Set rate of sub-assembly item based on BOM;Check;set_rate_of_sub_assembly_item_based_on_bom;;;1;;
+11;Project;Link;project;;Project;;;
+12;Image;Attach Image;image;;image;;item.image;
+13;Cost Configuration;Section Break;currency_detail;;;;;
+14;Rate Of Materials Based On;Select;rm_cost_as_per;;Valuation Rate;Valuation Rate;;
+;;;;;Last Purchase Rate;;;
+;;;;;Price List;;;
+15;Price List;Link;buying_price_list;;Price List;;;"eval:doc.rm_cost_as_per===""Price List"""
+16;Price List Currency;Link;price_list_currency;;Currency;;;eval:doc.rm_cost_as_per=='Price List'
+17;Price List Exchange Rate;Float;plc_conversion_rate;;;;;eval:doc.rm_cost_as_per=='Price List'
+18;;Column Break;column_break_ivyw;;;;;
+19;Currency;Link;currency;x;Currency;;;
+20;Conversion Rate;Float;conversion_rate;x;;1;;
+21;Operations;Section Break;operations_section_section;;;;;
+22;With Operations;Check;with_operations;;;0;;
+23;Track Semi Finished Goods;Check;track_semi_finished_goods;;;0;;with_operations
+24;;Column Break;column_break_23;;;;;
+25;Transfer Material Against;Select;transfer_material_against;;;Work Order;;eval: doc.with_operations === 1 && doc.track_semi_finished_goods === 0
+;;;;;Work Order;;;
+;;;;;Job Card;;;
+26;Routing;Link;routing;;Routing;;;with_operations
+27;Finished Goods based Operating Cost;Check;fg_based_operating_cost;;;0;;
+28;;Column Break;column_break_joxb;;;;;
+29;Default Source Warehouse;Link;default_source_warehouse;;Warehouse;;;
+30;Default Target Warehouse;Link;default_target_warehouse;;Warehouse;;;
+31;Finished Goods Based Operating Cost;Section Break;fg_based_section_section;;;;;fg_based_operating_cost
+32;Operating Cost Per BOM Quantity;Currency;operating_cost_per_bom_quantity;;;;;fg_based_operating_cost
+33;;Section Break;operations_section;;;;;with_operations
+34;Operations;Table;operations;;BOM Operation;;;with_operations
+35;Raw Materials;Section Break;materials_section;;;;;
+36;Items;Table;items;x;BOM Item;;;
+37;Scrap & Process Loss;Tab Break;scrap_section;;;;;
+38;Scrap Items;Section Break;scrap_items_section;;;;;
+39;Scrap Items;Table;scrap_items;;BOM Scrap Item;;;
+40;Process Loss;Section Break;process_loss_section;;;;;
+41;% Process Loss;Percent;process_loss_percentage;;;;;
+42;;Column Break;column_break_ssj2;;;;;
+43;Process Loss Qty;Float;process_loss_qty;;;;;
+44;Costing;Tab Break;costing;;;;;
+45;Operating Cost;Currency;operating_cost;;currency;;;
+46;Raw Material Cost;Currency;raw_material_cost;;currency;;;
+47;Scrap Material Cost;Currency;scrap_material_cost;;currency;;;
+48;;Column Break;cb1;;;;;
+49;Operating Cost (Company Currency);Currency;base_operating_cost;;Company:company:default_currency;;;
+50;Raw Material Cost (Company Currency);Currency;base_raw_material_cost;;Company:company:default_currency;;;
+51;Scrap Material Cost(Company Currency);Currency;base_scrap_material_cost;;Company:company:default_currency;;;
+52;;Column Break;column_break_26;;;;;
+53;Total Cost;Currency;total_cost;;currency;;;
+54;Total Cost (Company Currency);Currency;base_total_cost;;Company:company:default_currency;;;
+55;More Info;Tab Break;more_info_tab;;;;;
+56;Item Name;Data;item_name;;;;item.item_name;
+57;;Column Break;column_break_27;;;;;
+58;Item Description;Small Text;description;;;;item.description;
+59;Has Variants;Check;has_variants;;;0;item.has_variants;
+60;Quality Inspection;Section Break;quality_inspection_section_break;;;;;
+61;Quality Inspection Required;Check;inspection_required;;;0;;
+62;;Column Break;column_break_dxp7;;;;;
+63;Quality Inspection Template;Link;quality_inspection_template;;Quality Inspection Template;;;inspection_required
+64;Exploded Items;Tab Break;section_break0;;;;;eval:!doc.__islocal
+65;Exploded Items;Table;exploded_items;;BOM Explosion Item;;;
+66;Website;Tab Break;website_section;;;;;
+67;Show in Website;Check;show_in_website;;;0;;
+68;Route;Small Text;route;;;;;
+69;;Column Break;column_break_52;;;;;
+70;Website Image;Attach Image;website_image;;;;;show_in_website
+71;Thumbnail;Data;thumbnail;;;;;
+72;Website Specifications;Section Break;sb_web_spec;;;;;show_in_website
+73;Show Items;Check;show_items;;;0;;show_in_website
+74;Show Operations;Check;show_operations;;;0;;eval:(doc.show_in_website && doc.with_operations)
+75;Website Description;Text Editor;web_long_description;;;;;show_in_website
+76;Reference;Section Break;reference_section;;;;;
+77;BOM Creator;Link;bom_creator;;BOM Creator;;;
+78;BOM Creator Item;Data;bom_creator_item;;;;;
+79;;Column Break;column_break_oxbz;;;;;
+80;Amended From;Link;amended_from;;BOM;;;
+81;Connections;Tab Break;connections_tab;;;;;

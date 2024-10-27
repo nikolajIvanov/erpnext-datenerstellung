@@ -1,0 +1,69 @@
+﻿Sr;Label;Type;Name;Mandatory;Options;Default;Fetch From;Display Depends On (JS)
+1;Production Item;Tab Break;item;;fa fa-gift;;;
+2;Series;Select;naming_series;;MFG-WO-.YYYY.-;;;
+3;Status;Select;status;;Draft;Draft;;eval:!doc.__islocal
+4;Item To Manufacture;Link;production_item;;Item;;;
+5;Item Name;Data;item_name;;;;production_item.item_name;eval:doc.production_item
+6;Image;Attach Image;image;;image;;production_item.image;
+7;BOM No;Link;bom_no;;BOM;;;
+8;Sales Order;Link;sales_order;;Sales Order;;;
+9;;Column Break;column_break1;;;;;
+10;Company;Link;company;;Company;;;
+11;Qty To Manufacture;Float;qty;;;1.0;;
+12;Material Transferred for Manufacturing;Float;material_transferred_for_manufacturing;;;0;;eval:doc.docstatus==1 && doc.skip_transfer==0 && doc.track_semi_finished_goods === 0
+13;Manufactured Qty;Float;produced_qty;;;0;;eval:doc.docstatus==1
+14;Process Loss Qty;Float;process_loss_qty;;;;;eval: doc.process_loss_qty
+15;Project;Link;project;;Project;;;
+16;Track Semi Finished Goods;Check;track_semi_finished_goods;;;0;bom_no.track_semi_finished_goods;
+17;Warehouse;Section Break;warehouses;;fa fa-building;;;
+18;Source Warehouse;Link;source_warehouse;;Warehouse;;;
+19;Work-in-Progress Warehouse;Link;wip_warehouse;;Warehouse;;;
+20;;Column Break;column_break_12;;;;;
+21;Target Warehouse;Link;fg_warehouse;;Warehouse;;;
+22;Scrap Warehouse;Link;scrap_warehouse;;Warehouse;;;
+23;Operations;Section Break;operations_section;;fa fa-wrench;;;
+24;Transfer Material Against;Select;transfer_material_against;;Work Order;;bom_no.transfer_material_against;eval: doc.operations?.length && doc.track_semi_finished_goods === 0
+25;Operations;Table;operations;;Work Order Operation;;;
+26;Required Items;Section Break;section_break_ndpq;;;;;
+27;;Table;required_items;;Work Order Item;;;
+28;Configuration;Tab Break;work_order_configuration;;;;;
+29;;Section Break;settings_section;;;;;
+30;Allow Alternative Item;Check;allow_alternative_item;;;0;;
+31;Use Multi-Level BOM;Check;use_multi_level_bom;;;1;;
+32;;Column Break;column_break_17;;;;;
+33;Skip Material Transfer to WIP Warehouse;Check;skip_transfer;;;0;;
+34;Backflush Raw Materials From Work-in-Progress Warehouse;Check;from_wip_warehouse;;;0;;skip_transfer
+35;Update Consumed Material Cost In Project;Check;update_consumed_material_cost_in_project;;;1;;
+36;Serial No and Batch for Finished Good;Section Break;serial_no_and_batch_for_finished_good_section;;;;;eval:!doc.__islocal
+37;Has Serial No;Check;has_serial_no;;;0;production_item.has_serial_no;
+38;Has Batch No;Check;has_batch_no;;;0;production_item.has_batch_no;
+39;;Column Break;column_break_18;;;;;
+40;Batch Size;Float;batch_size;;;0;;has_batch_no
+41;Time;Section Break;time;;fa fa-time;;;
+42;Planned Start Date;Datetime;planned_start_date;;;now;;
+43;Planned End Date;Datetime;planned_end_date;;;;;
+44;Expected Delivery Date;Date;expected_delivery_date;;;;;
+45;;Column Break;column_break_13;;;;;
+46;Actual Start Date;Datetime;actual_start_date;;;;;
+47;Actual End Date;Datetime;actual_end_date;;;;;
+48;Lead Time;Float;lead_time;;;;;
+49;Operation Cost;Section Break;section_break_22;;;;;operations
+50;Planned Operating Cost;Currency;planned_operating_cost;;Company:company:default_currency;;;
+51;Actual Operating Cost;Currency;actual_operating_cost;;Company:company:default_currency;;;
+52;Additional Operating Cost;Currency;additional_operating_cost;;Company:company:default_currency;;;
+53;;Column Break;column_break_24;;;;;
+54;Corrective Operation Cost;Currency;corrective_operation_cost;;;;;
+55;Total Operating Cost;Currency;total_operating_cost;;Company:company:default_currency;;;
+56;More Info;Tab Break;more_info;;fa fa-file-text;;;
+57;Item Description;Small Text;description;;;;;
+58;Stock UOM;Link;stock_uom;;UOM;;production_item.stock_uom;
+59;;Column Break;column_break2;;;;;
+60;Material Request;Link;material_request;;Material Request;;;
+61;Material Request Item;Data;material_request_item;;;;;
+62;Sales Order Item;Data;sales_order_item;;;;;
+63;Production Plan;Link;production_plan;;Production Plan;;;
+64;Production Plan Item;Data;production_plan_item;;;;;
+65;Production Plan Sub-assembly Item;Data;production_plan_sub_assembly_item;;;;;
+66;Product Bundle Item;Link;product_bundle_item;;Item;;;
+67;Amended From;Link;amended_from;;Work Order;;;
+68;Connections;Tab Break;connections_tab;;;;;

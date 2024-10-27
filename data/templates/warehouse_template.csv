@@ -1,0 +1,33 @@
+﻿Sr;Label;Type;Name;Mandatory;Options;Default;Display Depends On (JS)
+1;Warehouse Detail;Section Break;warehouse_detail;;;;
+2;Disabled;Check;disabled;;;0;
+3;Warehouse Name;Data;warehouse_name;x;;;
+4;;Section Break;column_break_3;;;;
+5;Is Group Warehouse;Check;is_group;;;0;
+6;Parent Warehouse;Link;parent_warehouse;;Warehouse;;
+7;Is Rejected Warehouse;Check;is_rejected_warehouse;;;0;
+8;;Column Break;column_break_4;;;;
+9;Account;Link;account;;Account;;
+10;Company;Link;company;x;Company;;
+11;Address and Contact;Section Break;address_and_contact;;;;eval:!doc.__islocal
+12;Address HTML;HTML;address_html;;;;
+13;;Column Break;column_break_10;;;;
+14;Contact HTML;HTML;contact_html;;;;
+15;Warehouse Contact Info;Section Break;warehouse_contact_info;;;;
+16;Email Address;Data;email_id;;;;
+17;Phone No;Data;phone_no;;Phone;;
+18;Mobile No;Data;mobile_no;;Phone;;
+19;;Column Break;column_break0;;;;
+20;Address Line 1;Data;address_line_1;;;;
+21;Address Line 2;Data;address_line_2;;;;
+22;City;Data;city;;;;
+23;State;Data;state;;;;
+24;PIN;Data;pin;;;;
+25;Transit;Section Break;transit_section;;;;
+26;Warehouse Type;Link;warehouse_type;;Warehouse Type;;"eval:(!doc.is_group);"
+27;;Column Break;column_break_qajx;;;;
+28;Default In-Transit Warehouse;Link;default_in_transit_warehouse;;Warehouse;;"eval: doc.warehouse_type !== 'Transit';"
+29;Tree Details;Section Break;tree_details;;;;
+30;lft;Int;lft;;;;
+31;rgt;Int;rgt;;;;
+32;Old Parent;Link;old_parent;;Warehouse;;

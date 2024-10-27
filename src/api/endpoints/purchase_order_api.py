@@ -1,27 +1,10 @@
-import logging
-
 from src.api.base_api import BaseAPI
 
 
 class PurchaseOrderAPI(BaseAPI):
+    """API endpoint for Purchase Order operations."""
+
     def __init__(self):
-        super().__init__()
+        # Explicitly set the process type to avoid any automatic derivation
+        super().__init__("purchase_orders")
         self.doctype = "Purchase Order"
-
-    def get_all(self):
-        return self._make_request("GET", self.doctype)
-
-    def get(self, name):
-        return self._make_request("GET", f"{self.doctype}/{name}")
-
-    def create(self, data):
-        logging.debug(f"Sending data to API: {data}")
-        response = self._make_request("POST", self.doctype, data)
-        logging.debug(f"API Response: {response}")
-        return response
-
-    def update(self, name, data):
-        return self._make_request("PUT", f"{self.doctype}/{name}", data)
-
-    def delete(self, name):
-        return self._make_request("DELETE", f"{self.doctype}/{name}")

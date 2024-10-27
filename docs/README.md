@@ -1,20 +1,16 @@
-# ERPNext Datenerstellung
+# Environment Setup
 
-Dieses Repository enthält Skripte und Vorlagen zur Generierung von synthetischen Daten für ERPNext. Die erstellten Daten können für Test- und Entwicklungszwecke verwendet werden.
+## Environment Variables
+The project uses environment variables for configuration. To set these up:
 
-## Inhalt
+1. Copy `.env.example` to a new file named `.env`:
+   ```bash
+   cp .env.example .env
+   ```
 
-- `Data generation/`: Python-Skripte zur Generierung der Daten
-- `Templates/`: Vorlagen mit den benötigten Spaltennamen für ERPNext
-- `csv Data/`: Generierte CSV-Dateien, die ins ERPNext importiert werden können
+2. Edit `.env` and add your actual API key:
+   ```
+   ERP_API_KEY=your_actual_api_key
+   ```
 
-## Verfügbare Module
-
-Die folgenden Module werden unterstützt:
-
-- Kundengruppen
-- Kunden
-- Artikel
-- Preislisten
-- Lieferanten
-- Territorien
+Note: Never commit the `.env` file to version control! It contains sensitive information.

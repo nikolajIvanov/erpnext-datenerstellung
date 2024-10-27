@@ -20,16 +20,19 @@ def write_directory_structure(root_dir, output_file, exclude_dirs=None):
 
 
 if __name__ == "__main__":
-    # Hier das Verzeichnis einfügen, das du exportieren möchtest
-    root_directory = os.path.dirname(os.path.abspath(__file__))  # Pfad zum Projektverzeichnis
-    output_file = "../../folder_structure.txt"  # Name der Ausgabe-Datei
+    # Ermittle das Basis-Verzeichnis (2 Ebenen höher als die aktuelle Datei)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    root_directory = os.path.dirname(os.path.dirname(current_dir))
+
+    # Ausgabedatei im Basis-Verzeichnis
+    output_file = os.path.join(root_directory, "folder_structure.txt")
 
     # Verzeichnisse, die ausgeschlossen werden sollen
     exclude_directories = [
-        os.path.join(root_directory, '.venv'),  # .venv-Verzeichnis ausschließen
-        os.path.join(root_directory, '.git'),  # .git-Verzeichnis ausschließen
-        os.path.join(root_directory, '.idea'),  # .idea-Verzeichnis ausschließen
-        os.path.join(root_directory, '__pycache__'),  # __pycache__-Verzeichnisse ausschließen
+        os.path.join(root_directory, '.venv'),
+        os.path.join(root_directory, '.git'),
+        os.path.join(root_directory, '.idea'),
+        os.path.join(root_directory, '__pycache__'),
     ]
 
     write_directory_structure(root_directory, output_file, exclude_dirs=exclude_directories)

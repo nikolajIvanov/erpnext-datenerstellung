@@ -1,0 +1,94 @@
+﻿Sr;Label;Type;Name;Mandatory;Options;Default;Fetch From;Display Depends On (JS)
+1;Type of Payment;Section Break;type_of_payment;;;;;
+2;Series;Select;naming_series;x;ACC-PAY-.YYYY.-;;;
+3;Payment Type;Select;payment_type;x;Receive;;;
+4;Payment Order Status;Select;payment_order_status;;Initiated;;;
+5;;Column Break;column_break_5;;;;;
+6;Posting Date;Date;posting_date;x;;Today;;
+7;Company;Link;company;x;Company;;;
+8;Mode of Payment;Link;mode_of_payment;;Mode of Payment;;;
+9;Payment From / To;Section Break;party_section;;;;;"eval:in_list([""Receive"", ""Pay""], doc.payment_type)"
+10;Party Type;Link;party_type;;DocType;;;"eval:in_list([""Receive"", ""Pay""], doc.payment_type) && doc.docstatus==0"
+11;Party;Dynamic Link;party;;party_type;;;"eval:in_list([""Receive"", ""Pay""], doc.payment_type) && doc.party_type"
+12;Party Name;Data;party_name;;;;;"eval:in_list([""Receive"", ""Pay""], doc.payment_type) && doc.party_type"
+13;Book Advance Payments in Separate Party Account;Check;book_advance_payments_in_separate_party_account;;;0;company.book_advance_payments_in_separate_party_account;
+14;Reconcile on Advance Payment Date;Check;reconcile_on_advance_payment_date;;;0;company.reconcile_on_advance_payment_date;
+15;;Column Break;column_break_11;;;;;
+16;Company Bank Account;Link;bank_account;;Bank Account;;;party
+17;Party Bank Account;Link;party_bank_account;;Bank Account;;;party
+18;Contact;Link;contact_person;;Contact;;;party
+19;Email;Data;contact_email;;Email;;;contact_person
+20;Accounts;Section Break;payment_accounts_section;;;;;
+21;Party Balance;Currency;party_balance;;;;;party
+22;Account Paid From;Link;paid_from;x;Account;;;"eval:(in_list([""Internal Transfer"", ""Pay""], doc.payment_type) || doc.party)"
+23;Paid From Account Type;Data;paid_from_account_type;;;;paid_from.account_type;
+24;Account Currency (From);Link;paid_from_account_currency;x;Currency;;;paid_from
+25;Account Balance (From);Currency;paid_from_account_balance;;paid_from_account_currency;;;paid_from
+26;;Column Break;column_break_18;;;;;
+27;Account Paid To;Link;paid_to;x;Account;;;"eval:(in_list([""Internal Transfer"", ""Receive""], doc.payment_type) || doc.party)"
+28;Paid To Account Type;Data;paid_to_account_type;;;;paid_to.account_type;
+29;Account Currency (To);Link;paid_to_account_currency;x;Currency;;;paid_to
+30;Account Balance (To);Currency;paid_to_account_balance;;paid_to_account_currency;;;paid_to
+31;Amount;Section Break;payment_amounts_section;;;;;eval:(doc.paid_to && doc.paid_from)
+32;Paid Amount;Currency;paid_amount;x;paid_from_account_currency;;;
+33;Paid Amount After Tax;Currency;paid_amount_after_tax;;paid_from_account_currency;;;
+34;Source Exchange Rate;Float;source_exchange_rate;x;;;;
+35;Paid Amount (Company Currency);Currency;base_paid_amount;x;Company:company:default_currency;;;
+36;Paid Amount After Tax (Company Currency);Currency;base_paid_amount_after_tax;;Company:company:default_currency;;;
+37;;Column Break;column_break_21;;;;;
+38;Received Amount;Currency;received_amount;x;paid_to_account_currency;;;
+39;Received Amount After Tax;Currency;received_amount_after_tax;;paid_to_account_currency;;;eval:doc.received_amount && doc.payment_type != 'Internal Transfer'
+40;Target Exchange Rate;Float;target_exchange_rate;x;;;;
+41;Received Amount (Company Currency);Currency;base_received_amount;x;Company:company:default_currency;;;doc.received_amount
+42;Received Amount After Tax (Company Currency);Currency;base_received_amount_after_tax;;Company:company:default_currency;;;doc.received_amount
+43;Reference;Section Break;section_break_14;;;;;eval:(doc.party && doc.paid_from && doc.paid_to && doc.paid_amount && doc.received_amount)
+44;Get Outstanding Invoices;Button;get_outstanding_invoices;;;;;eval:doc.docstatus==0
+45;Get Outstanding Orders;Button;get_outstanding_orders;;;;;eval:doc.docstatus==0
+46;Payment References;Table;references;;Payment Entry Reference;;;
+47;Writeoff;Section Break;section_break_34;;;;;
+48;Total Allocated Amount;Currency;total_allocated_amount;;;;;eval:(doc.paid_amount && doc.received_amount && doc.references)
+49;Total Allocated Amount (Company Currency);Currency;base_total_allocated_amount;;Company:company:default_currency;;;
+50;Set Exchange Gain / Loss;Button;set_exchange_gain_loss;;;;;
+51;;Column Break;column_break_36;;;;;
+52;Unallocated Amount;Currency;unallocated_amount;;;;;eval:(doc.paid_amount && doc.received_amount && doc.references)
+53;Difference Amount (Company Currency);Currency;difference_amount;;Company:company:default_currency;;;eval:(doc.paid_amount && doc.received_amount)
+54;Write Off Difference Amount;Button;write_off_difference_amount;;;;;difference_amount
+55;Taxes and Charges;Section Break;taxes_and_charges_section;;;;;
+56;Purchase Taxes and Charges Template;Link;purchase_taxes_and_charges_template;;Purchase Taxes and Charges Template;;;eval:doc.party_type == 'Supplier'
+57;Sales Taxes and Charges Template;Link;sales_taxes_and_charges_template;;Sales Taxes and Charges Template;;;eval: doc.party_type == 'Customer'
+58;;Column Break;column_break_55;;;;;
+59;Apply Tax Withholding Amount;Check;apply_tax_withholding_amount;;;0;;eval:doc.party_type == 'Supplier'
+60;Tax Withholding Category;Link;tax_withholding_category;;Tax Withholding Category;;;eval:doc.apply_tax_withholding_amount
+61;;Section Break;section_break_56;;;;;
+62;Advance Taxes and Charges;Table;taxes;;Advance Taxes and Charges;;;eval: doc.party_type == 'Supplier' || doc.party_type == 'Customer'
+63;;Section Break;section_break_60;;;;;
+64;Total Taxes and Charges (Company Currency);Currency;base_total_taxes_and_charges;;Company:company:default_currency;;;
+65;;Column Break;column_break_61;;;;;
+66;Total Taxes and Charges;Currency;total_taxes_and_charges;;;;;
+67;Deductions or Loss;Section Break;deductions_or_loss_section;;;;;eval:(doc.paid_amount && doc.received_amount)
+68;Payment Deductions or Loss;Table;deductions;;Payment Entry Deduction;;;
+69;Transaction ID;Section Break;transaction_references;;;;;
+70;Cheque/Reference No;Data;reference_no;;;;;eval:(doc.paid_from && doc.paid_to)
+71;;Column Break;column_break_23;;;;;
+72;Cheque/Reference Date;Date;reference_date;;;;;eval:(doc.paid_from && doc.paid_to)
+73;Clearance Date;Date;clearance_date;;;;;eval:doc.docstatus==1
+74;Accounting Dimensions;Section Break;accounting_dimensions_section;;;;;
+75;Project;Link;project;;Project;;;
+76;;Column Break;dimension_col_break;;;;;
+77;Cost Center;Link;cost_center;;Cost Center;;;
+78;More Information;Section Break;section_break_12;;;;;eval:(doc.paid_from && doc.paid_to && doc.paid_amount && doc.received_amount)
+79;Status;Select;status;;Draft;Draft;;
+80;Custom Remarks;Check;custom_remarks;;;0;;
+81;Remarks;Small Text;remarks;;;;;
+82;In Words (Company Currency);Small Text;base_in_words;;;;;
+83;;Column Break;column_break_16;;;;;
+84;Letter Head;Link;letter_head;;Letter Head;;;
+85;Print Heading;Link;print_heading;;Print Heading;;;
+86;Bank;Read Only;bank;;;;bank_account.bank;
+87;Bank Account No;Read Only;bank_account_no;;;;bank_account.bank_account_no;
+88;Payment Order;Link;payment_order;;Payment Order;;;
+89;In Words;Small Text;in_words;;;;;
+90;Subscription Section;Section Break;subscription_section;;;;;
+91;Auto Repeat;Link;auto_repeat;;Auto Repeat;;;
+92;Amended From;Link;amended_from;;Payment Entry;;;
+93;Title;Data;title;;;;;

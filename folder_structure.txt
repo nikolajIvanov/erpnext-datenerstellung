@@ -2,69 +2,14 @@ ERPNext-Datenerstellung/
     .DS_Store
     folder_structure.txt
     .gitignore
-    export_folder_structure.py
-    transaction_data_generator/
-        create_work_order.py
-        __init__.py
-        master_controller.py
-        __pycache__/
-        Verkaufsprozess/
-            verkaufsprozess.py
-            __init__.py
-            master/
-                __init__.py
-        Fertigungsprozess/
-            create_work_order.py
-            __init__.py
-            create_stock_entry.py
-            fertigungsprozess.py
-            master/
-                __init__.py
-        Beschaffungsprozess/
-            create_payment_entry.py
-            __init__.py
-            beschaffungsprozess.py
-            create_purchase_invoice.py
-            create_purchase_receipt.py
-            create_purchase_order.py
-            master/
-                __init__.py
-        Lagermanagementprozess/
-            __init__.py
-            lagermanagementprozess.py
-            master/
-                __init__.py
+    .env
     docs/
         requirements.txt
         README.md
-    master_data_generator/
-        create_bom.py
-        create_item-supplier-mapping.py
-        .DS_Store
-        __init__.py
-        create_customer.py
-        create_supplier.py
-        create_item_group.py
-        create_item.py
-        Obsolet/
-            sales_persons-generation_master-data.py
-            department-generation_master-data.py
-            __init__.py
-            suppliers-generation_master-data.py
-            companys-generation_master-data.py
-            new_leads.py
-            sales-person-to-employee-user-converter.py
-            products-generation.py
-            campaign-generation_master-data.py
-            leads-generation_master-data.py
-            price_lists-generation_master-data.py
-            ceo-creation-script.py
-        __pycache__/
-            create_customer.cpython-311.pyc
-            __init__.cpython-311.pyc
     logs/
         api_payloads/
             purchase_invoices/
+            purchase_orders/
         Import Error/
             bom.csv
             failed_purchase_orders.csv
@@ -102,19 +47,14 @@ ERPNext-Datenerstellung/
                 purchase_receipt_20241023_174308.log
                 purchase_receipt_20241023_234555.log
             purchase_orders/
-                purchase_order_20241024_013659.log
-                purchase_order_20241023_234548.log
-                purchase_order_20241024_010031.log
-                purchase_order_20241024_005803.log
-                purchase_order_20241023_174257.log
-                purchase_order_20241024_012648.log
-                purchase_order_20241023_182349.log
+                purchase_orders_20241026_165546.log
             work_orders/
                 work_order_20241024_023400.log
             payment_entries/
                 payment_entry_20241024_014055.log
                 payment_entry_20241023_174357.log
     data/
+        .DS_Store
         generated/
             successful_stock_entries.csv
             uploaded_purchase_orders.csv
@@ -174,6 +114,36 @@ ERPNext-Datenerstellung/
                 batch_numbers.csv
                 serial_numbers.csv
                 items.csv
+        templates/
+            item_template.csv
+            .DS_Store
+            supplier_template.csv
+            sales_invoice_template.csv
+            work_order_template.csv
+            purchase_receipt_template.csv
+            payment_entry_template.csv
+            delivery_note_template.csv
+            purchase_order_template.csv
+            sales_order_template.csv
+            warehouse_template.csv
+            bom_template.csv
+            purchase_invoice_template.csv
+            stock_entry_template.csv
+            Excel Template/
+                .DS_Store
+                work_order_template.xlsx
+                item_template.xlsx
+                supplier_template.xlsx
+                payment_entry_template.xlsx
+                sales_invoice_template.xlsx
+                bom_template.xlsx
+                purchase_invoice_template.xlsx
+                stock_entry_template.xlsx
+                purchase_receipt_template.xlsx
+                delivery_note_template.xlsx
+                purchase_order_template.xlsx
+                warehouse_template.xlsx
+                sales_order_template.xlsx
     src/
         __init__.py
         ui/
@@ -186,10 +156,29 @@ ERPNext-Datenerstellung/
                 purchase_order_tab.py
                 supplier_tab.py
                 __pycache__/
+        core/
+            logging.py
+            __init__.py
+            base_transaction.py
+            __pycache__/
+                base_transaction.cpython-311.pyc
+                logging.cpython-311.pyc
+                __init__.cpython-311.pyc
+        config/
+            __init__.py
+            api_config.py
+            settings.py
+            __pycache__/
+                settings.cpython-311.pyc
+                api_config.cpython-311.pyc
+                __init__.cpython-311.pyc
         utils/
             convert.py
             __init__.py
             utils.py
+            export_folder_structure.py
+        __pycache__/
+            __init__.cpython-311.pyc
         api/
             base_api.py
             __init__.py
@@ -211,11 +200,78 @@ ERPNext-Datenerstellung/
                 purchase_invoice_api.py
                 work_order_api.py
                 payment_entry_api.py
-            config/
-                __init__.py
-                api_config.py
-                .env
                 __pycache__/
+                    purchase_order_api.cpython-311.pyc
+                    __init__.cpython-311.pyc
             __pycache__/
+                base_api.cpython-311.pyc
+                __init__.cpython-311.pyc
         generators/
             __init__.py
+            transaction/
+                __init__.py
+                master_controller.py
+                __pycache__/
+                    __init__.cpython-311.pyc
+                Verkaufsprozess/
+                    __init__.py
+                    single/
+                        create_work_order.py
+                        verkaufsprozess.py
+                        __init__.py
+                        master_controller.py
+                    batch/
+                        __init__.py
+                Fertigungsprozess/
+                    __init__.py
+                    single/
+                        create_work_order.py
+                        __init__.py
+                        create_stock_entry.py
+                        fertigungsprozess.py
+                    batch/
+                        __init__.py
+                Beschaffungsprozess/
+                    __init__.py
+                    single/
+                        create_payment_entry.py
+                        __init__.py
+                        create_purchase_order_old.py
+                        beschaffungsprozess.py
+                        create_purchase_invoice.py
+                        create_purchase_receipt.py
+                        create_purchase_order.py
+                    batch/
+                        __init__.py
+                Lagermanagementprozess/
+                    __init__.py
+                    single/
+                        __init__.py
+                        lagermanagementprozess.py
+                    batch/
+                        __init__.py
+            __pycache__/
+                __init__.cpython-311.pyc
+            master/
+                create_bom.py
+                create_item-supplier-mapping.py
+                .DS_Store
+                __init__.py
+                create_customer.py
+                create_supplier.py
+                create_item_group.py
+                create_item.py
+                Obsolet/
+                    sales_persons-generation_master-data.py
+                    department-generation_master-data.py
+                    __init__.py
+                    suppliers-generation_master-data.py
+                    companys-generation_master-data.py
+                    new_leads.py
+                    sales-person-to-employee-user-converter.py
+                    products-generation.py
+                    campaign-generation_master-data.py
+                    leads-generation_master-data.py
+                    price_lists-generation_master-data.py
+                    ceo-creation-script.py
+                __pycache__/

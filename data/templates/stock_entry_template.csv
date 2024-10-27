@@ -1,0 +1,78 @@
+﻿Sr;Label;Type;Name;Mandatory;Options;Default;Fetch From;Display Depends On (JS)
+1;Details;Tab Break;stock_entry_details_tab;;;;;
+2;Series;Select;naming_series;x;MAT-STE-.YYYY.-;;;
+3;Stock Entry Type;Link;stock_entry_type;x;Stock Entry Type;;;
+4;Stock Entry (Outward GIT);Link;outgoing_stock_entry;;Stock Entry;;;eval:doc.purpose == 'Material Transfer'
+5;Purpose;Select;purpose;;Material Issue;;stock_entry_type.purpose;
+6;Add to Transit;Check;add_to_transit;;;0;stock_entry_type.add_to_transit;eval: doc.purpose=='Material Transfer' && !doc.outgoing_stock_entry
+7;Work Order;Link;work_order;;Work Order;;;"eval:in_list([""Material Transfer for Manufacture"", ""Manufacture"", ""Material Consumption for Manufacture""], doc.purpose)"
+8;Job Card;Link;job_card;;Job Card;;;
+9;Purchase Order;Link;purchase_order;;Purchase Order;;;"eval:doc.purpose==""Send to Subcontractor"""
+10;Subcontracting Order;Link;subcontracting_order;;Subcontracting Order;;;"eval:doc.purpose==""Send to Subcontractor"""
+11;Delivery Note No;Link;delivery_note_no;;Delivery Note;;;"eval:doc.purpose==""Sales Return"""
+12;Sales Invoice No;Link;sales_invoice_no;;Sales Invoice;;;"eval:doc.purpose==""Sales Return"""
+13;Pick List;Link;pick_list;;Pick List;;;
+14;Purchase Receipt No;Link;purchase_receipt_no;;Purchase Receipt;;;"eval:doc.purpose==""Purchase Return"""
+15;;Column Break;col2;;;;;
+16;Company;Link;company;x;Company;;;
+17;Posting Date;Date;posting_date;;;Today;;
+18;Posting Time;Time;posting_time;;;;;
+19;;Column Break;column_break_eaoa;;;;;
+20;Edit Posting Date and Time;Check;set_posting_time;;;0;;eval:doc.docstatus==0
+21;Inspection Required;Check;inspection_required;;;0;;
+22;Apply Putaway Rule;Check;apply_putaway_rule;;;0;;"eval:in_list([""Material Transfer"", ""Material Receipt""], doc.purpose)"
+23;BOM Info;Section Break;bom_info_section;;;;;
+24;From BOM;Check;from_bom;;;0;;"eval:in_list([""Material Issue"", ""Material Transfer"", ""Manufacture"", ""Repack"", ""Send to Subcontractor"", ""Material Transfer for Manufacture"", ""Material Consumption for Manufacture""], doc.purpose)"
+25;Use Multi-Level BOM;Check;use_multi_level_bom;;;1;;from_bom
+26;BOM No;Link;bom_no;;BOM;;;from_bom
+27;;Column Break;cb1;;;;;
+28;Finished Good Quantity;Float;fg_completed_qty;;;;;from_bom
+29;Get Items;Button;get_items;;;;;from_bom
+30;Process Loss;Section Break;section_break_7qsm;;;;;"eval: doc.fg_completed_qty > 0 && in_list([""Manufacture"", ""Repack""], doc.purpose)"
+31;% Process Loss;Percent;process_loss_percentage;;;;;eval:doc.from_bom && doc.fg_completed_qty
+32;;Column Break;column_break_e92r;;;;;
+33;Process Loss Qty;Float;process_loss_qty;;;;;"eval: doc.fg_completed_qty > 0 && in_list([""Manufacture"", ""Repack""], doc.purpose)"
+34;Default Warehouse;Section Break;section_break_jwgn;;;;;
+35;Default Source Warehouse;Link;from_warehouse;;Warehouse;;;
+36;Source Warehouse Address;Link;source_warehouse_address;;Address;;;from_warehouse
+37;Source Warehouse Address;Text Editor;source_address_display;;;;;
+38;;Column Break;cb0;;;;;
+39;Default Target Warehouse;Link;to_warehouse;;Warehouse;;;
+40;Target Warehouse Address;Link;target_warehouse_address;;Address;;;to_warehouse
+41;Target Warehouse Address;Text Editor;target_address_display;;;;;
+42;;Section Break;sb0;;Simple;;;
+43;Scan Barcode;Data;scan_barcode;;Barcode;;;
+44;Items;Section Break;items_section;;;;;
+45;Items;Table;items;;Stock Entry Detail;;;
+46;Update Rate and Availability;Button;get_stock_and_rate;x;get_stock_and_rate;;;
+47;;Section Break;section_break_19;;;;;
+48;Total Outgoing Value (Consumption);Currency;total_outgoing_value;;Company:company:default_currency;;;
+49;;Column Break;column_break_22;;;;;
+50;Total Incoming Value (Receipt);Currency;total_incoming_value;;Company:company:default_currency;;;
+51;Total Value Difference (Incoming - Outgoing);Currency;value_difference;;Company:company:default_currency;;;
+52;Additional Costs;Tab Break;additional_costs_section;;;;;
+53;Additional Costs;Table;additional_costs;;Landed Cost Taxes and Charges;;;
+54;Total Additional Costs;Currency;total_additional_costs;;Company:company:default_currency;;;
+55;Supplier Info;Tab Break;supplier_info_tab;;;;;
+56;Supplier Details;Section Break;contact_section;;;;;"eval:doc.purpose === ""Send to Subcontractor"""
+57;Supplier;Link;supplier;;Supplier;;;"eval:doc.purpose === ""Send to Subcontractor"""
+58;Supplier Name;Data;supplier_name;;;;;"eval:doc.purpose === ""Send to Subcontractor"""
+59;Supplier Address;Link;supplier_address;;Address;;;"eval:doc.purpose === ""Send to Subcontractor"""
+60;Address;Text Editor;address_display;;;;;
+61;Accounting Dimensions;Tab Break;accounting_dimensions_section;;;;;
+62;Project;Link;project;;Project;;;
+63;Other Info;Tab Break;other_info_tab;;;;;
+64;Printing Settings;Section Break;printing_settings;;;;;
+65;Print Heading;Link;select_print_heading;;Print Heading;;;
+66;;Column Break;print_settings_col_break;;;;;
+67;Letter Head;Link;letter_head;;Letter Head;;;
+68;More Information;Section Break;more_info;;;;;
+69;Is Opening;Select;is_opening;;No;;;
+;;;;;Yes;;;
+70;Remarks;Text;remarks;;;;;
+71;;Column Break;col5;;;;;
+72;Per Transferred;Percent;per_transferred;;;;;
+73;Total Amount;Currency;total_amount;;Company:company:default_currency;;;total_amount
+74;Amended From;Link;amended_from;;Stock Entry;;;
+75;Credit Note;Link;credit_note;;Journal Entry;;;
+76;Is Return;Check;is_return;;;0;;

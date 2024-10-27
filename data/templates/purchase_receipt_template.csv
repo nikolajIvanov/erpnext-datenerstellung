@@ -1,0 +1,145 @@
+﻿Sr;Label;Type;Name;Mandatory;Options;Default;Fetch From;Display Depends On (JS)
+1;;Section Break;supplier_section;;fa fa-user;;;
+2;;Column Break;column_break0;;;;;
+3;Title;Data;title;;;{supplier_name};;
+4;Series;Select;naming_series;x;MAT-PRE-.YYYY.-;;;
+5;Supplier;Link;supplier;x;Supplier;;;
+6;Supplier Name;Data;supplier_name;;;;supplier.supplier_name;supplier
+7;Supplier Delivery Note;Data;supplier_delivery_note;;;;;
+8;Subcontracting Receipt;Link;subcontracting_receipt;;Subcontracting Receipt;;;eval: (doc.is_subcontracted && !doc.is_old_subcontracting_flow)
+9;;Column Break;column_break1;;;;;
+10;Date;Date;posting_date;x;;Today;;
+11;Posting Time;Time;posting_time;x;;;;
+12;Edit Posting Date and Time;Check;set_posting_time;;;0;;eval:doc.docstatus==0
+13;;Column Break;column_break_12;;;;;
+14;Company;Link;company;x;Company;;;
+15;Apply Putaway Rule;Check;apply_putaway_rule;;;0;;
+16;Is Return;Check;is_return;;;0;;
+17;Return Against Purchase Receipt;Link;return_against;;Purchase Receipt;;;is_return
+18;Accounting Dimensions;Section Break;accounting_dimensions_section;;;;;
+19;Cost Center;Link;cost_center;;Cost Center;;;
+20;;Column Break;dimension_col_break;;;;;
+21;Project;Link;project;;Project;;;
+22;Currency and Price List;Section Break;currency_and_price_list;;fa fa-tag;;;
+23;Currency;Link;currency;x;Currency;;;
+24;Exchange Rate;Float;conversion_rate;x;;;;
+25;;Column Break;column_break2;;;;;
+26;Price List;Link;buying_price_list;;Price List;;;
+27;Price List Currency;Link;price_list_currency;;Currency;;;buying_price_list
+28;Price List Exchange Rate;Float;plc_conversion_rate;;;;;buying_price_list
+29;Ignore Pricing Rule;Check;ignore_pricing_rule;;;0;;
+30;Items;Section Break;sec_warehouse;;;;;
+31;Scan Barcode;Data;scan_barcode;;Barcode;;;
+32;;Column Break;column_break_31;;;;;
+33;Accepted Warehouse;Link;set_warehouse;;Warehouse;;;
+34;Set From Warehouse;Link;set_from_warehouse;;Warehouse;;;eval: doc.is_internal_supplier
+35;;Column Break;col_break_warehouse;;;;;
+36;Rejected Warehouse;Link;rejected_warehouse;;Warehouse;;;
+37;Is Subcontracted;Check;is_subcontracted;;;0;;
+38;Supplier Warehouse;Link;supplier_warehouse;;Warehouse;;;eval:doc.is_subcontracted
+39;;Section Break;items_section;;fa fa-shopping-cart;;;
+40;Items;Table;items;x;Purchase Receipt Item;;;
+41;;Section Break;section_break0;;;;;
+42;Total Quantity;Float;total_qty;;;;;
+43;Total Net Weight;Float;total_net_weight;;;;;total_net_weight
+44;;Column Break;column_break_43;;;;;
+45;Total (Company Currency);Currency;base_total;;Company:company:default_currency;;;
+46;Net Total (Company Currency);Currency;base_net_total;x;Company:company:default_currency;;;
+47;;Column Break;column_break_27;;;;;
+48;Total;Currency;total;;currency;;;
+49;Net Total;Currency;net_total;;currency;;;
+50;Tax Withholding Net Total;Currency;tax_withholding_net_total;;currency;;;
+51;Base Tax Withholding Net Total;Currency;base_tax_withholding_net_total;;;;;
+52;Taxes and Charges;Section Break;taxes_charges_section;;;;;
+53;Tax Category;Link;tax_category;;Tax Category;;;
+54;Purchase Taxes and Charges Template;Link;taxes_and_charges;;Purchase Taxes and Charges Template;;;
+55;;Column Break;shipping_col;;;;;
+56;Shipping Rule;Link;shipping_rule;;Shipping Rule;;;
+57;;Column Break;column_break_53;;;;;
+58;Incoterm;Link;incoterm;;Incoterm;;;
+59;Named Place;Data;named_place;;;;;incoterm
+60;;Section Break;taxes_section;;;;;
+61;Purchase Taxes and Charges;Table;taxes;;Purchase Taxes and Charges;;;
+62;;Section Break;totals;;fa fa-money;;;
+63;Taxes and Charges Added (Company Currency);Currency;base_taxes_and_charges_added;;Company:company:default_currency;;;
+64;Taxes and Charges Deducted (Company Currency);Currency;base_taxes_and_charges_deducted;;Company:company:default_currency;;;
+65;Total Taxes and Charges (Company Currency);Currency;base_total_taxes_and_charges;;Company:company:default_currency;;;
+66;;Column Break;column_break3;;;;;
+67;Taxes and Charges Added;Currency;taxes_and_charges_added;;currency;;;
+68;Taxes and Charges Deducted;Currency;taxes_and_charges_deducted;;currency;;;
+69;Total Taxes and Charges;Currency;total_taxes_and_charges;;currency;;;
+70;Totals;Section Break;section_break_46;;;;;
+71;Grand Total (Company Currency);Currency;base_grand_total;;Company:company:default_currency;;;
+72;Rounding Adjustment (Company Currency);Currency;base_rounding_adjustment;;Company:company:default_currency;;;eval:!doc.disable_rounded_total
+73;Rounded Total (Company Currency);Currency;base_rounded_total;;Company:company:default_currency;;;
+74;In Words (Company Currency);Data;base_in_words;;;;;
+75;;Column Break;column_break_50;;;;;
+76;Grand Total;Currency;grand_total;;currency;;;
+77;Rounding Adjustment;Currency;rounding_adjustment;;currency;;;eval:!doc.disable_rounded_total
+78;Rounded Total;Currency;rounded_total;;currency;;;eval:!doc.disable_rounded_total
+79;In Words;Data;in_words;;;;;
+80;Disable Rounded Total;Check;disable_rounded_total;;;0;;
+81;Additional Discount;Section Break;section_break_42;;;;;
+82;Apply Additional Discount On;Select;apply_discount_on;;Grand Total;Grand Total;;
+83;Additional Discount Amount (Company Currency);Currency;base_discount_amount;;Company:company:default_currency;;;
+84;;Column Break;column_break_44;;;;;
+85;Additional Discount Percentage;Float;additional_discount_percentage;;;;;
+86;Additional Discount Amount;Currency;discount_amount;;currency;;;
+87;Tax Breakup;Section Break;sec_tax_breakup;;;;;
+88;Taxes and Charges Calculation;Text Editor;other_charges_calculation;;;;;
+89;Pricing Rules;Section Break;pricing_rule_details;;;;;
+90;Pricing Rule Detail;Table;pricing_rules;;Pricing Rule Detail;;;
+91;Raw Materials Consumed;Section Break;raw_material_details;;fa fa-table;;;
+92;Get Current Stock;Button;get_current_stock;;get_current_stock;;;supplied_items
+93;Consumed Items;Table;supplied_items;;Purchase Receipt Item Supplied;;;
+94;Address & Contact;Tab Break;address_and_contact_tab;;;;;
+95;Supplier Address;Section Break;section_addresses;;;;;
+96;Supplier Address;Link;supplier_address;;Address;;;
+97;Address;Text Editor;address_display;;;;;
+98;;Column Break;col_break_address;;;;;
+99;Contact Person;Link;contact_person;;Contact;;;
+100;Contact;Small Text;contact_display;;;;;
+101;Mobile No;Small Text;contact_mobile;;Phone;;;
+102;Contact Email;Small Text;contact_email;;Email;;;
+103;Company Shipping Address;Section Break;section_break_98;;;;;
+104;Shipping Address Template;Link;shipping_address;;Address;;;
+105;;Column Break;column_break_100;;;;;
+106;Shipping Address;Text Editor;shipping_address_display;;;;;
+107;Company Billing Address;Section Break;billing_address_section;;;;;
+108;Billing Address;Link;billing_address;;Address;;;
+109;;Column Break;column_break_104;;;;;
+110;Billing Address;Text Editor;billing_address_display;;;;;
+111;Terms;Tab Break;terms_tab;;;;;
+112;Terms;Link;tc_name;;Terms and Conditions;;;
+113;Terms and Conditions;Text Editor;terms;;;;;
+114;More Info;Tab Break;more_info_tab;;;;;
+115;Status;Section Break;status_section;;fa fa-file-text;;;
+116;Status;Select;status;x;Draft;Draft;;
+117;;Column Break;column_break4;;;;;
+118;% Amount Billed;Percent;per_billed;;;;;
+119;% Returned;Percent;per_returned;;;;;eval:!doc.__islocal
+120;Auto Repeat;Section Break;subscription_detail;;;;;
+121;Auto Repeat;Link;auto_repeat;;Auto Repeat;;;
+122;Printing Settings;Section Break;printing_settings;;;;;
+123;Letter Head;Link;letter_head;;Letter Head;;;
+124;Group same items;Check;group_same_items;;;0;;
+125;;Column Break;column_break_97;;;;;
+126;Print Heading;Link;select_print_heading;;Print Heading;;;
+127;Print Language;Data;language;;;;;
+128;Transporter;Section Break;transporter_info;;fa fa-truck;;;
+129;Transporter Name;Data;transporter_name;;;;;
+130;;Column Break;column_break5;;;;;
+131;Vehicle Number;Data;lr_no;;;;;
+132;Vehicle Date;Date;lr_date;;;;;
+133;Additional Info;Section Break;additional_info_section;;;;;
+134;Instructions;Small Text;instructions;;;;;
+135;Is Internal Supplier;Check;is_internal_supplier;;;0;supplier.is_internal_supplier;
+136;Represents Company;Link;represents_company;;Company;;supplier.represents_company;
+137;Inter Company Reference;Link;inter_company_reference;;Delivery Note;;;
+138;;Column Break;column_break_131;;;;;
+139;Remarks;Small Text;remarks;;;;;
+140;Range;Data;range;;;;;
+141;Amended From;Link;amended_from;;Purchase Receipt;;;
+142;Is Old Subcontracting Flow;Check;is_old_subcontracting_flow;;;0;;
+143;Other Details;HTML;other_details;;Other Details;;;
+144;Connections;Tab Break;connections_tab;;;;;
