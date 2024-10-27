@@ -5,5 +5,5 @@ class PaymentEntryAPI(BaseAPI):
 
     def __init__(self):
         # Explicitly set the process type to avoid any automatic derivation
-        super().__init__("payment entry")
+        super().__init__("payment_entry")
         self.doctype = "Payment Entry"
