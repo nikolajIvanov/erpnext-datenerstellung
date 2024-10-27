@@ -2,21 +2,8 @@ from src.api.base_api import BaseAPI
 
 
 class SalesOrderAPI(BaseAPI):
+
     def __init__(self):
-        super().__init__()
+        # Explicitly set the process type to avoid any automatic derivation
+        super().__init__("sales_order")
         self.doctype = "Sales Order"
-
-    def get_all(self):
-        return self._make_request("GET", self.doctype)
-
-    def get(self, name):
-        return self._make_request("GET", f"{self.doctype}/{name}")
-
-    def create(self, data):
-        return self._make_request("POST", self.doctype, data)
-
-    def update(self, name, data):
-        return self._make_request("PUT", f"{self.doctype}/{name}", data)
-
-    def delete(self, name):
-        return self._make_request("DELETE", f"{self.doctype}/{name}")

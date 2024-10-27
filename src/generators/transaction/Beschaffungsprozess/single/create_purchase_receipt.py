@@ -1,9 +1,7 @@
 import csv
 from datetime import datetime, timedelta
 import random
-from pathlib import Path
 from typing import List, Dict, Tuple
-import json
 from src.api.endpoints.purchase_receipt_api import PurchaseReceiptAPI
 from src.core.base_transaction import BaseConfig
 from src.core.logging import ProcessLogger
@@ -17,7 +15,7 @@ class PurchaseReceiptConfig(BaseConfig):
     """Configuration specific to purchase receipt process."""
 
     def __init__(self):
-        super().__init__('purchase_receipts')
+        super().__init__('purchase_receipt')
 
         # Process-specific settings
         self.RECEIPT_DELAY = (1, 14)  # Receipt 1-14 days after order
@@ -46,7 +44,8 @@ class PurchaseReceiptGenerator:
 
             return False, "", {}
 
-        except Exception:
+        except Exception as e:
+            self.logger.log_error(f"Failed to upload Purchase Receipt: {str(e)}")
             return False, "", {}
 
     def load_csv_data(self, filename: str) -> List[Dict]:
