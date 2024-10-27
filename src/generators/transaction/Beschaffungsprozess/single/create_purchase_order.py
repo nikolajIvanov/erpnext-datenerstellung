@@ -118,8 +118,7 @@ class PurchaseOrderGenerator:
 
                 po = {
                     "doctype": "Purchase Order",
-                    "naming_series": 1,
-                    # "naming_series": "PUR-ORD-.YYYY.-",
+                    "naming_series": "PUR-ORD-.YYYY.-",
                     "company": COMPANY,
                     "currency": CURRENCY,
                     "transaction_date": po_date.strftime("%Y-%m-%d"),
@@ -149,7 +148,7 @@ class PurchaseOrderGenerator:
                     "grand_total": gross_amount,
                     "rounded_total": round(gross_amount),
                     "status": "Draft",
-                    "docstatus": 0
+                    "docstatus": 1
                 }
 
                 purchase_orders.append(po)
