@@ -1,0 +1,2 @@
+ID,Company,Currency,Date,Exchange Rate,Series,Status,Supplier,Title,ID (Items),Amount (Items),Item Code (Items),Item Name (Items),Quantity (Items),Rate (Items),Required By (Items),Stock UOM (Items),UOM (Items),UOM Conversion Factor (Items),Set Target Warehouse,Net Total,Total Taxes and Charges,Grand Total,Rounded Total
+PUR-ORD-2024-00029,Velo GmbH,EUR,2023-10-20,"1,00",PUR-ORD-.YYYY.-,Draft,SUP-1186,Purchase Order for SUP-1186,t3s9pn57sn,20000.0,COMP-0039,Kurbel 3-fach,500,40.0,2023-10-27,Nos,Nos,1.0,Lager Stuttgart - B,"20000,00","3800,00","23800,00","23800,00"
