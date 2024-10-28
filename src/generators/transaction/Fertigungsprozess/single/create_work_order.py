@@ -1,149 +1,202 @@
-import csv
-import os
-import random
 from datetime import datetime, timedelta
-import logging
+from pathlib import Path
 from typing import List, Dict, Tuple
+import csv
+import random
+import logging
+
 from src.api.endpoints.work_order_api import WorkOrderAPI
+from src.core.base_transaction import BaseConfig
+from src.core.logging import ProcessLogger
+from src.config.settings import (COMPANY, TARGET_WAREHOUSE, MASTER_DATA_DIR, OUTPUT_DIR)
 
 
-class Config:
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    INPUT_DIR = os.path.join(BASE_DIR, 'master')
-    OUTPUT_DIR = os.path.join(BASE_DIR, 'generated')
-    START_DATE = datetime(2023, 1, 1)
-    END_DATE = datetime(2023, 12, 31)
-    PRODUCTION_WAREHOUSE = "Lager Stuttgart - B"
-    FINISHED_GOODS_WAREHOUSE = "Lager Stuttgart - B"
+class WorkOrderConfig(BaseConfig):
+    """Configuration specific to work order process."""
+
+    def __init__(self):
+        super().__init__('work_orders')
+
+        # Process-specific settings
+        self.START_DATE = datetime.now() - timedelta(days=5 * 365)
+        self.END_DATE = datetime.now()
+        self.NUM_ORDERS = 5
+        self.BOM_FILES = ['bom_bike.csv', 'bom_ebike.csv']
 
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+class WorkOrderGenerator:
+    def __init__(self):
+        self.config = WorkOrderConfig()
+        self.logger = ProcessLogger(self.config)
+        self.api = WorkOrderAPI()
+
+    def upload_work_order_to_api(self, work_order: Dict) -> Tuple[bool, str, Dict]:
+        """Upload work order to API with improved error handling."""
+        try:
+            response = self.api.create(work_order)
+
+            if not response or 'data' not in response:
+                return False, "", {}
+
+            content = response['data']
+
+            if isinstance(content, dict) and 'name' in content:
+                system_id = content['name']
+                self.logger.log_info(f"Successfully created Work Order with ID: {system_id}")
+                return True, system_id, content
+
+            return False, "", {}
+
+        except Exception as e:
+            self.logger.log_error(f"Failed to upload Work Order: {str(e)}")
+            return False, "", {}
+
+    def load_bom_data(self) -> Dict[str, Dict]:
+        """Load BOM data from manufacturing directory."""
+        bom_data = {}
+        try:
+            for filename in self.config.BOM_FILES:
+                filepath = MASTER_DATA_DIR / 'manufacturing' / filename
+                self.logger.log_info(f"Loading BOM file: {filepath}")
+
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    reader = csv.DictReader(f)
+                    rows = list(reader)
+                    bom_info = rows[0]
+                    bom_id = bom_info['ID']
+                    items = [row for row in rows if row['Item Code (Items)'].strip()]
+                    bom_data[bom_id] = {
+                        'ID': bom_id,
+                        'Item': bom_info['Item'],
+                        'Item Name': bom_info['Item Name'],
+                        'Items': items
+                    }
+            return bom_data
+        except Exception as e:
+            self.logger.log_error(f"Error loading BOM data: {str(e)}")
+            raise
+
+    def random_date(self) -> datetime:
+        """Generate random date between start and end date."""
+        if not all([self.config.START_DATE, self.config.END_DATE]):
+            raise ValueError("Date range not configured")
+
+        time_between = self.config.END_DATE - self.config.START_DATE
+        days_between = time_between.days
+        random_days = random.randint(0, max(0, days_between))
+        return self.config.START_DATE + timedelta(days=random_days)
+
+    def generate_work_orders(self, bom_data: Dict[str, Dict]) -> List[Dict]:
+        """Generate work order documents."""
+        work_orders = []
+        for _ in range(self.config.NUM_ORDERS):
+            try:
+                wo_date = self.random_date()
+                bom_id, bom = random.choice(list(bom_data.items()))
+
+                work_order = {
+                    "doctype": "Work Order",
+                    "naming_series": "MFG-WO-.YYYY.-",
+                    "company": COMPANY,
+                    "bom_no": bom_id,
+                    "production_item": bom['Item'],
+                    "qty": random.randint(1, 10),
+                    "planned_start_date": wo_date.strftime("%Y-%m-%d %H:%M:%S"),
+                    "status": "Not Started",
+                    "has_batch_no": 0,
+                    "has_serial_no": 1,
+                    "wip_warehouse": TARGET_WAREHOUSE,
+                    "source_warehouse": TARGET_WAREHOUSE,
+                    "fg_warehouse": TARGET_WAREHOUSE,
+                    "docstatus": 1
+                }
+                work_orders.append(work_order)
+
+            except Exception as e:
+                self.logger.log_error(f"Error generating work order: {str(e)}")
+                continue
+
+        return work_orders
+
+    def save_to_csv(self, data: List[Dict], filename: str):
+        """Save work orders to CSV file."""
+        if not data:
+            self.logger.log_warning("No data to save to CSV.")
+            return
+
+        try:
+            output_path = OUTPUT_DIR / filename
+            fieldnames = [
+                "ID", "BOM No", "Company", "Item To Manufacture", "Planned Start Date",
+                "Qty To Manufacture", "Series", "Status", "Has Batch No", "Has Serial No",
+                "Work-in-Progress Warehouse", "Source Warehouse", "Target Warehouse"
+            ]
+
+            rows = []
+            for wo in data:
+                row = {
+                    "ID": wo.get('name', ''),
+                    "BOM No": wo['bom_no'],
+                    "Company": wo['company'],
+                    "Item To Manufacture": wo['production_item'],
+                    "Planned Start Date": wo['planned_start_date'],
+                    "Qty To Manufacture": wo['qty'],
+                    "Series": wo['naming_series'],
+                    "Status": wo['status'],
+                    "Has Batch No": wo['has_batch_no'],
+                    "Has Serial No": wo['has_serial_no'],
+                    "Work-in-Progress Warehouse": wo['wip_warehouse'],
+                    "Source Warehouse": wo['source_warehouse'],
+                    "Target Warehouse": wo['fg_warehouse']
+                }
+                rows.append(row)
+
+            with open(output_path, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(rows)
+
+            self.logger.log_info(f"Successfully saved {len(rows)} records to {filename}")
+
+        except Exception as e:
+            self.logger.log_error(f"Error saving to CSV: {str(e)}")
+            raise
+
+    def process(self):
+        """Main process for generating and uploading work orders."""
+        try:
+            # Load BOM data
+            bom_data = self.load_bom_data()
+            self.logger.log_info(f"Loaded {len(bom_data)} BOMs")
+
+            # Generate work orders
+            work_orders = self.generate_work_orders(bom_data)
+            self.logger.log_info(f"Generated {len(work_orders)} work orders")
+
+            # Upload and track successful uploads
+            successful_uploads = []
+            for wo in work_orders:
+                success, system_id, response_data = self.upload_work_order_to_api(wo)
+                if success:
+                    wo['name'] = system_id
+                    wo['status'] = response_data.get('status', '')
+                    successful_uploads.append(wo)
+
+            # Save results
+            if successful_uploads:
+                self.save_to_csv(successful_uploads, 'uploaded_work_orders.csv')
+            else:
+                self.logger.log_warning("No successful uploads to save to CSV.")
+
+        except Exception as e:
+            self.logger.log_error(f"Process Error: {str(e)}")
+            raise
 
 
-def load_csv_data(filename: str) -> List[Dict]:
-    with open(os.path.join(Config.INPUT_DIR, filename), 'r', encoding='utf-8') as f:
-        return list(csv.DictReader(f))
-
-
-def random_date(start_date: datetime, end_date: datetime) -> datetime:
-    return start_date + timedelta(
-        seconds=random.randint(0, int((end_date - start_date).total_seconds()))
-    )
-
-
-def load_bom_data() -> Dict[str, Dict]:
-    bom_data = {}
-    for filename in ['bom_bike.csv', 'bom_ebike.csv']:
-        with open(os.path.join(Config.INPUT_DIR, filename), 'r', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            rows = list(reader)
-            bom_info = rows[0]
-            bom_id = bom_info['ID']
-            items = [row for row in rows if row['Item Code (Items)'].strip()]
-            bom_data[bom_id] = {
-                'ID': bom_id,
-                'Item': bom_info['Item'],
-                'Item Name': bom_info['Item Name'],
-                'Items': items
-            }
-    return bom_data
-
-
-def generate_work_orders(num_orders: int, bom_data: Dict[str, Dict]) -> List[Dict]:
-    work_orders = []
-    for _ in range(num_orders):
-        wo_date = random_date(Config.START_DATE, Config.END_DATE)
-        bom_id, bom = random.choice(list(bom_data.items()))
-        work_order = {
-            "BOM No": bom_id,
-            "Company": "Velo GmbH",
-            "Item To Manufacture": bom['Item'],
-            "Planned Start Date": wo_date.strftime("%Y-%m-%d %H:%M:%S"),
-            "Qty To Manufacture": random.randint(1, 10),
-            "Series": "MFG-WO-.YYYY.-",
-            "Status": "Not Started",
-            "Has Batch No": 0,
-            "Has Serial No": 1,
-            "Work-in-Progress Warehouse": Config.PRODUCTION_WAREHOUSE,
-            "Source Warehouse": Config.PRODUCTION_WAREHOUSE,
-            "Target Warehouse": Config.FINISHED_GOODS_WAREHOUSE,
-            "docstatus": 1  # 0 = Draft; 1 = Submitted
-        }
-        work_orders.append(work_order)
-    return work_orders
-
-
-def map_csv_to_api_fields(work_order: Dict) -> Dict:
-    field_mapping = {
-        "BOM No": "bom_no",
-        "Company": "company",
-        "Item To Manufacture": "production_item",
-        "Planned Start Date": "planned_start_date",
-        "Qty To Manufacture": "qty",
-        "Series": "naming_series",
-        "Status": "status",
-        "Has Batch No": "has_batch_no",
-        "Has Serial No": "has_serial_no",
-        "Work-in-Progress Warehouse": "wip_warehouse",
-        "Source Warehouse": "source_warehouse",
-        "Target Warehouse": "fg_warehouse",
-        "docstatus": "docstatus"
-    }
-    return {field_mapping.get(k, k): v for k, v in work_order.items()}
-
-
-def upload_work_order_to_api(work_order: Dict) -> Tuple[bool, str, Dict]:
-    api = WorkOrderAPI()
-    mapped_work_order = map_csv_to_api_fields(work_order)
-    try:
-        response = api.create(mapped_work_order)
-        content = response['data']
-        # data = json.loads(content)
-
-        if 'name' in content:
-            system_id = content['name']
-            logging.info(f"Successfully uploaded Work Order. ID: {system_id}")
-            return True, system_id, content
-        else:
-            raise ValueError("API response did not contain expected data structure")
-    except Exception as e:
-        logging.error(f"Failed to upload Work Order: {str(e)}")
-        return False, "", {}
-
-
-def save_to_csv(data: List[Dict], filename: str):
-    fieldnames = data[0].keys() if data else []
-    with open(os.path.join(Config.OUTPUT_DIR, filename), 'w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(data)
-    logging.info(f"Saved {len(data)} records to {filename}")
-
-
-def main(num_work_orders: int):
-    bom_data = load_bom_data()
-    logging.info(f"Loaded {len(bom_data)} BOMs")
-
-    work_orders = generate_work_orders(num_work_orders, bom_data)
-    logging.info(f"Generated {len(work_orders)} work orders")
-
-    successful_uploads = []
-    for wo in work_orders:
-        success, system_id, response_data = upload_work_order_to_api(wo)
-        if success:
-            wo['ID'] = system_id
-            wo['Status'] = response_data.get('status', '')
-            wo['Actual Qty'] = response_data.get('qty', 0)
-            wo['Planned Start Date'] = response_data.get('planned_start_date', '')
-            successful_uploads.append(wo)
-        else:
-            logging.error(f"Failed to upload work order: {wo}")
-
-    # Save successfully uploaded work orders to a separate CSV
-    save_to_csv(successful_uploads, 'uploaded_work_orders.csv')
-
-    logging.info(f"Successfully uploaded {len(successful_uploads)} out of {len(work_orders)} work orders")
+def main():
+    generator = WorkOrderGenerator()
+    generator.process()
 
 
 if __name__ == "__main__":
-    main(num_work_orders=5)
+    main()

@@ -1,6 +1,6 @@
-BOM No,Company,Item To Manufacture,Planned Start Date,Qty To Manufacture,Series,Status,Has Batch No,Has Serial No,Work-in-Progress Warehouse,Source Warehouse,Target Warehouse,docstatus,ID,Actual Qty
-BOM-EBIKE-0001-001,Velo GmbH,EBIKE-0001,2023-06-26 14:24:25,2,MFG-WO-.YYYY.-,Not Started,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B,1,MFG-WO-2024-00410,2.0
-BOM-BIKE-0002-001,Velo GmbH,BIKE-0002,2023-04-06 08:43:16,1,MFG-WO-.YYYY.-,Not Started,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B,1,MFG-WO-2024-00411,1.0
-BOM-EBIKE-0001-001,Velo GmbH,EBIKE-0001,2023-01-01 02:16:47,7,MFG-WO-.YYYY.-,Not Started,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B,1,MFG-WO-2024-00412,7.0
-BOM-BIKE-0002-001,Velo GmbH,BIKE-0002,2023-04-01 16:06:26,2,MFG-WO-.YYYY.-,Not Started,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B,1,MFG-WO-2024-00413,2.0
-BOM-EBIKE-0001-001,Velo GmbH,EBIKE-0001,2023-10-29 04:01:01,8,MFG-WO-.YYYY.-,Not Started,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B,1,MFG-WO-2024-00414,8.0
+ID,BOM No,Company,Item To Manufacture,Planned Start Date,Qty To Manufacture,Series,Status,Has Batch No,Has Serial No,Work-in-Progress Warehouse,Source Warehouse,Target Warehouse
+MFG-WO-2024-00209,BOM-BIKE-0002-001,Velo GmbH,BIKE-0002,2021-06-28 13:10:11,10,MFG-WO-.YYYY.-,Not Started,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B
+MFG-WO-2024-00210,BOM-BIKE-0002-001,Velo GmbH,BIKE-0002,2024-05-12 13:10:11,7,MFG-WO-.YYYY.-,Not Started,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B
+MFG-WO-2024-00211,BOM-BIKE-0002-001,Velo GmbH,BIKE-0002,2023-01-08 13:10:11,6,MFG-WO-.YYYY.-,Not Started,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B
+MFG-WO-2024-00212,BOM-BIKE-0002-001,Velo GmbH,BIKE-0002,2022-01-29 13:10:11,6,MFG-WO-.YYYY.-,Not Started,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B
+MFG-WO-2024-00213,BOM-EBIKE-0001-001,Velo GmbH,EBIKE-0001,2020-04-06 13:10:11,2,MFG-WO-.YYYY.-,Not Started,0,1,Lager Stuttgart - B,Lager Stuttgart - B,Lager Stuttgart - B

@@ -183,7 +183,7 @@ def main():
     config = ProcessConfig(
         start_date=datetime(2023, 1, 1),
         end_date=datetime(2023, 12, 31),
-        total_orders=10
+        total_orders=36
     )
 
     # Initialize and run controller

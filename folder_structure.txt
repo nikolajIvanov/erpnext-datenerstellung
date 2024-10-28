@@ -3,26 +3,77 @@ ERPNext-Datenerstellung/
     folder_structure.txt
     .gitignore
     .env
+    Master-Data_Processed_CSV/
+        .DS_Store
     docs/
         requirements.txt
         README.md
+    Master-Data_Generation/
+        .DS_Store
     logs/
         api_payloads/
             purchase_invoices/
             purchase_receipts/
+                failed_20241028_123647.json
+                failed_20241028_123441.json
+                failed_20241028_123457.json
+                failed_20241028_123652.json
+                failed_20241028_123500.json
             payment_entrys/
             purchase_orders/
         process_logs/
-            stock_entries/
             purchase_invoices/
+                purchase_invoices_20241028_123703.log
+                purchase_invoices_20241028_123648.log
+                purchase_invoices_20241028_123701.log
+                purchase_invoices_20241028_123659.log
+                purchase_invoices_20241028_123705.log
+                purchase_invoices_20241028_123657.log
+                purchase_invoices_20241028_123655.log
+                purchase_invoices_20241028_123650.log
+                purchase_invoices_20241028_123644.log
+                purchase_invoices_20241028_123653.log
             purchase_receipts/
+                purchase_receipts_20241028_123658.log
+                purchase_receipts_20241028_123704.log
+                purchase_receipts_20241028_123700.log
+                purchase_receipts_20241028_123649.log
+                purchase_receipts_20241028_123702.log
+                purchase_receipts_20241028_123647.log
+                purchase_receipts_20241028_123646.log
+                purchase_receipts_20241028_123652.log
+                purchase_receipts_20241028_123644.log
+                purchase_receipts_20241028_123651.log
+                purchase_receipts_20241028_123654.log
+                purchase_receipts_20241028_123656.log
             payment_entrys/
-                payment_entrys_20241027_105835.log
-                payment_entrys_20241027_105515.log
+                payment_entrys_20241028_123645.log
+                payment_entrys_20241028_123650.log
+                payment_entrys_20241028_123653.log
+                payment_entrys_20241028_123657.log
+                payment_entrys_20241028_123655.log
+                payment_entrys_20241028_123704.log
+                payment_entrys_20241028_123659.log
+                payment_entrys_20241028_123706.log
+                payment_entrys_20241028_123702.log
+                payment_entrys_20241028_123648.log
             purchase_orders/
-                purchase_orders_20241027_095859.log
-                purchase_orders_20241027_100206.log
-            work_orders/
+                purchase_orders_20241028_123643.log
+                purchase_orders_20241028_123656.log
+                purchase_orders_20241028_123654.log
+                purchase_orders_20241028_123651.log
+                purchase_orders_20241028_123646.log
+                purchase_orders_20241028_123652.log
+                purchase_orders_20241028_123647.log
+                purchase_orders_20241028_123702.log
+                purchase_orders_20241028_123649.log
+                purchase_orders_20241028_123700.log
+                purchase_orders_20241028_123704.log
+                purchase_orders_20241028_123658.log
+    Generated_CSV/
+        .DS_Store
+    Templates/
+        .DS_Store
     data/
         .DS_Store
         generated/
@@ -32,6 +83,7 @@ ERPNext-Datenerstellung/
             uploaded_stock_entries.csv
             bom_ebike.csv
             purchase_orders.csv
+            batch_purchase_orders.csv
             failed_stock_entries.csv
             failed_stock_transfers.csv
             purchase_receipts.csv
@@ -39,9 +91,12 @@ ERPNext-Datenerstellung/
             bom_bike.csv
             purchase_invoices.csv
             all_work_orders.csv
+            batch_purchase_receipts.csv
             all_stock_entries.csv
             payment_entries.csv
             b2c_customers.csv
+            batch_payment_entries.csv
+            batch_purchase_invoices.csv
             generated_purchase_orders.csv
         transactions/
             sales/
@@ -172,6 +227,7 @@ ERPNext-Datenerstellung/
                 payment_entry_api.py
                 __pycache__/
                     purchase_order_api.cpython-311.pyc
+                    work_order_api.cpython-311.pyc
                     payment_entry_api.cpython-311.pyc
                     purchase_invoice_api.cpython-311.pyc
                     purchase_receipt_api.cpython-311.pyc
@@ -213,8 +269,20 @@ ERPNext-Datenerstellung/
                         create_purchase_invoice.py
                         create_purchase_receipt.py
                         create_purchase_order.py
+                    __pycache__/
+                        __init__.cpython-311.pyc
                     batch/
                         __init__.py
+                        create_batch_purchase_invoice.py
+                        create_batch_payment_entry.py
+                        create_batch_purchase_receipt.py
+                        create_batch_purchase_order.py
+                        __pycache__/
+                            create_batch_purchase_invoice.cpython-311.pyc
+                            create_batch_payment_entry.cpython-311.pyc
+                            create_batch_purchase_receipt.cpython-311.pyc
+                            create_batch_purchase_order.cpython-311.pyc
+                            __init__.cpython-311.pyc
                 process_logs/
                     purchase_orders/
                         purchase_order_20241026_200351.log
