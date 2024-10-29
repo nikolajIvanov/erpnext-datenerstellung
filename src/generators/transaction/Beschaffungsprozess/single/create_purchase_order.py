@@ -1,3 +1,10 @@
+import sys
+from pathlib import Path
+
+# Hauptverzeichnis zum Python-Path hinzufügen (vor allen anderen Imports)
+project_root = Path(__file__).resolve().parents[4]
+sys.path.insert(0, str(project_root))  # Änderung von append zu insert(0, ...)
+
 import csv
 from datetime import datetime, timedelta
 import random

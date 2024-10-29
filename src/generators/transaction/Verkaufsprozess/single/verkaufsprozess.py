@@ -6,7 +6,7 @@ import logging
 import json
 from typing import List, Dict
 import uuid
-from src.api.endpoints import SalesOrderAPI
+from src.api.endpoints.sales_order_api import SalesOrderAPI
 from src.api.endpoints.delivery_note_api import DeliveryNoteAPI
 from src.api.endpoints.sales_invoice_api import SalesInvoiceAPI
 from src.api.endpoints.payment_entry_api import PaymentEntryAPI
